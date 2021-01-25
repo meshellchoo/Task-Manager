@@ -11,4 +11,4 @@
 # What are the two design patterns you will be using? 
   - 
 
-  -
+  - We picked the Memento Pattern because we think it will be useful when trying to incorporate the undo function for the Task Feature and Task Lists Feature. The Memento Pattern allows us to create a "memento" object to store the current state of the "originator" object, thus allowing us to return to a previous state after committing to a change. A problem we anticipate encountering when implementing the project is that the user can accidentally delete a task or task list with no way of restoring them. With the Memento Pattern, they can undo the deletion and bring back their task or task list. Additionally, the user the user can edit a task or task list, but not want to commit to the change. The Memento Pattern will allow them to bring back the previous version of the task or task list.
