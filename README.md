@@ -10,6 +10,6 @@
   -Our input will consist of events, courses, times, and deadlines entered by the user.
 Our output will be a neatly arranged schedule displaying all events and courses for the week in chronological order
 # What are the two design patterns you will be using? 
-  - 
+  - We picked Composite because we think it will be useful when we want to categorize tasks into main tasks or subtasks. The feature we will implement allows the user to choose what type of task they want to add onto their task manager. By using composite, we avoid the problem of having a lot of classes in our code and allows the tasks to share a common interface. With this design pattern, we can produce families of related objects (main task, sub task, etc.) without specifying the concrete class, task class.   
 
   - We picked the Memento Pattern because we think it will be useful when trying to incorporate the undo function for the Task Feature and Task Lists Feature. The Memento Pattern allows us to create a "memento" object to store the current state of the "originator" object, thus allowing us to return to a previous state after committing to a change. Without this design pattern, the "memento" object would not be able to access private properties of the "originator" object. A problem we anticipate encountering when implementing the project is that the user can accidentally delete/edit a task or task list with no way of restoring them. With the Memento Pattern, they can undo the deletion/editting and bring back their previous task or task list.
