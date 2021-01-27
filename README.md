@@ -7,8 +7,8 @@
 # What languages/tools/technologies do you plan to use?
   - We plan on using C++, git, Vim, C++ gui libraries, and PuTTY. 
 # What will be the input/output of your project?
-  -Our input will consist of events, courses, times, and deadlines entered by the user.
-Our output will be a neatly arranged schedule displaying all events and courses for the week in chronological order
+  - The input of our project will be the task title, description, classification (similiar to a tag), priority, duration, and due date. Additionally, the user can create a task list and input the title, description, tasks, and priority of that task list.
+  - Our project will have two outputs based on if the user decides to view a task or task list. If the user decides to view a task, it will output all the information about the task. If the user decides to view a task list, it will output a neatly arranged task list based on the added tasks' priority and due date.
 # What are the two design patterns you will be using? 
   - We picked Composite because we think it will be useful when we want to categorize tasks into main tasks or subtasks. The feature we will implement allows the user to choose what type of task they want to add onto their task manager. By using composite, we avoid the problem of having a lot of classes in our code and allows the tasks to share a common interface. With this design pattern, we can produce families of related objects (main task, sub task, etc.) without specifying the concrete class, task class.   
 
