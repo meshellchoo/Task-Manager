@@ -13,3 +13,13 @@
   - We picked the Composite Pattern because we think it will be useful for task and tasklist to share a common interface. The feature we will implement allows the user to add tasks or tasklists onto their task manager. By using composite, we avoid the problem of having a lot of classes in our code and allows the tasks to share a common interface. This design pattern allows us to treat primitive (task) and container (tasklist) types the same. With this design pattern, we can produce families of related objects (tasklist, task, etc.) without specifying the concrete class, task class.
 
   - We picked the Memento Pattern because we think it will be useful when trying to incorporate the undo function for the Task Feature and Task Lists Feature. The Memento Pattern allows us to create a "memento" object to store the current state of the "originator" object, thus allowing us to return to a previous state after committing to a change. Without this design pattern, the "memento" object would not be able to access private properties of the "originator" object. A problem we anticipate encountering when implementing the project is that the user can accidentally delete/edit a task or task list with no way of restoring them. With the Memento Pattern, they can undo the deletion/editting and bring back their previous task or task list.
+
+####OMT Diagramn description
+The OMT Diagram depicts the Comoposite Design pattern and the Memento
+design pattern. The Memento Design pattern implementation features two mementos (TaskMemento and TaskBankMemento) based off of two originators (TaskObject and 
+TaskBank.There are two mementos because there are two different originator 
+classes. The TaskMemento is intertwined with the TaskObject originator class,
+which is the Component of the Compoiste Design Pattern implementation, while 
+Task and TaskList are the Leaf and Composite, respectively. 
+
+~ 
