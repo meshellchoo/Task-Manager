@@ -25,7 +25,7 @@
 Task and TaskList are the Leaf and Composite, respectively. 
 
 
-Moreover, the TaskBank classes use a separate Memento pattern because it uses a separate originator class than the TaskObject classes. The TaskBankCommand class acts the same as the TaskCommand class except it's specified for TaskBank only. The TaskBank has a vector of TaskObject* and is a collection of all of the TaskObjects that has been created. The TaskManager has a TaskBank as its private member. The TaskManager is basically a simple user interface and the user should only be able to access the run() function and be able to add or delete tasks.
+Moreover, the TaskBank classes use a separate Memento pattern because it uses a separate originator class than the TaskObject classes. The TaskBankCommand class acts the same as the TaskCommand class except it's specified for TaskBank only. The TaskBank has a vector of TaskObject* and is a collection of all of the TaskObjects that has been created. The TaskManager has a TaskBank as its private member. The TaskManager is basically a simple user interface and the user should only be able to access the run() function and be able to add tasks, delete tasks, sort tasks etc.
 
 The OMT Diagram depicts the Comoposite Design pattern and the Memento
 design pattern. The Memento Design pattern implementation features two mementos (TaskMemento and TaskBankMemento) based off of two originators (TaskObject and 
