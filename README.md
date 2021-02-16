@@ -16,6 +16,6 @@
 
 #### OMT 
 
-![OMT](/cs100-task-manager/CS100%20Final%20Project%20OMT.jpg)
+![](CS100%20Final%20Project%20OMT.jpg)
 
 #### Class Diagram Description
