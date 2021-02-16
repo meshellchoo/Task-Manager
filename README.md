@@ -23,9 +23,3 @@
 
 The OMT Diagram depicts a Composite Design Pattern and the Memento Design Pattern. The Composite Design Pattern is implemented in the Task and TaskList Classes as both redefine functions the TaskObject abstract Class has. The TaskObject, Task, and TaskList class use protected member variables for taskName, description, taskType, priority, and dueDate so that the derived classes can use these member variables. Additionally, the TaskList Class has an addtional private member variable, std::vector<Task> Tasks, and has additional functions addTask(Task task), deleteTask(Task task), and clear(), which allows TaskList to represent a large task with subtasks.
 
-The OMT Diagram depicts the Comoposite Design pattern and the Memento
-design pattern. The Memento Design pattern implementation features two mementos (TaskMemento and TaskBankMemento) based off of two originators (TaskObject and 
-TaskBank.There are two mementos because there are two different originator 
-classes. The TaskMemento is intertwined with the TaskObject originator class,
-which is the Component of the Compoiste Design Pattern implementation, while 
-Task and TaskList are the Leaf and Composite, respectively. 
