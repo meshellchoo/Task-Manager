@@ -14,8 +14,16 @@
 
   - We picked the Memento Pattern because we think it will be useful when trying to incorporate the undo function for the Task Feature and Task Lists Feature. The Memento Pattern allows us to create a "memento" object to store the current state of the "originator" object, thus allowing us to return to a previous state after committing to a change. Without this design pattern, the "memento" object would not be able to access private properties of the "originator" object. A problem we anticipate encountering when implementing the project is that the user can accidentally delete/edit a task or task list with no way of restoring them. With the Memento Pattern, they can undo the deletion/editting and bring back their previous task or task list.
 
+
 #### OMT Diagram
 
 ![](CS100%20Final%20Project%20OMT.jpg)
 
 #### Class Diagram Description
+
+The OMT Diagram depicts the Comoposite Design pattern and the Memento
+design pattern. The Memento Design pattern implementation features two mementos (TaskMemento and TaskBankMemento) based off of two originators (TaskObject and 
+TaskBank.There are two mementos because there are two different originator 
+classes. The TaskMemento is intertwined with the TaskObject originator class,
+which is the Component of the Compoiste Design Pattern implementation, while 
+Task and TaskList are the Leaf and Composite, respectively. 
