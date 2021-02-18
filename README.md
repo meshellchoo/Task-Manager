@@ -17,7 +17,7 @@
 
 #### OMT Diagram
 
-![](CS100%20Final%20Project%20OMT%20Diagram.jpg)
+![](CS100%20Final%20Project%20OMT.jpg)
 
 #### Class Diagram Description
 
