@@ -28,7 +28,7 @@ class TaskObject {
         std::string getTaskDueDate(){return dueDate;};
 	
 	virtual TaskObject* createTaskMemento() = 0;
-        virtual void restore(TaskMemento t) = 0;
+       // virtual void restore(TaskMemento t) = 0;
 };
 
 #endif //__TASKOBJECT_HPP__
