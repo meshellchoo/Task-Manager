@@ -1,5 +1,5 @@
-#ifndef __TASKLIST_HPP__
-#define __TASKLIST_HPP__
+#ifndef __TASKLIST_CPP__
+#define __TASKLIST_CPP__
 
 void TaskList::clear(){
     tasks.clear();
