@@ -1,6 +1,5 @@
 #ifndef __TASKOBJECT_HPP__
 #define __TASKOBJECT_HPP__
-
 #include <string>
 
 class TaskObject {
@@ -19,21 +18,17 @@ class TaskObject {
 		 int priority,std::string  dueDate) {}
         virtual ~TaskObject() {}
     
-        /* Pure Virtual Functions */
-	virtual void viewTask() = 0;
-	virtual void setTaskName() = 0;
-	virtual void setTaskType() = 0;
-	virtual void setTaskDescription() = 0;
-        virtual void setTaskPriority() = 0;
-	virtual void setTaskDueDate() = 0;
-        virtual void getTaskName() = 0;
-        virtual void getTaskType() = 0;
-        virtual void getTaskDescription() = 0;
-	virtual void getTaskPriority() = 0;
-        virtual void getTaskDueDate() =0;
-
+        virtual void viewTask() = 0;
+        void setTaskName(std::string taskName){this->taskName = taskName;};
+        void setTaskType(std::string taskType){this->taskType = taskType;};
+        void setTaskDescription( std::string description){this->description = description;};
+        std::string getTaskType(){return taskType;};
+        std::string getTaskDescription(){return description;};
+        int getTaskPriority(){return priority;};
+        std::string getTaskDueDate(){return dueDate;};
+	
 	virtual TaskObject* createTaskMemento() = 0;
-	virtual void restore(TaskMemento) = 0;
+        virtual void restore(TaskMemento t) = 0;
 };
 
 #endif //__TASKOBJECT_HPP__
