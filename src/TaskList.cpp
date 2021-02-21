@@ -1,7 +1,9 @@
 #ifndef __TASKLIST_CPP__
 #define __TASKLIST_CPP__
 
-#include "/header/TaskList.hpp"
+#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskList.hpp"
+//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
+//#include "/home/csmajs/htran164/cs100-task-manager/header/TaskList.hpp"
 
 void TaskList::clear(){
     tasks.clear();
@@ -22,8 +24,8 @@ void TaskList::viewTask(){
 TaskObject* TaskList::createTaskMemento(){
     
 }
-void TaskList::restore(TaskMemento t){
+//void TaskList::restore(TaskMemento t){
 
-}
+//}
 
 #endif 
