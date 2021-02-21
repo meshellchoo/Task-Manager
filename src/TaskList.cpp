@@ -29,10 +29,10 @@ void TaskList::clear(){
     tasks.clear();
 }
 void TaskList::deleteTask(Task task){
-//    for(std::vector<Task>::iterator i = tasks.begin(); i != tasks.end(); i++){
-  //      if(i == task)
-    //        tasks.erase(i);
-    //}
+    for(int i = 0; i < tasks.size(); i++){
+            if(tasks[i].getTaskName()== task.getTaskName())
+		tasks.erase(tasks.begin() + i);
+    }
     
 }
 void TaskList::addTask(Task task){
@@ -40,13 +40,21 @@ void TaskList::addTask(Task task){
 }
 void TaskList::viewTask(){
 	std::cout << "- " << taskName << std::endl;
-	std::cout << "  Type of Task: " << taskType << std::endl;
-	std::cout << "  description:" <<  description << std::endl;
-	std::cout << "  Due Date:" << dueDate << std::endl;
+	std::cout << "    Type of Task: " << taskType << " tasklist" <<  std::endl;
+	std::cout << "    description: " <<  description << std::endl;
+	std::cout << "    Due Date: " << dueDate << std::endl;
 	for(int i = 0 ; i < tasks.size(); i++){
-//		std::cout << 
-		tasks[i].viewTask();
+		std::cout << "      " ;
+		std::cout << "- " << tasks[i].getTaskName() << std::endl;
+		std::cout << "        " ;
+      	 	std::cout << "  Type of Task: " << tasks[i].getTaskType() << std::endl;
+		std::cout << "        " ;
+	        std::cout << "  description: " << tasks[i].getTaskDescription() << std::endl;
+		std::cout << "        " ;
+	        std::cout << "  Due Date: " << tasks[i].getTaskDueDate() << std::endl;
+
 	}
+
 }
 TaskObject* TaskList::createTaskMemento(){
     
