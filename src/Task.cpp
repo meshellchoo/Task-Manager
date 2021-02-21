@@ -1,6 +1,7 @@
 #ifndef __TASK_CPP__
 #define __TASK_CPP__
-#include "header/Task.cpp" 
+
+#include "/header/Task.hpp" 
 
 void Task::viewTask(){
 

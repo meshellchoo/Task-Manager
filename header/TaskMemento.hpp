@@ -2,7 +2,7 @@
 #define __TASKMEMENTO_HPP__
 
 #include "TaskObject.hpp"
-
+/*
 class TaskMemento{
     private:
         TaskObject* savedTaskState;
@@ -14,5 +14,5 @@ class TaskMemento{
 	TaskObject* setTaskState();
 
 };
-
+*/
 #endif //__TASKMEMENTO_HPP__

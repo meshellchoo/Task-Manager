@@ -1,8 +1,8 @@
 #ifndef __TASKLIST_HPP__
 #define __TASKLIST_HPP__
 #include <vector>
+#include "TaskObject.hpp"
 #include "Task.hpp"
-
 
 class TaskList{
     private:
@@ -17,4 +17,3 @@ class TaskList{
 };
 
 #endif //__TASKLISTT_HPP__
-
