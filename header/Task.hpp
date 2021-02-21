@@ -6,11 +6,20 @@
 
 class Task{
     private:
-        
+    	std::string taskName;
+	std::string description;
+	std::string taskType;
+	int priority;
+	std::string dueDate;
     public:
-        virtual void viewTask();
-        virtual TaskObject* createTaskMemento();
-       // virtual void restore(TaskMemento t);
+        Task(){}
+	Task(std::string taskName, std::string description, std::string taskType,
+		 int priority, std::string  dueDate) {}	
+	void viewTask();
+
+
+//        virtual TaskObject* createTaskMemento();
+//        virtual void restore(TaskMemento t);
 
 };
 
