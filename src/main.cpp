@@ -8,5 +8,6 @@
 #include <iostream>
 
 int main(int argv, char** argc) {
-    std::cout << "hi";
+    Task t("CS100 Lab5", "Strategy and Composite Lab", "School",1,"02/21/2021");
+	
 }
