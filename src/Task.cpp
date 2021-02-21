@@ -1,13 +1,14 @@
 #ifndef __TASK_CPP__
 #define __TASK_CPP__
+#include "header/Task.cpp" 
 
-void TaskList::viewTask(){
+void Task::viewTask(){
 
 }
-TaskObject* TaskList::createTaskMemento(){
+TaskObject* Task::createTaskMemento(){
     
 }
-void TaskList::restore(TaskMemento t){
+void Task::restore(TaskMemento t){
 
 }
 

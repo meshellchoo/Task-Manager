@@ -1,7 +1,7 @@
 #ifndef __TASKMEMENTO_HPP__
 #define __TASKMEMENTO_HPP__
 
-#include "taskObject.hpp"
+#include "TaskObject.hpp"
 
 class TaskMemento{
     private:
@@ -13,6 +13,6 @@ class TaskMemento{
         TaskObject* getTaskState();
 	TaskObject* setTaskState();
 
-}
+};
 
 #endif //__TASKMEMENTO_HPP__

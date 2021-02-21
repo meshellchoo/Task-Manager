@@ -1,6 +1,7 @@
 #ifndef __TASKOBJECT_HPP__
 #define __TASKOBJECT_HPP__
 #include <string>
+#include "TaskMemento.hpp"
 
 class TaskObject {
 

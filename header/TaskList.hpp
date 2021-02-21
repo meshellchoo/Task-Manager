@@ -1,5 +1,7 @@
 #ifndef __TASKLIST_HPP__
 #define __TASKLIST_HPP__
+#include <vector>
+#include "Task.hpp"
 
 
 class TaskList{
@@ -11,8 +13,8 @@ class TaskList{
         void addTask(Task task);
         virtual void viewTask();
         virtual TaskObject* createTaskMemento();
-        virtual void restore(TaskMemento t);
-}
+//        virtual void restore(TaskMemento t);
+};
 
 #endif //__TASKLISTT_HPP__
 
