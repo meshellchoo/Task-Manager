@@ -12,13 +12,13 @@ class Task{
 	int priority;
 	std::string dueDate;
     public:
-        Task(){}
+        Task();
 	Task(std::string taskName, std::string description, std::string taskType,
-		 int priority, std::string  dueDate) {}	
+		 int priority, std::string dueDate);
 	void viewTask();
 
 
-//        virtual TaskObject* createTaskMemento();
+	 virtual TaskObject* createTaskMemento();
 //        virtual void restore(TaskMemento t);
 
 };
