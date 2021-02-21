@@ -4,13 +4,9 @@
 #include "TaskObject.hpp"
 
 
-class Task{
+class Task : public TaskObject{
     private:
-    	std::string taskName;
-	std::string description;
-	std::string taskType;
-	int priority;
-	std::string dueDate;
+ 
     public:
         Task();
 	Task(std::string taskName, std::string description, std::string taskType,
