@@ -2,14 +2,10 @@
 #define __TASK_HPP__
 
 #include "TaskObject.hpp"
-
 class Task: public TaskObject{
+
     private:
-    	std::string taskName;
-	std::string description;
-	std::string taskType;
-	int priority;
-	std::string dueDate;
+ 
     public:
         Task();
 	Task(std::string taskName, std::string description, std::string taskType,
