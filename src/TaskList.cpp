@@ -1,6 +1,8 @@
 #ifndef __TASKLIST_CPP__
 #define __TASKLIST_CPP__
 #include <iostream>
+#include <algorithm>    // std::sort
+
 //#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskList.hpp"
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
 ////#include "/home/csmajs/htran164/cs100-task-manager/header/TaskList.hpp"
@@ -28,12 +30,14 @@ TaskList::TaskList(std::string taskName, std::string description, std::string ta
 void TaskList::clear(){
     tasks.clear();
 }
-void TaskList::deleteTask(Task task){
+
+bool  TaskList::deleteTask(Task task){
     for(int i = 0; i < tasks.size(); i++){
             if(tasks[i].getTaskName()== task.getTaskName())
 		tasks.erase(tasks.begin() + i);
+	    return true;
     }
-    
+    return false;
 }
 void TaskList::addTask(Task task){
     tasks.push_back(task);
@@ -56,6 +60,14 @@ void TaskList::viewTask(){
 	}
 
 }
+bool prioritySort(Task i, Task j){ return (i.getTaskDueDate() <= j.getTaskDueDate());}
+
+void TaskList::sortByPriority(){
+	std::sort(tasks.begin(),tasks.end(),prioritySort);
+}
+
+void TaskList::sortByDueDate(){}
+
 TaskObject* TaskList::createTaskMemento(){
     
 }

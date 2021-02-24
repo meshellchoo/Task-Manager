@@ -24,14 +24,14 @@ class TaskObject {
         void setTaskDueDate(std::string dueDate)
 		{this->dueDate = dueDate;};
 	void setTaskPriority(int priority){this->priority = priority;}
-	std::string getTaskName(){return taskName;}
-	std::string getTaskType()
+	std::string getTaskName()const{return taskName;}
+	std::string getTaskType()const
 		{return taskType;}
-        std::string getTaskDescription()
+        std::string getTaskDescription()const
 		{return description;}
-        int getTaskPriority()
+        int getTaskPriority()const
 		{return priority;}
-        std::string getTaskDueDate()
+        std::string getTaskDueDate()const
 		{return dueDate;}
 	
 //	virtual TaskObject* createTaskMemento() = 0;
