@@ -3,8 +3,7 @@
 
 #include "TaskObject.hpp"
 
-
-class Task{
+class Task: public TaskObject{
     private:
     	std::string taskName;
 	std::string description;
