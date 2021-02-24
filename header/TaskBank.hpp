@@ -6,19 +6,21 @@
 #include "TaskList.hpp"
 
 class TaskBank{
-
 	private:
 		std::vector<TaskObject*> schedule;
 	public:
+		TaskBank(){};
+		TaskBank(const TaskBank& taskbank){};
 		~TaskBank(){};
 		void clear();
 		void display();
-		void addTask(TaskObject*);
-		void deleteTask(TaskObject*);
+		void addTask(TaskObject* task);
+		bool deleteTask(TaskObject* task);
 		void sortByPriority();
+		void sortByDueDate();
 //		TaskObject* createTaskBankMemento();
 //		void restore(taskBankMemento);
-
-}
+		std::vector& operator=(const std::vector &v);
+};
 
 #endif

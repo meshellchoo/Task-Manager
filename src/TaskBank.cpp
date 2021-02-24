@@ -8,7 +8,9 @@
 #include <string>
 #include <iostream>
 
-TaskBank::TaskBank(){}
+TaskBank::TaskBank(){ // Default Constructor
+	this->schedule = schedule;
+}
 
 TaskBank::~TaskBank(){
 	for(int i = ; i < schedule.size(); i++){
@@ -32,23 +34,37 @@ void TaskBank::addTask(TaskObject* task){
 	schedule.push_back(task);
 }
 
-void TaskBank::deleteTask(TaskObject* task){
+bool TaskBank::deleteTask(TaskObject* task){
 	for(int i = 0; i < schedule.size(); i++){
 		if (schedule[i] == task){
 			schedule.erase(schedule.begin()+i);
+			return true;
 		}
 		else {
-			std::cout << "Task/Task List was not found." << std::endl;
+			return false;
 		}
 	}
 }
 
-void TaskBank::sortByPriority(){}
+void TaskBank::sortByPriority(){
+	std::sort(schedule.begin(), schedule.end(), prioritySort);
+}
+
+
+
 //		TaskObject* createTaskBankMemento();
 //		//		void restore(taskBankMemento);
 //
 //		}
 
-
+std::vector& operator=(const std::vector &v){
+	if(size != v.size){
+		cerr << "FATAL vector::operator(const vector &) size mismatch: " <<
+			size << " " << v.size << "\n";
+		exit(1);
+	}
+	for(int i = 0; i < size; i++)vec[i] = v.vec[i];
+		 return *this;
+}
 
 #endif
