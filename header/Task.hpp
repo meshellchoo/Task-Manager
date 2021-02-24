@@ -2,9 +2,8 @@
 #define __TASK_HPP__
 
 #include "TaskObject.hpp"
+class Task: public TaskObject{
 
-
-class Task : public TaskObject{
     private:
  
     public:
