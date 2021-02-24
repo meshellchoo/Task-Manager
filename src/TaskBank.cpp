@@ -19,12 +19,13 @@ TaskBank::~TaskBank(){
 }
 
 void TaskBank::clear(){
-	
+	schedule.clear();
 }
 
 void TaskBank::display(){
-
-
+	for(int i = 0; i < schedule.size(); i++){
+		schedule[i].viewTask();
+	}
 }
 
 void TaskBank::addTask(TaskObject* task){
@@ -32,7 +33,7 @@ void TaskBank::addTask(TaskObject* task){
 }
 
 void TaskBank::deleteTask(TaskObject* task){
-	for(int i = 0; i <schedule.size(); i++){
+	for(int i = 0; i < schedule.size(); i++){
 		if (schedule[i] == task){
 			schedule.erase(schedule.begin()+i);
 		}
