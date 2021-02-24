@@ -7,6 +7,7 @@
 class TaskList: public TaskObject{
     private:
         std::vector<Task> tasks;
+	
     public:
  	TaskList(std::string taskName, std::string description, 
         std::string taskType, int priority, std::string dueDate, 
@@ -14,8 +15,10 @@ class TaskList: public TaskObject{
 	TaskList(std::string taskName, std::string description,
         std::string taskType, int priority, std::string dueDate);
         void clear();
-        void deleteTask(Task task);
+        bool deleteTask(Task task);
         void addTask(Task task);
+        void sortByPriority();
+	void sortByDueDate();
         virtual void viewTask();
         virtual TaskObject* createTaskMemento();
 //        virtual void restore(TaskMemento t);
