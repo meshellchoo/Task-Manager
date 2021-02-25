@@ -11,7 +11,14 @@ class TaskObject {
 	std::string taskType;
 	int priority;
 	std::string dueDate;
-
+	struct Date
+	{
+	  int year = 0;
+	  int month = 0;
+	  int day = 0;
+	}
+	  
+	
     public:
         /* Constructors */
         virtual void viewTask() = 0;

@@ -50,7 +50,9 @@ void TaskBank::sortByPriority(){
 	std::sort(schedule.begin(), schedule.end(), prioritySort);
 }
 
-
+void TaskBank::sortByDueDate(){
+	std::sort(schedule.begin(), schedule.end(), dueDateSort());
+}
 
 //		TaskObject* createTaskBankMemento();
 //		//		void restore(taskBankMemento);
