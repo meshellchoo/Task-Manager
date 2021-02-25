@@ -2,9 +2,7 @@
 #define __TASKBANK_CPP__
 
 #include <vector>
-#include "TaskObject.cpp"
-#include "Task.cpp"
-#include "TaskList.cpp"
+#include "/header/TaskBank.hpp"
 #include <string>
 #include <iostream>
 
@@ -50,7 +48,9 @@ void TaskBank::sortByPriority(){
 	std::sort(schedule.begin(), schedule.end(), prioritySort);
 }
 
+void TaskBank::sortByDueDate(){
 
+}
 
 //		TaskObject* createTaskBankMemento();
 //		//		void restore(taskBankMemento);
