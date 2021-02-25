@@ -19,7 +19,7 @@ class TaskBank{
 		void sortByDueDate();
 //		TaskObject* createTaskBankMemento();
 //		void restore(taskBankMemento);
-		std::vector& operator=(const std::vector &v);
+		TaskBank& operator=(const TaskBank& taskbank);
 };
 
 #endif

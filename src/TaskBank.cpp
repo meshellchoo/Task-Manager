@@ -6,12 +6,10 @@
 #include <string>
 #include <iostream>
 
-TaskBank::TaskBank(){ // Default Constructor
-	this->schedule = schedule;
-}
+TaskBank::TaskBank(){}
 
 TaskBank::~TaskBank(){
-	for(int i = ; i < schedule.size(); i++){
+	for(int i = 0; i < schedule.size(); i++){
 		delete schedule[i];
 		schedule[i] = nullptr;
 	}
@@ -19,7 +17,11 @@ TaskBank::~TaskBank(){
 }
 
 void TaskBank::clear(){
-	schedule.clear();
+        for(int i = 0; i < schedule.size(); i++){
+                delete schedule[i];
+                schedule[i] = nullptr;
+        }
+        schedule.clear();
 }
 
 void TaskBank::display(){
@@ -57,14 +59,16 @@ void TaskBank::sortByDueDate(){
 //
 //		}
 
-std::vector& operator=(const std::vector &v){
-	if(size != v.size){
-		cerr << "FATAL vector::operator(const vector &) size mismatch: " <<
-			size << " " << v.size << "\n";
-		exit(1);
+TaskBank& operator=(const TaskBank& taskbank){
+	for(int i = 0; i < schedule.size(); i++){
+                delete schedule[i];
+                schedule[i] = nullptr;
+        }
+        schedule.clear();
+
+	for(int i = 0; i < taskbank.schedule.size(); i++){
+		schedule.push_back(taskbank.schedule[i]);
 	}
-	for(int i = 0; i < size; i++)vec[i] = v.vec[i];
-		 return *this;
 }
 
 #endif
