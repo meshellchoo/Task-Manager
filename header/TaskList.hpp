@@ -19,8 +19,8 @@ class TaskList: public TaskObject{
         void addTask(Task task);
         void sortByPriority();
 	void sortByDueDate();
-        virtual void viewTask();
-        virtual TaskObject* createTaskMemento();
+        void viewTask();
+        TaskObject* createTaskMemento();
 //        virtual void restore(TaskMemento t);
 };
 
