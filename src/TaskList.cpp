@@ -61,7 +61,9 @@ void TaskList::viewTask(){
 	}
 
 }
-bool prioritySort(Task i, Task j){ return (i.getTaskDueDate() <= j.getTaskDueDate());}
+
+bool dueDateSort(Task i, Task j){ return (i.getTaskDueDate() <= j.getTaskDueDate());}
+
 
 void TaskList::sortByPriority(){
 	std::sort(tasks.begin(),tasks.end(),prioritySort);
