@@ -10,7 +10,6 @@ class TaskBank{
 		std::vector<TaskObject*> schedule;
 	public:
 		TaskBank(){};
-		TaskBank(const TaskBank& taskbank){};
 		~TaskBank(){};
 		void clear();
 		void display();
@@ -20,7 +19,7 @@ class TaskBank{
 		void sortByDueDate();
 //		TaskObject* createTaskBankMemento();
 //		void restore(taskBankMemento);
-		std::vector& operator=(const std::vector &v);
+		TaskBank& operator=(const TaskBank& taskbank);
 };
 
 #endif
