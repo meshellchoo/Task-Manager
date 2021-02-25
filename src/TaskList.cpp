@@ -63,6 +63,10 @@ void TaskList::viewTask(){
 	}
 
 }
+
+
+bool dueDateSort(Task i, Task j){ return (i.getTaskDueDate() <= j.getTaskDueDate());}
+
 bool prioritySort(Task i, Task j){ return (i.getTaskPriority()  >= j.getTaskPriority());}
 
 void TaskList::sortByPriority(){
