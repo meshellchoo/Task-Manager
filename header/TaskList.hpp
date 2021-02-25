@@ -10,10 +10,10 @@ class TaskList: public TaskObject{
 	
     public:
  	TaskList(std::string taskName, std::string description, 
-        std::string taskType, int priority, std::string dueDate, 
+        std::string taskType, int priority,Date dueDate, 
         std::vector<Task> subTasks);
 	TaskList(std::string taskName, std::string description,
-        std::string taskType, int priority, std::string dueDate);
+        std::string taskType, int priority,Date dueDate);
         void clear();
         bool deleteTask(Task task);
         void addTask(Task task);

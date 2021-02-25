@@ -9,11 +9,11 @@ class Task: public TaskObject{
     public:
         Task();
 	Task(std::string taskName, std::string description, std::string taskType,
-		 int priority, std::string dueDate);
+		 int priority, Date dueDate);
 	void viewTask();
 
 
-	askObject* createTaskMemento();
+//	askObject* createTaskMemento();
 //        virtual void restore(TaskMemento t);
 
 };
