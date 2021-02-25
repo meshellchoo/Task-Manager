@@ -33,9 +33,10 @@ void TaskList::clear(){
 
 bool  TaskList::deleteTask(Task task){
     for(int i = 0; i < tasks.size(); i++){
-            if(tasks[i].getTaskName()== task.getTaskName())
+            if(tasks[i].getTaskName()== task.getTaskName()){
 		tasks.erase(tasks.begin() + i);
-	    return true;
+	   	return true;
+	    }
     }
     return false;
 }

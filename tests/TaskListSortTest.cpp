@@ -1,6 +1,7 @@
-#include "header/TaskList.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
+#include <iostream>
 
-//NOT FINISHED 
+int main(){
 
     std::cout << "=============================================================" << std::endl;
     std::cout << "After adding four Tasks " << std::endl;
@@ -15,11 +16,11 @@
     taskList.addTask(t2);
     taskList.addTask(t1);
     taskList.viewTask();
-    TaskList prioritySortedTaskList = taskList.sortByPriority();
+    taskList.sortByPriority();
     std::cout << "=============================================================" << std::endl;
     std::cout << "After sorting TaskList " << std::endl;
     std::cout << "=============================================================" << std::endl;
-    prioritySortedTaskList.viewTask();
+    taskList.viewTask();
 
 
 
@@ -30,4 +31,4 @@
  *                 taskList.deleteTask(t);
  *                     taskList.viewTask();
  *   */
-
+}
