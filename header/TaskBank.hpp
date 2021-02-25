@@ -10,7 +10,6 @@ class TaskBank{
 		std::vector<TaskObject*> schedule;
 	public:
 		TaskBank(){};
-		TaskBank(const TaskBank& taskbank){};
 		~TaskBank(){};
 		void clear();
 		void display();

@@ -13,7 +13,7 @@ class Task: public TaskObject{
 	void viewTask();
 
 
-	 virtual TaskObject* createTaskMemento();
+	askObject* createTaskMemento();
 //        virtual void restore(TaskMemento t);
 
 };

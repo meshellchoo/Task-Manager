@@ -2,9 +2,7 @@
 #define __TASKBANK_CPP__
 
 #include <vector>
-#include "TaskObject.cpp"
-#include "Task.cpp"
-#include "TaskList.cpp"
+#include "/header/TaskBank.hpp"
 #include <string>
 #include <iostream>
 
