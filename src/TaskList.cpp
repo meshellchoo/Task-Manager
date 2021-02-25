@@ -65,6 +65,7 @@ void TaskList::viewTask(){
 }
 
 
+
 bool priorityComparator(Task i, Task j);
 bool dueDateComparator(Task i, Task j)
 {	
@@ -81,6 +82,7 @@ bool dueDateComparator(Task i, Task j)
 		return i.getTaskPriority()  >= j.getTaskPriority();
 	return true;
 }
+
 
 
 bool priorityComparator(Task i, Task j){ 
