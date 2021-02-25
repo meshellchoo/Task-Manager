@@ -57,11 +57,13 @@ void TaskList::viewTask(){
 	        std::cout << "  description: " << tasks[i].getTaskDescription() << std::endl;
 		std::cout << "        " ;
 	        std::cout << "  Due Date: " << tasks[i].getTaskDueDate() << std::endl;
+		std::cout << "        " ;
+	        std::cout << "  Priority: " << tasks[i].getTaskPriority() << std::endl;
 
 	}
 
 }
-bool prioritySort(Task i, Task j){ return (i.getTaskDueDate() <= j.getTaskDueDate());}
+bool prioritySort(Task i, Task j){ return (i.getTaskPriority()  >= j.getTaskPriority());}
 
 void TaskList::sortByPriority(){
 	std::sort(tasks.begin(),tasks.end(),prioritySort);
