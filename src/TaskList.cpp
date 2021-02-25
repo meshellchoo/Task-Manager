@@ -66,12 +66,14 @@ void TaskList::viewTask(){
 
 bool dueDateSort(Task i, Task j)
 {
-	if (i.getYear() < j.getYear() || i.getYear() > j.getYear())
-		return (i.getYear() >= j.getYear());
-	else if (i.getMonth() < j.getMonth || i.getMonth > j.getMonth())
-		return (i.getMonth() >= j.getMonth());
-	else if (i.getDay() < j.getDay() || i.getDay() > j.getDay())
-		return(i.getDay >= j.getDay());
+	if (i.Year != j.Year)
+		return (i.Year < j.Year);
+	else if (i.Month != j.Month)
+		return (i.Month < j.Month);
+	else if (i.Day != j.Day)
+		return(i.Day < j.Day);
+	else 
+		prioritySort(i, j);
 }
 
 
