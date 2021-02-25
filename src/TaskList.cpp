@@ -8,7 +8,7 @@
 ////#include "/home/csmajs/htran164/cs100-task-manager/header/TaskList.hpp"
 
 
-TaskList::TaskList(std::string taskName, std::string description, std::string taskType, int priority, std::string  dueDate,std::vector<Task> subTasks){
+TaskList::TaskList(std::string taskName, std::string description, std::string taskType, int priority,Date dueDate,std::vector<Task> subTasks){
 	this->taskName = taskName;
 	this->description = description;
 	this->taskType = taskType;
@@ -16,7 +16,7 @@ TaskList::TaskList(std::string taskName, std::string description, std::string ta
 	this->dueDate = dueDate;
 	this->tasks = subTasks;
 }
-TaskList::TaskList(std::string taskName, std::string description, std::string taskType, int priority, std::string  dueDate){
+TaskList::TaskList(std::string taskName, std::string description, std::string taskType, int priority, Date dueDate){
 	this->taskName = taskName;
 	this->description = description;
 	this->taskType = taskType;
@@ -64,26 +64,41 @@ void TaskList::viewTask(){
 
 }
 
-bool dueDateSort(Task i, Task j)
-{
-	if (i.Year != j.Year)
-		return (i.Year < j.Year);
-	else if (i.Month != j.Month)
-		return (i.Month < j.Month);
-	else if (i.Day != j.Day)
-		return(i.Day < j.Day);
-	else 
-		prioritySort(i, j);
+
+
+bool priorityComparator(Task i, Task j);
+bool dueDateComparator(Task i, Task j)
+{	
+	Date i_temp = i.getTaskDueDate();
+	Date j_temp = j.getTaskDueDate();
+
+	if (i_temp.year != j_temp.year)
+		return (i_temp.year < j_temp.year);
+	else if (i_temp.month != j_temp.month)
+		return (i_temp.month < j_temp.month);
+	else if (i_temp.day != j_temp.day)
+		return(i_temp.day < j_temp.day);
+	else
+		return i.getTaskPriority()  >= j.getTaskPriority();
+	return true;
 }
 
 
-bool prioritySort(Task i, Task j){ return (i.getTaskPriority()  >= j.getTaskPriority());}
+
+bool priorityComparator(Task i, Task j){ 
+	if(i.getTaskPriority() != j.getTaskPriority())
+		return (i.getTaskPriority()  >= j.getTaskPriority());
+	return dueDateComparator(i,j);
+		
+}
 
 void TaskList::sortByPriority(){
-	std::sort(tasks.begin(),tasks.end(),prioritySort);
+	std::sort(tasks.begin(),tasks.end(),priorityComparator);
 }
 
-void TaskList::sortByDueDate(){}
+void TaskList::sortByDueDate(){
+	std::sort(tasks.begin(),tasks.end(),dueDateComparator);
+}
 
 TaskObject* TaskList::createTaskMemento(){
     

@@ -7,7 +7,7 @@
 #include <iostream>
 
 
-Task::Task(std::string taskName, std::string description, std::string taskType, int priority, std::string  dueDate){
+Task::Task(std::string taskName, std::string description, std::string taskType, int priority, Date dueDate){
 	this->taskName = taskName;
 	this->description = description;
 	this->taskType = taskType;
@@ -22,9 +22,9 @@ void Task::viewTask(){
 	std::cout << "  description: " <<  description << std::endl;
 	std::cout << "  Due Date: " << dueDate << std::endl;
 }
-TaskObject* Task::createTaskMemento(){
+//TaskObject* Task::createTaskMemento(){
     
-}
+//}
 //void Task::restore(TaskMemento t){
 
 //}

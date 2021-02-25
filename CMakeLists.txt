@@ -7,8 +7,8 @@ ADD_SUBDIRECTORY(googletest)
 ADD_EXECUTABLE(test src/main.cpp)
 
 ADD_EXECUTABLE(TaskListSortTest 
-#/home/csmajs/mchu017/cs100-task-manager/tests/TaskListSortTest.cpp 
-/home/csmajs/mchu017/cs100-task-manager/tests/TaskListDeleteTaskTest.cpp
+/home/csmajs/mchu017/cs100-task-manager/tests/TaskListSortTest.cpp 
+#/home/csmajs/mchu017/cs100-task-manager/tests/TaskListDeleteTaskTest.cpp
 
 
 /home/csmajs/mchu017/cs100-task-manager/src/TaskList.cpp
