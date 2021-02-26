@@ -14,19 +14,29 @@ Task::Task(std::string taskName, std::string description, std::string taskType, 
 	this->priority = priority;
 
 	this->dueDate = dueDate;
-
 }
+
 void Task::viewTask(){
 	std::cout << "- " << taskName << std::endl;
 	std::cout << "  Type of Task: " << taskType << "task" << std::endl;
 	std::cout << "  description: " <<  description << std::endl;
 	std::cout << "  Due Date: " << dueDate << std::endl;
 }
-//TaskObject* Task::createTaskMemento(){
-    
-//}
-//void Task::restore(TaskMemento t){
 
-//}
+virtual void setTaskState(Task newTask){
+        std::cout << "From Originator: Current Version of Task\n" <<  newTask.getName() << std::endl;
+        task = newTask;
+}
+
+virtual TaskMemento storeInMemento(){
+        std::cout << "From Originator: Saving to Memento" << std::endl;
+        return new TaskMemento(task);
+}
+
+virtual void restoreFromTaskMemento(TaskMemento taskMemento){
+        task = taskMemento.getSavedTask();
+        std::cout << "From Originator: Previous Task Saved Memento\n" << task.getName() << std::endl;
+        return task;
+}
 
 #endif 
