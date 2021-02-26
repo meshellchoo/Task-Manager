@@ -12,7 +12,6 @@ Task::Task(std::string taskName, std::string description, std::string taskType, 
 	this->description = description;
 	this->taskType = taskType;
 	this->priority = priority;
-
 	this->dueDate = dueDate;
 }
 
