@@ -27,8 +27,6 @@ class Task: public TaskObject{
                 std::cout << "From Originator: Previous Task Saved Memento\n" << task.getName() << std::endl;
                 return task;
         }
-
-
 };
 
 #endif //__TASK_HPP__
