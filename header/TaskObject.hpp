@@ -3,6 +3,8 @@
 #include <string>
 #include "TaskMemento.hpp"
 #include "Date.hpp"
+#include <string>
+#include <iostream>
 
 class TaskObject {
 
@@ -12,7 +14,7 @@ class TaskObject {
 	std::string taskType;
 	int priority;
 	Date dueDate;  
-	
+	TaskObject* task;	
     public:
 	
         /* Constructors */
@@ -36,8 +38,21 @@ class TaskObject {
         Date getTaskDueDate()const
 		{return dueDate;}
 	
-//	virtual TaskObject* createTaskMemento() = 0;
-//        virtual void restore(TaskMemento t) = 0;
+	virtual void setTaskState(TaskObject* newTask){
+		std::cout << "From Originator: Current Verision of Task\n" <<  newTask.getName() << std::endl;
+		task = newTask;		
+	}
+
+	virtual TaskMemento storeInMemento(){
+		std::cout << "From Originator: Saving to Memento" << std::endl;
+		return new TaskMemento(task);
+	}
+
+        virtual void restoreFromTaskMemento(TaskMemento taskMemento){
+		task = taskMemento.getSavedTask();
+		std::cout << "From Originator: Previous Task Saved Memento\n" << task.getName() << std::endl;
+		return task;
+	}
 };
 
 #endif //__TASKOBJECT_HPP__

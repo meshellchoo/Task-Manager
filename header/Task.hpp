@@ -11,10 +11,23 @@ class Task: public TaskObject{
 	Task(std::string taskName, std::string description, std::string taskType,
 		 int priority, Date dueDate);
 	void viewTask();
+	
+	virtual void setTaskState(Task newTask){
+                std::cout << "From Originator: Current Version of Task\n" <<  newTask.getName() << std::endl;
+                task = newTask;
+        }
 
+        virtual TaskMemento storeInMemento(){
+                std::cout << "From Originator: Saving to Memento" << std::endl;
+                return new TaskMemento(task);
+        }
 
-//	askObject* createTaskMemento();
-//        virtual void restore(TaskMemento t);
+        virtual void restoreFromTaskMemento(TaskMemento taskMemento){
+                task = taskMemento.getSavedTask();
+                std::cout << "From Originator: Previous Task Saved Memento\n" << task.getName() << std::endl;
+                return task;
+        }
+
 
 };
 

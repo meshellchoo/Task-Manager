@@ -20,8 +20,22 @@ class TaskList: public TaskObject{
         void sortByPriority();
 	void sortByDueDate();
         void viewTask();
-        TaskObject* createTaskMemento();
-//        virtual void restore(TaskMemento t);
+        virtual void setTaskState(TaskList newTaskList){
+                std::cout << "From Originator: Current Version of Task\n" <<  newTaskList.getName() << std::endl;
+                task = newTaskList;
+        }
+
+        virtual TaskMemento storeInMemento(){
+                std::cout << "From Originator: Saving to Memento" << std::endl;
+                return new TaskMemento(task);
+        }
+
+        virtual void restoreFromTaskMemento(TaskMemento taskMemento){
+                task = taskMemento.getSavedTask();
+                std::cout << "From Originator: Previous Task Saved Memento\n" << task.getName() << std::endl;
+                return task;
+        }
+
 };
 
 #endif //__TASKLISTT_HPP__

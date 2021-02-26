@@ -2,17 +2,14 @@
 #define __TASKMEMENTO_HPP__
 
 #include "TaskObject.hpp"
-/*
+
 class TaskMemento{
     private:
-        TaskObject* savedTaskState;
+        TaskObject* task;
     public:
-	TaskMemento(TaskObject* stateToSave){
-		savedTaskState = stateToSave;
-	}
-        TaskObject* getTaskState();
-	TaskObject* setTaskState();
+	TaskMemento(TaskObject* taskSave){};
+        TaskObject* getSavedTask();
 
 };
-*/
+
 #endif //__TASKMEMENTO_HPP__
