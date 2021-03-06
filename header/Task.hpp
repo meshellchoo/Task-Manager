@@ -18,4 +18,3 @@ class Task: public TaskObject{
 };
 
 #endif //__TASK_HPP__
-
