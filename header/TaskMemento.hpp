@@ -3,13 +3,13 @@
 
 #include "TaskObject.hpp"
 
-class TaskMemento{
+class TaskMemento {
+
     private:
         TaskObject* task;
+
     public:
 	TaskMemento(TaskObject* taskSave){};
-        TaskObject* getSavedTask();
-
+        TaskObject* getSavedTask(){};
 };
-
 #endif //__TASKMEMENTO_HPP__

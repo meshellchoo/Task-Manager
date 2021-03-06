@@ -4,11 +4,12 @@
 #include "TaskMemento.hpp"
 
 TaskMemento::TaskMemento(TaskObject* taskSave){
-	task = taskSave;
+	this->task = taskSave;
 }
 
 TaskObject* TaskMemento::getSavedTask(){
 	return task;
 }
+
 
 #endif 

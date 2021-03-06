@@ -20,9 +20,11 @@ class TaskList: public TaskObject{
         void sortByPriority();
 	void sortByDueDate();
         void viewTask();
-        virtual void setTaskState(TaskList newTaskList);
+        TaskObject* createTaskMemento();
+
+	virtual void setTaskState(TaskList newTaskList);
         virtual TaskMemento storeInMemento();
-        virtual void restoreFromTaskMemento(TaskMemento taskMemento);
+        virtual TaskObject* restoreFromTaskMemento(TaskMemento taskMemento);
 
 };
 
