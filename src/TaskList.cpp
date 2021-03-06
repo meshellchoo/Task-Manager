@@ -3,12 +3,12 @@
 #include <iostream>
 #include <algorithm>    // std::sort
 
-//#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskList.hpp"
-#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
-////#include "/home/csmajs/htran164/cs100-task-manager/header/TaskList.hpp"
+#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskList.hpp"
+//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
+//#include "/home/csmajs/htran164/cs100-task-manager/header/TaskList.hpp"
 
 
-TaskList::TaskList(std::string taskName, std::string description, std::string taskType, int priority,Date dueDate,std::vector<Task> subTasks){
+TaskList::TaskList(std::string taskName, std::string description, std::string taskType, int priority,Date dueDate,std::vector<Task> subTasks) :TaskObject(){
 	this->taskName = taskName;
 	this->description = description;
 	this->taskType = taskType;
@@ -16,7 +16,8 @@ TaskList::TaskList(std::string taskName, std::string description, std::string ta
 	this->dueDate = dueDate;
 	this->tasks = subTasks;
 }
-TaskList::TaskList(std::string taskName, std::string description, std::string taskType, int priority, Date dueDate){
+
+TaskList::TaskList(std::string taskName, std::string description, std::string taskType, int priority, Date dueDate) :TaskObject() {
 	this->taskName = taskName;
 	this->description = description;
 	this->taskType = taskType;
@@ -100,11 +101,20 @@ void TaskList::sortByDueDate(){
 	std::sort(tasks.begin(),tasks.end(),dueDateComparator);
 }
 
-TaskObject* TaskList::createTaskMemento(){
-    
+virtual void TaskList::setTaskState(TaskList newTaskList){
+        std::cout << "From Originator: Current Version of Task\n" <<  newTaskList->getTaskName() << std::endl;
+        task = newTaskList;
 }
-//void TaskList::restore(TaskMemento t){
 
-//}
+virtual TaskMemento TaskList::storeInMemento(){
+        std::cout << "From Originator: Saving to Memento" << std::endl;
+        return new TaskMemento(task);
+}
+
+virtual TaskObject* TaskList::restoreFromTaskMemento(TaskMemento taskMemento){
+        task = taskMemento->getSavedTask();
+        std::cout << "From Originator: Previous Task Saved Memento\n" << task->getTaskName() << std::endl;
+        return task;
+}
 
 #endif 

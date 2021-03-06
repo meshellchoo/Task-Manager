@@ -21,7 +21,11 @@ class TaskList: public TaskObject{
 	void sortByDueDate();
         void viewTask();
         TaskObject* createTaskMemento();
-//        virtual void restore(TaskMemento t);
+
+	virtual void setTaskState(TaskList newTaskList);
+        virtual TaskMemento storeInMemento();
+        virtual TaskObject* restoreFromTaskMemento(TaskMemento taskMemento);
+
 };
 
 #endif //__TASKLISTT_HPP__

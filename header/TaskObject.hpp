@@ -12,10 +12,19 @@ class TaskObject {
 	std::string taskType;
 	int priority;
 	Date dueDate;  
+	TaskObject* task;
 	
     public:
 	
         /* Constructors */
+	TaskObject(){
+		this->taskName = taskName;
+		this->description = description;
+		this->taskType = taskType;
+		this->priority = priority;
+		this->dueDate = dueDate;
+	}
+
         virtual void viewTask() = 0;
         void setTaskName(std::string taskName)
 		{this->taskName = taskName;};
@@ -35,9 +44,23 @@ class TaskObject {
 		{return priority;}
         Date getTaskDueDate()const
 		{return dueDate;}
-	
-//	virtual TaskObject* createTaskMemento() = 0;
-//        virtual void restore(TaskMemento t) = 0;
+
+	virtual void setTaskState(TaskObject* newTask){
+		std::cout << "From Originator: Current Verision of Task\n" <<  newTask->getTaskName() << std::endl;
+		task = newTask;		
+	}
+
+	virtual TaskMemento storeInMemento(){
+		std::cout << "From Originator: Saving to Memento" << std::endl;
+		return new TaskMemento(task);
+	}
+
+        virtual TaskObject* restoreFromTaskMemento(TaskMemento taskMemento){
+		task = taskMemento.getSavedTask();
+		std::cout << "From Originator: Previous Task Saved Memento\n" << task->getTaskName() << std::endl;
+		return task;
+	}
+
 };
 
 #endif //__TASKOBJECT_HPP__

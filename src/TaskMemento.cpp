@@ -3,12 +3,13 @@
 
 #include "TaskMemento.hpp"
 
-TaskMemento::TaskMemento(TaskObject* stateToSave){
-	this->stateToSave = stateToSave;
+TaskMemento::TaskMemento(TaskObject* taskSave){
+	this->task = taskSave;
 }
 
-TaskObject* TaskMemento::getTaskState(){
-	return stateToSave;
+TaskObject* TaskMemento::getSavedTask(){
+	return task;
 }
+
 
 #endif 

@@ -12,10 +12,9 @@ class Task: public TaskObject{
 		 int priority, Date dueDate);
 	void viewTask();
 
-
-//	askObject* createTaskMemento();
-//        virtual void restore(TaskMemento t);
-
+	virtual void setTaskState(Task newTask);
+        virtual TaskMemento storeInMemento();
+        virtual TaskObject* restoreFromTaskMemento(TaskMemento taskMemento);
 };
 
 #endif //__TASK_HPP__
