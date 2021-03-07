@@ -22,9 +22,9 @@ class TaskList: public TaskObject{
         void viewTask();
         TaskObject* createTaskMemento();
 
-	virtual void setTaskState(TaskList newTaskList);
-        virtual TaskMemento storeInMemento();
-        virtual TaskObject* restoreFromTaskMemento(TaskMemento taskMemento);
+	void setTaskState(TaskObject* newTaskList);
+        TaskMemento storeInMemento();
+        TaskObject* restoreFromTaskMemento(TaskMemento taskMemento);
 
 };
 

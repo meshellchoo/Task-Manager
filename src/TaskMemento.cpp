@@ -3,12 +3,13 @@
 
 #include "TaskMemento.hpp"
 
-TaskMemento::TaskMemento(TaskObject* taskSave){
-	this->task = taskSave;
+// Constructor
+TaskMemento::TaskMemento(TaskObject* taskSave){ //stores task object
+	this->currentTask = taskSave;
 }
 
-TaskObject* TaskMemento::getSavedTask(){
-	return task;
+TaskObject* TaskMemento::getSavedTask(){ // returns which task object is in the memento
+	return currentTask;
 }
 
 

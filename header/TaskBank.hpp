@@ -7,14 +7,14 @@
 
 class TaskBank{
 	private:
-		std::vector<TaskObject*> schedule;
+		std::vector<TaskObject> schedule;
 	public:
 		TaskBank(){};
 		~TaskBank(){};
 		void clear();
 		void display();
-		void addTask(TaskObject* task);
-		bool deleteTask(TaskObject* task);
+		void addTask(TaskObject task);
+		bool deleteTask(TaskObject task);
 		void sortByPriority();
 		void sortByDueDate();
 //		TaskObject* createTaskBankMemento();

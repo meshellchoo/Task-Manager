@@ -101,20 +101,20 @@ void TaskList::sortByDueDate(){
 	std::sort(tasks.begin(),tasks.end(),dueDateComparator);
 }
 
-virtual void TaskList::setTaskState(TaskList newTaskList){
-        std::cout << "From Originator: Current Version of Task\n" <<  newTaskList->getTaskName() << std::endl;
-        task = newTaskList;
+void TaskList::setTaskState(TaskObject* newTaskList){
+        std::cout << "From Originator: Current Version of Task List\n" <<  newTaskList->getTaskName() << std::endl;
+        currentTask = newTaskList;
 }
 
-virtual TaskMemento TaskList::storeInMemento(){
+TaskMemento TaskList::storeInMemento(){
         std::cout << "From Originator: Saving to Memento" << std::endl;
-        return new TaskMemento(task);
+        return new TaskMemento(currentTask);
 }
 
-virtual TaskObject* TaskList::restoreFromTaskMemento(TaskMemento taskMemento){
-        task = taskMemento->getSavedTask();
-        std::cout << "From Originator: Previous Task Saved Memento\n" << task->getTaskName() << std::endl;
-        return task;
+TaskObject* TaskList::restoreFromTaskMemento(TaskMemento taskMemento){
+        currentTask = taskMemento->getSavedTask();
+        std::cout << "From Originator: Previous Task List Saved Memento\n" << currentTask->getTaskName() << std::endl;
+        return currentTask;
 }
 
 #endif 
