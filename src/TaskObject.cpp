@@ -1,6 +1,7 @@
 #ifndef __TASKOBJECT_CPP__
 #define __TASKOBJECT_CPP__
 #include "/home/csmajs/jooi001/cs100-task-manager/header/TaskObject.hpp"
+#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskMemento.hpp"
 
 
 void TaskObject::setTaskName(std::string taskName)

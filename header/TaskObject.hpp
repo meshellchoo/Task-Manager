@@ -4,7 +4,7 @@
 //#include "TaskMemento.hpp"
 #include "Date.hpp"
 
-class TaskMemento;
+class TaskMemento; // forward declaration
 
 class TaskObject {
 
