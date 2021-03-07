@@ -17,27 +17,19 @@ class TaskObject {
 	
         /* Constructors */
         virtual void viewTask() = 0;
-        void setTaskName(std::string taskName)
-		{this->taskName = taskName;};
-        void setTaskType(std::string taskType)
-		{this->taskType = taskType;};
-        void setTaskDescription(std::string description)
-		{this->description = description;};
-        void setTaskDueDate(Date dueDate)
-		{this->dueDate = dueDate;};
-	void setTaskPriority(int priority){this->priority = priority;}
-	std::string getTaskName()const{return taskName;}
-	std::string getTaskType()const
-		{return taskType;}
-        std::string getTaskDescription()const
-		{return description;}
-        int getTaskPriority()const
-		{return priority;}
-        Date getTaskDueDate()const
-		{return dueDate;}
+        void setTaskName(std::string taskName);
+        void setTaskType(std::string taskType);
+        void setTaskDescription(std::string description);
+        void setTaskDueDate(Date dueDate);
+	void setTaskPriority(int priority);
+	std::string getTaskName()const;
+	std::string getTaskType()const;
+        std::string getTaskDescription()const;
+        int getTaskPriority()const;
+        Date getTaskDueDate()const;
 	
-//	virtual TaskObject* createTaskMemento() = 0;
-//        virtual void restore(TaskMemento t) = 0;
+        virtual TaskObject* createTaskMemento() = 0;
+        virtual void restore(TaskMemento t) = 0;
 };
 
 #endif //__TASKOBJECT_HPP__
