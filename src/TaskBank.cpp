@@ -8,19 +8,8 @@
 
 TaskBank::TaskBank(){}
 
-TaskBank::~TaskBank(){
-	for(int i = 0; i < schedule.size(); i++){
-		delete schedule[i];
-		schedule[i] = nullptr;
-	}
-	schedule.clear();	
-}
 
 void TaskBank::clear(){
-        for(int i = 0; i < schedule.size(); i++){
-                delete schedule[i];
-                schedule[i] = nullptr;
-        }
         schedule.clear();
 }
 
@@ -30,13 +19,13 @@ void TaskBank::display(){
 	}
 }
 
-void TaskBank::addTask(TaskObject* task){
+void TaskBank::addTask(TaskObject task){
 	schedule.push_back(task);
 }
 
-bool TaskBank::deleteTask(TaskObject* task){
+bool TaskBank::deleteTask(TaskObject task){
 	for(int i = 0; i < schedule.size(); i++){
-		if (schedule[i] == task){
+		if (schedule[i].getTaskName() == task.getTaskName()){
 			schedule.erase(schedule.begin()+i);
 			return true;
 		}
@@ -59,16 +48,6 @@ void TaskBank::sortByDueDate(){
 //
 //		}
 
-TaskBank& operator=(const TaskBank& taskbank){
-	for(int i = 0; i < schedule.size(); i++){
-                delete schedule[i];
-                schedule[i] = nullptr;
-        }
-        schedule.clear();
 
-	for(int i = 0; i < taskbank.schedule.size(); i++){
-		schedule.push_back(taskbank.schedule[i]);
-	}
-}
 
 #endif
