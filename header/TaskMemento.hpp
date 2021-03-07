@@ -8,11 +8,11 @@
 class TaskMemento {
 
     private:
-        TaskObject* task;
+        TaskObject* currentTask;
 
     public:
-	TaskMemento(TaskObject* taskSave){}
-        TaskObject* getSavedTask(){};
-};
+	TaskMemento(TaskObject* taskSave);
+        TaskObject* getSavedTask();
 
+};
 #endif //__TASKMEMENTO_HPP__

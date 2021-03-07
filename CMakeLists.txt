@@ -16,6 +16,7 @@ src/TaskManager.cpp
 src/TaskList.cpp
 src/Task.cpp
 src/TaskMemento.cpp
+src/TaskObject.cpp
 )
 
 
@@ -29,6 +30,7 @@ src/TaskManager.cpp
 src/TaskList.cpp
 src/Task.cpp
 src/TaskMemento.cpp
+src/TaskObject.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest)

@@ -108,11 +108,11 @@ void TaskList::setTaskState(TaskObject* newTaskList){
 
 TaskMemento TaskList::storeInMemento(){
         std::cout << "From Originator: Saving to Memento" << std::endl;
-        return new TaskMemento(currentTask);
+        return TaskMemento(currentTask);
 }
 
 TaskObject* TaskList::restoreFromTaskMemento(TaskMemento taskMemento){
-        currentTask = taskMemento->getSavedTask();
+        currentTask = taskMemento.getSavedTask();
         std::cout << "From Originator: Previous Task List Saved Memento\n" << currentTask->getTaskName() << std::endl;
         return currentTask;
 }

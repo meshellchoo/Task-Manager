@@ -1,7 +1,9 @@
 #ifndef __TASK_HPP__
 #define __TASK_HPP__
 
-#include "TaskObject.hpp"
+//#include "TaskObject.hpp"
+#include "TaskMemento.hpp"
+
 class Task: public TaskObject{
 
     private:

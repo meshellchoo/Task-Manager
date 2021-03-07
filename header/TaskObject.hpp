@@ -20,8 +20,6 @@ class TaskObject {
 	
         /* Constructors */
 
-
-
         virtual void viewTask() = 0;
         void setTaskName(std::string taskName);
         void setTaskType(std::string taskType);
@@ -34,10 +32,9 @@ class TaskObject {
         int getTaskPriority()const;
         Date getTaskDueDate()const;
 
+	/* Memento Functions */
 	virtual void setTaskState(TaskObject* newTask);
-
 	virtual TaskMemento storeInMemento();
-
         virtual TaskObject* restoreFromTaskMemento(TaskMemento taskMemento);
 
 };
