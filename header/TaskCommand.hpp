@@ -3,7 +3,7 @@
 
 class TaskCommand{
 private:
-	vector<TaskMemento> savedTasks = new vector<TaskMemento>();
+	std::vector<TaskMemento> savedTasks;
 
 public:
 	void addTaskMemento(TaskMemento tm);
