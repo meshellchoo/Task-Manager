@@ -4,6 +4,7 @@
 #include "TaskObject.hpp"
 #include "Task.hpp"
 #include "TaskList.hpp"
+class TaskBankMemento;
 
 class TaskBank{
 	private:
