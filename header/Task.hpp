@@ -1,8 +1,8 @@
 #ifndef __TASK_HPP__
 #define __TASK_HPP__
 
-//#include "TaskObject.hpp"
-#include "TaskMemento.hpp"
+#include "TaskObject.hpp"
+//#include "TaskMemento.hpp"
 
 class Task: public TaskObject{
 
@@ -14,9 +14,9 @@ class Task: public TaskObject{
 		 int priority, Date dueDate);
 	void viewTask();
 
-	void setTaskState(TaskObject* newTask);
-        TaskMemento storeInMemento();
-        TaskObject* restoreFromTaskMemento(TaskMemento taskMemento);
+//	void setTaskState(TaskObject* newTask);
+//        TaskMemento storeInMemento();
+//        TaskObject* restoreFromTaskMemento(TaskMemento taskMemento);
 };
 
 #endif //__TASK_HPP__

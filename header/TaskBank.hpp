@@ -7,7 +7,7 @@
 
 class TaskBank{
 	private:
-		std::vector<TaskObject> schedule;
+		std::vector<TaskObject*> schedule;
 	public:
 		TaskBank(){};
 		~TaskBank(){};

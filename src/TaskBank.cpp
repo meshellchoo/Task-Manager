@@ -43,10 +43,21 @@ void TaskBank::sortByDueDate(){
 	std::sort(schedule.begin(), schedule.end(), dueDateSort());
 }
 
-//		TaskObject* createTaskBankMemento();
-//		//		//		void restore(taskBankMemento);
-//		//
-//		//		}
-//
+void TaskBank::setTaskState(TaskBank newTaskBank){
+	std::cout << "From Originator: Setting Current TaskBank State" << std::endl;
+        currentTaskBank = newTaskBank;
+}
+
+TaskBankMemento TaskBank::storeInTaskBankMemento(){
+        std::cout << "From Originator: Saving Current TaskBank to Memento" << std::endl;
+        return TaskBankMemento(currentTaskBank);
+}
+
+TaskBank TaskBank::restoreFromTaskBankMemento(TaskBankMemento taskBankMemento){
+        currentTaskBank = taskBankMemento.getSavedTaskBank();
+        std::cout << "From Originator: Reverting Back to Previous TaskBank State" << std::endl;
+        return currentTaskBank;
+}
+
 
 #endif

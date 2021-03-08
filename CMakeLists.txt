@@ -15,9 +15,9 @@ src/helperFunctions.cpp
 src/TaskManager.cpp
 src/TaskList.cpp
 src/Task.cpp
-src/TaskMemento.cpp
+src/TaskBankMemento.cpp
 src/TaskObject.cpp
-src/TaskCommand.cpp
+src/TaskBankCaretaker.cpp
 )
 
 
@@ -31,9 +31,9 @@ src/helperFunctions.cpp
 #src/TaskManager.cpp
 src/TaskList.cpp
 src/Task.cpp
-src/TaskMemento.cpp
+src/TaskBankMemento.cpp
 src/TaskObject.cpp
-src/TaskCommand.cpp
+src/TaskBankCaretaker.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest)

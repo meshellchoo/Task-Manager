@@ -1,9 +1,9 @@
 #ifndef __TASKLIST_HPP__
 #define __TASKLIST_HPP__
 #include <vector>
-//#include "TaskObject.hpp"
+#include "TaskObject.hpp"
 #include "Task.hpp"
-#include "TaskMemento.hpp"
+//#include "TaskMemento.hpp"
 
 class TaskList: public TaskObject{
     private:
@@ -24,9 +24,9 @@ class TaskList: public TaskObject{
 	void sortByDueDate();
         void viewTask();
 
-	void setTaskState(TaskObject* newTaskList);
-        TaskMemento storeInMemento();
-        TaskObject* restoreFromTaskMemento(TaskMemento taskMemento);
+//	void setTaskState(TaskObject* newTaskList);
+//        TaskMemento storeInMemento();
+//        TaskObject* restoreFromTaskMemento(TaskMemento taskMemento);
 
 };
 

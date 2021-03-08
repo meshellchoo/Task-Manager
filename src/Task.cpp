@@ -22,6 +22,7 @@ void Task::viewTask(){
 	std::cout << "  Due Date: " << dueDate << std::endl;
 }
 
+/*
 void Task::setTaskState(TaskObject* newTask){
         std::cout << "From Originator: Current Version of Task\n" <<  newTask->getTaskName() << std::endl;
         currentTask = newTask;
@@ -37,5 +38,5 @@ TaskObject* Task::restoreFromTaskMemento(TaskMemento taskMemento){
         std::cout << "From Originator: Previous Task Saved Memento\n" << currentTask->getTaskName() << std::endl;
         return currentTask;
 }
-
+*/
 #endif 

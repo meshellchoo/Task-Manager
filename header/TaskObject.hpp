@@ -32,9 +32,9 @@ class TaskObject {
         int getTaskPriority()const;
         Date getTaskDueDate()const;
         /* Memento Functions */
-        virtual void setTaskState(TaskObject* newTask);
-        virtual TaskMemento storeInMemento();
-        virtual TaskObject* restoreFromTaskMemento(TaskMemento taskMemento);
+//        virtual void setTaskState(TaskObject* newTask);
+//        virtual TaskMemento storeInMemento();
+//        virtual TaskObject* restoreFromTaskMemento(TaskMemento taskMemento);
 };
 
 #endif //__TASKOBJECT_HPP__
