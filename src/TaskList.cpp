@@ -3,12 +3,12 @@
 #include <iostream>
 #include <algorithm>    // std::sort
 
-#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskList.hpp"
-//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
+//#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskList.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
 //#include "/home/csmajs/htran164/cs100-task-manager/header/TaskList.hpp"
 
 
-TaskList::TaskList(std::string taskName, std::string description, std::string taskType, int priority,Date dueDate,std::vector<TaskObject*> subTasks) :TaskObject(){
+TaskList::TaskList(std::string taskName, std::string description, std::string taskType, int priority,Date dueDate,std::vector<Task> subTasks) :TaskObject(){
 	this->taskName = taskName;
 	this->description = description;
 	this->taskType = taskType;
@@ -32,9 +32,9 @@ void TaskList::clear(){
     tasks.clear();
 }
 
-bool  TaskList::deleteTask(TaskObject* task){
+bool  TaskList::deleteTask(Task task){
     for(int i = 0; i < tasks.size(); i++){
-            if(tasks[i]->getTaskName()== task->getTaskName()){
+            if(tasks[i].getTaskName()== task.getTaskName()){
 		tasks.erase(tasks.begin() + i);
 	   	return true;
 	    }
@@ -42,7 +42,7 @@ bool  TaskList::deleteTask(TaskObject* task){
     return false;
 }
 
-void TaskList::addTask(TaskObject* task){
+void TaskList::addTask(Task task){
     tasks.push_back(task);
 }
 
@@ -53,27 +53,27 @@ void TaskList::viewTask(){
 	std::cout << "    Due Date: " << dueDate << std::endl;
 	for(int i = 0 ; i < tasks.size(); i++){
 		std::cout << "      " ;
-		std::cout << "- " << tasks[i]->getTaskName() << std::endl;
+		std::cout << "- " << tasks[i].getTaskName() << std::endl;
 		std::cout << "        " ;
-      	 	std::cout << "  Type of Task: " << tasks[i]->getTaskType() << std::endl;
+      	 	std::cout << "  Type of Task: " << tasks[i].getTaskType() << std::endl;
 		std::cout << "        " ;
-	        std::cout << "  description: " << tasks[i]->getTaskDescription() << std::endl;
+	        std::cout << "  description: " << tasks[i].getTaskDescription() << std::endl;
 		std::cout << "        " ;
-	        std::cout << "  Due Date: " << tasks[i]->getTaskDueDate() << std::endl;
+	        std::cout << "  Due Date: " << tasks[i].getTaskDueDate() << std::endl;
 		std::cout << "        " ;
-	        std::cout << "  Priority: " << tasks[i]->getTaskPriority() << std::endl;
+	        std::cout << "  Priority: " << tasks[i].getTaskPriority() << std::endl;
 
 	}
 
 }
 
 
-bool priorityComparator(TaskObject* i, TaskObject* j);
+bool priorityComparator(Task i, Task j);
 
-bool dueDateComparator(TaskObject* i, TaskObject* j)
+bool dueDateComparator(Task i, Task j)
 {	
-	Date i_temp = i->getTaskDueDate();
-	Date j_temp = j->getTaskDueDate();
+	Date i_temp = i.getTaskDueDate();
+	Date j_temp = j.getTaskDueDate();
 
 	if (i_temp.year != j_temp.year)
 		return (i_temp.year < j_temp.year);
@@ -82,15 +82,16 @@ bool dueDateComparator(TaskObject* i, TaskObject* j)
 	else if (i_temp.day != j_temp.day)
 		return(i_temp.day < j_temp.day);
 	else
-		return i->getTaskPriority()  >= j->getTaskPriority();
+		return i.getTaskPriority()  >= j.getTaskPriority();
+
 	return true;
 }
 
 
 
-bool priorityComparator(TaskObject* i, TaskObject* j){ 
-	if(i->getTaskPriority() != j->getTaskPriority())
-		return (i->getTaskPriority()  >= j->getTaskPriority());
+bool priorityComparator(Task i, Task j){ 
+	if(i.getTaskPriority() != j.getTaskPriority())
+		return (i.getTaskPriority()  >= j.getTaskPriority());
 	return dueDateComparator(i,j);
 		
 }
@@ -103,20 +104,13 @@ void TaskList::sortByDueDate(){
 	std::sort(tasks.begin(),tasks.end(),dueDateComparator);
 }
 
-void TaskList::setTaskState(TaskObject* newTaskList){
-        std::cout << "From Originator: Current Version of Task List\n" <<  newTaskList->getTaskName() << std::endl;
-        currentTask = newTaskList;
+bool TaskList::isTaskList(){
+	return true;
 }
 
-TaskMemento TaskList::storeInMemento(){
-        std::cout << "From Originator: Saving to Memento" << std::endl;
-        return TaskMemento(currentTask);
+std::vector<Task> TaskList::getSubTasks(){
+	return tasks;
 }
 
-TaskObject* TaskList::restoreFromTaskMemento(TaskMemento taskMemento){
-        currentTask = taskMemento.getSavedTask();
-        std::cout << "From Originator: Previous Task List Saved Memento\n" << currentTask->getTaskName() << std::endl;
-        return currentTask;
-}
 
 #endif 

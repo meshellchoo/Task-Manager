@@ -7,26 +7,25 @@
 
 class TaskList: public TaskObject{
     private:
-        std::vector<TaskObject*> tasks;
+        std::vector<Task> tasks;
 	
     public:
  	TaskList(std::string taskName, std::string description, 
         std::string taskType, int priority,Date dueDate, 
-        std::vector<TaskObject*> subTasks);
+        std::vector<Task> subTasks);
 
 	TaskList(std::string taskName, std::string description,
         std::string taskType, int priority,Date dueDate);
-
+	
         void clear();
-        bool deleteTask(TaskObject* task);
-        void addTask(TaskObject* task);
+        bool deleteTask(Task task);
+        void addTask(Task task);
         void sortByPriority();
 	void sortByDueDate();
         void viewTask();
+	std::vector<Task> getSubTasks();
 
-	void setTaskState(TaskObject* newTaskList);
-        TaskMemento storeInMemento();
-        TaskObject* restoreFromTaskMemento(TaskMemento taskMemento);
+        bool isTaskList();
 
 };
 

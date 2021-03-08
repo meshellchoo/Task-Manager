@@ -4,22 +4,28 @@
 #include "TaskObject.hpp"
 #include "Task.hpp"
 #include "TaskList.hpp"
+#include "TaskBankMemento.hpp"
 
 class TaskBank{
 	private:
-		std::vector<TaskObject> schedule;
+		std::vector<TaskObject*> schedule;
 	public:
-		TaskBank(){};
-		~TaskBank(){};
+		TaskBank();
+
+		//big three
+		~TaskBank();
+		TaskBank(const TaskBank &copyThis);
+		TaskBank& operator=(const TaskBank& taskbank);	
+				
 		void clear();
 		void display();
-		void addTask(TaskObject task);
-		bool deleteTask(TaskObject task);
+		void addTask(TaskObject* task);
+		bool deleteTask(TaskObject* task);
 		void sortByPriority();
 		void sortByDueDate();
-//		TaskObject* createTaskBankMemento();
-//		void restore(taskBankMemento);
-		TaskBank& operator=(const TaskBank& taskbank);
+		TaskBankMemento* createTaskBankMemento();
+		void restore(TaskBankMemento* taskBankMemento);
+	
 };
 
 #endif

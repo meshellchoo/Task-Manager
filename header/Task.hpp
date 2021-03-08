@@ -15,8 +15,8 @@ class Task: public TaskObject{
 	void viewTask();
 
 	void setTaskState(TaskObject* newTask);
-        TaskMemento storeInMemento();
-        TaskObject* restoreFromTaskMemento(TaskMemento taskMemento);
+
+        bool isTaskList();
 };
 
 #endif //__TASK_HPP__

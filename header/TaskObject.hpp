@@ -4,7 +4,7 @@
 //#include "TaskMemento.hpp"
 #include "Date.hpp"
 
-class TaskMemento; // forward declaration
+
 
 class TaskObject {
 
@@ -14,7 +14,7 @@ class TaskObject {
 	std::string taskType;
 	int priority;
 	Date dueDate;  
-	TaskObject* currentTask;
+	
 	
     public:
 	
@@ -31,10 +31,9 @@ class TaskObject {
         std::string getTaskDescription()const;
         int getTaskPriority()const;
         Date getTaskDueDate()const;
-        /* Memento Functions */
-        virtual void setTaskState(TaskObject* newTask);
-        virtual TaskMemento storeInMemento();
-        virtual TaskObject* restoreFromTaskMemento(TaskMemento taskMemento);
+        
+	virtual bool isTaskList()=0;
+
 };
 
 #endif //__TASKOBJECT_HPP__
