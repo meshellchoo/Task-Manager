@@ -19,14 +19,10 @@ int main(){
     TaskObject* t5 = new Task("CS100 Lab4", "___  Lab", "School" ,5,Date("03/10/2021"));
     TaskObject* t6 = new Task("CS100 Lab3", "___  Lab", "School" ,2,Date("03/10/2021"));
     TaskObject* t7 = new Task("CS100 Lab2", "___s  Lab", "School" ,2,Date("03/11/2021"));
-    t1->setTaskState(t1);
-    t2->setTaskState(t2);
-    t3->setTaskState(t3);
-    t4->setTaskState(t4);
-    t5->setTaskState(t5);
-    t6->setTaskState(t6);
-    t7->setTaskState(t7);
 
+    TaskCommand* taskListCommand = new TaskCommand; // create task command to keep track of task list mementos
+    int saveFiles = 0;
+    int currentTaskList = 0;
 
     TaskList* taskList = new TaskList("CS100 Labs","Labs for CS100", "School" ,2, Date( "02/27/2021" ));
     taskList->addTask(t7);
@@ -37,23 +33,44 @@ int main(){
     taskList->addTask(t2);
     taskList->addTask(t1);
     taskList->viewTask();
+    taskList->setTaskState(taskList); //set current state
+    taskListCommand->addTaskMemento(taskList->storeInMemento()); //save current state in memento
+    saveFiles++;
+    currentTaskList++;
+
+
     taskList->sortByPriority();
-    taskList->setTaskState(taskList);
     //taskList.sortByDueDate();
 
     std::cout << "=============================================================" << std::endl;
     std::cout << "After sorting TaskList " << std::endl;
     std::cout << "=============================================================" << std::endl;
     taskList->viewTask();
-
-
-
-
-
+    taskList->setTaskState(taskList); //set current state
+    taskListCommand->addTaskMemento(taskList->storeInMemento()); //save current state in memento
+    saveFiles++;
+    currentTaskList++;
 
     std::cout << "=============================================================" << std::endl;
     std::cout << "Editing TaskList Description " << std::endl;
     std::cout << "=============================================================" << std::endl;
+    taskList->setTaskDescription("check out this new description");
+    taskList->viewTask();
+    taskList->setTaskState(taskList); //set current state
+    taskListCommand->addTaskMemento(taskList->storeInMemento()); //save current state in memento
+    saveFiles++;
+    currentTaskList++;
+
+    std::cout << "=============================================================" << std::endl;
+    std::cout << "Restoring Previous TaskList Description " << std::endl;
+    std::cout << "=============================================================" << std::endl;
+    if (currentTaskList >= 1){
+	currentTaskList--;	
+	TaskObject* previousTaskList = taskList->restoreFromTaskMemento(taskListCommand->getTaskMemento(currentTaskList));
+	taskList->setTaskState(previousTaskList->getSavedState());
+}    
+
+    taskList->viewTask();
 
     /*
  *     std::cout << "=============================================================" << std::endl;
