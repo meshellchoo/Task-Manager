@@ -44,10 +44,9 @@ void TaskBank::sortByDueDate(){
 }
 
 //		TaskObject* createTaskBankMemento();
-//		//		void restore(taskBankMemento);
+//		//		//		void restore(taskBankMemento);
+//		//
+//		//		}
 //
-//		}
-
-
 
 #endif

@@ -2,7 +2,8 @@
 #define __HELPERFUNCTIONS_CPP__
 #include <iostream>
 #include <string>
-#include "/home/csmajs/mchu017/cs100-task-manager/header/helperFunctions.hpp"
+//#include "/home/csmajs/mchu017/cs100-task-manager/header/helperFunctions.hpp"
+#include "/home/csmajs/jooi001/cs100-task-manager/header/helperFunctions.hpp"
 
 void printMenu(){
 	std::cout << "********** Main Menu **********" << std::endl;

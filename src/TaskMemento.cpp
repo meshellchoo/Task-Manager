@@ -1,14 +1,17 @@
 #ifndef __TASKMEMENTO_CPP__
 #define __TASKMEMENTO_CPP__
 
-#include "TaskMemento.hpp"
+#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskMemento.hpp"
 
-TaskMemento::TaskMemento(TaskObject* stateToSave){
-	this->stateToSave = stateToSave;
+// Constructor
+TaskMemento::TaskMemento(TaskObject* taskSave){ //stores task object
+	currentTask = taskSave;
 }
 
-TaskObject* TaskMemento::getTaskState(){
-	return stateToSave;
+// Functions
+TaskObject* TaskMemento::getSavedTask(){ // returns which task object is in the memento
+	return currentTask;
 }
+
 
 #endif 
