@@ -19,11 +19,11 @@ void TaskBank::display(){
 	}
 }
 
-void TaskBank::addTask(TaskObject* task){
+void TaskBank::addTask(TaskObject task){
 	schedule.push_back(task);
 }
 
-bool TaskBank::deleteTask(TaskObject* task){
+bool TaskBank::deleteTask(TaskObject task){
 	for(int i = 0; i < schedule.size(); i++){
 		if (schedule[i].getTaskName() == task.getTaskName()){
 			schedule.erase(schedule.begin()+i);
@@ -48,4 +48,5 @@ void TaskBank::sortByDueDate(){
 //		//
 //		//		}
 //
+
 #endif

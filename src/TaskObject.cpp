@@ -1,8 +1,11 @@
 #ifndef __TASKOBJECT_CPP__
 #define __TASKOBJECT_CPP__
+
 #include "/home/csmajs/jooi001/cs100-task-manager/header/TaskObject.hpp"
 #include "/home/csmajs/jooi001/cs100-task-manager/header/TaskMemento.hpp"
 
+//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskObject.hpp"
+//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskMemento.hpp"
 
 void TaskObject::setTaskName(std::string taskName)
 	{this->taskName = taskName;}
@@ -41,6 +44,7 @@ TaskObject* TaskObject::restoreFromTaskMemento(TaskMemento taskMemento){ //basic
 		std::cout << "From Originator: Previous Task Saved Memento\n" << currentTask->getTaskName() << std::endl;
 		return currentTask; // currentTask is now its previous state
 	}
+
 
 
 #endif //__TASKOBJECT_CPP__

@@ -13,8 +13,8 @@ class TaskBank{
 		~TaskBank(){};
 		void clear();
 		void display();
-		void addTask(TaskObject* task);
-		bool deleteTask(TaskObject* task);
+		void addTask(TaskObject task);
+		bool deleteTask(TaskObject task);
 		void sortByPriority();
 		void sortByDueDate();
 //		TaskObject* createTaskBankMemento();
