@@ -17,8 +17,12 @@ class TaskBank{
 		bool deleteTask(TaskObject* task);
 		void sortByPriority();
 		void sortByDueDate();
-//		TaskObject* createTaskBankMemento();
-//		void restore(taskBankMemento);
+
+		
+void setTaskState(TaskBank newTaskBank);
+TaskBankMemento storeInTaskBankMemento();
+TaskBank restoreFromTaskBankMemento(TaskBankMemento taskBankMemento);
+
 		TaskBank& operator=(const TaskBank& taskbank);
 };
 
