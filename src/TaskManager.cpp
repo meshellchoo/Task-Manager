@@ -73,7 +73,7 @@ void TaskManager::run(){
 	case '7':{
 		std::string taskName;
 		std::cout << "Please enter a task to search for" << std::endl;
-		cin >> taskName;
+		std::cin >> taskName;
 		std::vector<TaskObject*> found = taskBank->search(taskName);
 		if(found.size() == 0){
 			std::cout << "The task was not found" << std::endl;
@@ -88,7 +88,7 @@ void TaskManager::run(){
 		char choice;
 		printSortMenu();
 		std::cout << "  :";
-		cin >> choice;
+		std::cin >> choice;
 		if(choice == '1'){
 			taskBank->sortByDueDate();
 			taskBankCommand->Backup();		

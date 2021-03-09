@@ -17,6 +17,7 @@ void printMenu(){
 	std::cout << "(6): Undo last action" << std::endl;
 	std::cout << "(7): Search for a task" << std::endl;
 	std::cout << "(8): Sort list" << std::endl;
+	std::cout << "(x): Exit:" << std::endl;
 //  	std::cout << "(6): Sort schedule by due date" << std::endl;
 //	std::cout << "(7): Sort schedule by priority" << std::endl;
 //	std::cout << "(8): Sort schedule by type of task" << std::endl;
