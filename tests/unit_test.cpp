@@ -288,6 +288,9 @@ TEST(TaskListTest, addTask)
 
         EXPECT_EQ( , taskList1.viewTask());
         delete taskList1;
+	delete t1;
+	delete t2;
+	delete t3;
 }
 
 TEST(TaskListTest, deleteTask)
@@ -310,7 +313,11 @@ TEST(TaskListTest, deleteTask)
 
         EXPECT_EQ( , taskList1.viewTask()); // should not print taske 2
         delete taskList1;
+        delete t1;
+	// task 2 should be deleted
+        delete t3;
 }
+
 
 TEST(TaskListTest, clearTaskList)
 {
@@ -332,6 +339,7 @@ TEST(TaskListTest, clearTaskList)
 
         EXPECT_EQ( , taskList1.viewTask()); // should not print taske 2
         delete taskList1;
+	// tasks in tasklsit should be deleted already
 }
 
 TEST(TaskListTest, sortByDueDate_TaskList)
@@ -354,8 +362,9 @@ TEST(TaskListTest, sortByDueDate_TaskList)
 
         EXPECT_EQ( , taskList1.viewTask()); // print task 2, task 3, task 1
         delete taskList1;
-
-
+	delete t1;
+	delete t2;
+	delete t3;
 }
 
 TEST(TaskListTest, sortByPriority_TaskList)
@@ -378,6 +387,9 @@ TEST(TaskListTest, sortByPriority_TaskList)
 
         EXPECT_EQ( , taskList1.viewTask()); // print task 1, task 3, task 2
         delete taskList1;
+        delete t1;
+        delete t2;
+        delete t3;
 }
 
 TEST(TaskListTest, viewTaskList)
@@ -398,7 +410,9 @@ TEST(TaskListTest, viewTaskList)
 
         EXPECT_EQ( , taskList1.viewTask()); // print task 1, task 2, task 3
         delete taskList1;
-
+        delete t1;
+        delete t2;
+        delete t3;
 }
 
 TEST(TaskBankTest, addTask_TaskBank)
