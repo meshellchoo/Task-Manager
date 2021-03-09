@@ -35,9 +35,16 @@ void TaskManager::run(){
 		taskBank->addTask(getTaskListFromUser());
 		break;
 	case '3':
+		std::cout << "which task do you want to edit?" << std::endl;
+		
+		//taskBank.editTask();
 		break;
 	case '4':
+		std::cout << "which task do you want to delete?" << std::endl
 		//taskBank.deleteTask();
+		break;
+	case '5':
+		taskBank.display();
 		break;
 	
 	}

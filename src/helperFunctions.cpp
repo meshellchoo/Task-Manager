@@ -11,7 +11,7 @@ void printMenu(){
 	std::cout << "(2): Add a tasklist" << std::endl;
 	std::cout << "(3): Edit task" << std::endl;
 	std::cout << "(4): Delete task" << std::endl;
-	std::cout << "(4): Display all tasks" << std::endl;
+	std::cout << "(5): Display all tasks" << std::endl;
 //  	std::cout << "(6): Sort schedule by due date" << std::endl;
 //	std::cout << "(7): Sort schedule by priority" << std::endl;
 //	std::cout << "(8): Sort schedule by type of task" << std::endl;
