@@ -6,9 +6,9 @@
 
 
 
-#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBank.hpp"
+//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBank.hpp"
 //#include "/home/csmajs/htran164/cs100-task-manager/header/TaskBank.hpp"
-//#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBank.hpp"
+#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBank.hpp"
 
 #include <string>
 #include <iostream>
@@ -60,8 +60,14 @@ void TaskBank::clear(){
 }
 
 void TaskBank::display(){
-	for(int i = 0; i < schedule.size(); i++){
-		schedule[i]->viewTask();
+	if (schedule.size() == 0){
+		std::cout << "There are currently no tasks or task lists." << std::endl;
+	}
+
+	else{
+		for(int i = 0; i < schedule.size(); i++){
+			schedule[i]->viewTask();
+		}
 	}
 }
 
