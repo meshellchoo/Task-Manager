@@ -11,46 +11,67 @@
 
 
 TaskManager::TaskManager(){
-	TaskBank* taskBank = new TaskBank();
-	TaskBankCommand* taskBankCommand = new TaskBankCommand(taskBank);
+	taskBank = new TaskBank();
+	taskBankCommand = new TaskBankCommand(taskBank);
+	taskBankCommand->Backup();
 }
 TaskManager::~TaskManager(){
-	delete taskBank;
 	delete taskBankCommand;
 }
 void TaskManager::run(){
+	int undoTimes = 0;
 	char answer;
 	bool quit = false;
-	printMenu();
+//	printMenu();
 	do{
+	printMenu();
 	std::cout << "  :";
 	std::cin >> answer;
 	switch(toupper(answer)){
 	case '1':
-		std::cout << "case 1" << std::endl;
 		taskBank->addTask(getTaskFromUser());
-		std::cout << "after adding task"  << std::endl;
+		taskBankCommand->Backup();
+		std::cout << "=========================" << std::endl;
+		std::cout << "Successfully added task!" << std::endl;
+		std::cout << "=========================" << std::endl;
+		taskBank->display();
 		break;				
+	
 	case '2':
 		taskBank->addTask(getTaskListFromUser());
+		taskBankCommand->Backup();
 		break;
 	case '3':
 		std::cout << "which task do you want to edit?" << std::endl;
 		
-		//taskBank.editTask();
+	//	taskBank.editTask();
 		break;
 	case '4':
-		std::cout << "which task do you want to delete?" << std::endl
-		//taskBank.deleteTask();
+		std::cout << "which task do you want to delete?" << std::endl;
+	//	taskBank.deleteTask();
 		break;
 	case '5':
-		taskBank.display();
+		taskBank->display();
 		break;
-	
+	case '6': 
+		if(undoTimes == 0){
+			taskBankCommand->Undo();
+			taskBankCommand->Undo();
+		}else{
+			taskBankCommand->Undo();	
+		}
+//		taskBankCommand->Undo();
+//		taskBankCommand->Undo();
+		undoTimes++;
+		break;
+	case 'X':
+		quit = true;
+		break;
 	}
 	}while(!quit);
-	printMenu();
 	
+	
+
 }
 
 

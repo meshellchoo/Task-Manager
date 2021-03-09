@@ -9,9 +9,9 @@
 
 
 TaskBankCommand::TaskBankCommand(TaskBank *taskBank){
-	this->_taskBank = taskBank;
+    this->_taskBank = taskBank;
 }
- void TaskBankCommand::Backup() {
+void TaskBankCommand::Backup() {
     this->_mementos.push_back(this->_taskBank->createTaskBankMemento());
 }
 void TaskBankCommand::Undo() {
