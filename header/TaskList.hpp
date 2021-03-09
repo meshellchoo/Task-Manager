@@ -13,7 +13,7 @@ class TaskList: public TaskObject{
  	TaskList(std::string taskName, std::string description, 
         std::string taskType, int priority,Date dueDate, 
         std::vector<Task> subTasks);
-
+	~TaskList(){};
 	TaskList(std::string taskName, std::string description,
         std::string taskType, int priority,Date dueDate);
 	

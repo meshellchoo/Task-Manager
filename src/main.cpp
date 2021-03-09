@@ -23,10 +23,13 @@ int main(int argv, char** argc) {
     	std::cout << "=============================================================" << std::endl;
  //   	std::cout << "After adding six Tasks " << std::endl;
     	std::cout << "=============================================================" << std::endl;
-    	Task* t1 = new Task("CS100 Lab5", "Strategy and Composite Lab", "School",4,Date("02/21/2021"));
+   	//Task* t1 = new Task("CS100 Lab5", "Strategy and Composite Lab", "School",4,Date("02/21/2021"));
     	Task* t2 = new Task("CS100 Lab6", "Factory Design Pattern Lab", "School" ,3,Date("02/27/2021"));
     	Task* t3 = new Task("CS100 Lab7", "Visitor Design Pattern Lab", "School" ,2,Date("03/01/2021"));
     	Task* t4 = new Task("CS100 Lab8", "final Lab", "School" ,1,Date("03/10/2021"));
+
+
+
     	Task t5 = Task("CS100 Lab4", "___  Lab", "School" ,5,Date("03/10/2021"));
     	Task t6 = Task("CS100 Lab3", "___  Lab", "School" ,2,Date("03/10/2021"));
 	Task t7 = Task("CS100 Lab2", "___s  Lab", "School" ,2,Date("03/11/2021"));
@@ -36,20 +39,53 @@ int main(int argv, char** argc) {
 	taskList->addTask(t6);
 	taskList->addTask(t5);	
 
-
 	TaskBank* taskBank = new TaskBank();
+
 	TaskBankCommand* taskBankCommand = new TaskBankCommand(taskBank);
-	taskBankCommand->Backup();
+
+	
 	taskBank->addTask(taskList);
 	taskBankCommand->Backup();
-	taskBank->addTask(t1);
+	taskBank->addTask(t4);
 	taskBankCommand->Backup();
-	
-	taskBank->display();
-	std::cout << "before undo" << std::endl;
-	taskBankCommand->Undo();
-	taskBank->display();
-	
+	taskBank->addTask(t3);
+	taskBankCommand->Backup();
+	taskBank->addTask(t2);
+	taskBankCommand->Backup();
 
+
+	std::cout << "=============================================================" << std::endl;
+	std::cout << "before undo" << std::endl;
+	std::cout << "=============================================================" << std::endl;
+	taskBank->display();
+	
+	taskBankCommand->Undo();
+	std::cout << "=============================================================" << std::endl;
+	std::cout << "after undo" << std::endl;
+	std::cout << "=============================================================" << std::endl;
+	taskBank->display();
+
+	taskBankCommand->Undo();
+	std::cout << "=============================================================" << std::endl;
+        std::cout << "after 2nd undo" << std::endl;
+	std::cout << "=============================================================" << std::endl;
+        taskBank->display();	
+
+	taskBankCommand->Undo();
+        std::cout << "=============================================================" << std::endl;
+        std::cout << "after 3rd undo" << std::endl;
+        std::cout << "=============================================================" << std::endl;
+        taskBank->display();		
+	
+	taskBankCommand->Undo();
+        std::cout << "=============================================================" << std::endl;
+        std::cout << "after 4th undo" << std::endl;
+        std::cout << "=============================================================" << std::endl;
+        taskBank->display();
+	
+	delete taskBankCommand;
+
+//	delete taskBank;
+	//delete taskList;
 }
 

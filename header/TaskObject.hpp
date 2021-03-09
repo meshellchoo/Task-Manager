@@ -33,7 +33,7 @@ class TaskObject {
         Date getTaskDueDate()const;
         
 	virtual bool isTaskList()=0;
-
+	virtual ~TaskObject(){};
 };
 
 #endif //__TASKOBJECT_HPP__
