@@ -25,6 +25,7 @@ class TaskBank{
 		void sortByDueDate();
 		TaskBankMemento* createTaskBankMemento();
 		void restore(TaskBankMemento* taskBankMemento);
+		std::vector<TaskObject*> search(std::string userSearch);
 	
 };
 

@@ -6,9 +6,9 @@
 
 
 
-#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBank.hpp"
+//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBank.hpp"
 //#include "/home/csmajs/htran164/cs100-task-manager/header/TaskBank.hpp"
-//#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBank.hpp"
+#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBank.hpp"
 
 #include <string>
 #include <iostream>
@@ -142,4 +142,15 @@ void TaskBank::restore(TaskBankMemento* taskBankMemento)
      
     delete taskBankMemento;
 }
+
+std::vector<TaskObject*> TaskBank::search(std::string userSearch){
+	std::vector<TaskObject*> foundTasks;
+	for (int i = 0; i < schedule.size(); i++){
+		if(schedule[i]->getTaskName().find(userSearch) != std::string::npos){		
+			foundTasks.push_back(schedule[i]);
+		}
+	}
+	return foundTasks;
+}
+
 #endif
