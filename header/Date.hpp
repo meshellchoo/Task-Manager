@@ -32,6 +32,16 @@ class Date
                 this->year = "0000";
 	  }
 	
+	friend std::istream& operator >>(std::istream &in, Date &d){
+		std::string date;
+		in >> date;
+		d.month = date.substr(0,2);
+                d.day = date.substr(3,2);
+                d.year = date.substr(6);
+		
+		return in;
+
+	}	
 	friend std::ostream& operator <<(std::ostream& out,const Date& d){
 		out << d.month << "/" << d.day << "/" << d.year ;
 		return out;

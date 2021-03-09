@@ -3,13 +3,15 @@
 
 #include "TaskBank.hpp"
 #include "helperFunctions.hpp"
-
+#include "TaskBankCommand.hpp"
 class TaskManager {
 
     private:
-	TaskBank schedule;
+	TaskBank* taskBank;
+	TaskBankCommand* taskBankCommand;
     public:
 	TaskManager();
+	~TaskManager();
 	void run();
 
 };

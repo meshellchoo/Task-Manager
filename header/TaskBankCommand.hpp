@@ -6,9 +6,10 @@ class TaskBankCommand{
 private:
 	std::vector<TaskBankMemento*> _mementos;
 	TaskBank* _taskBank;
-
+	
 public:
 	TaskBankCommand(TaskBank *taskBank);
+	~TaskBankCommand();
 	void Backup();
 	void Undo();
 

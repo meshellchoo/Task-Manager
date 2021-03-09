@@ -7,14 +7,61 @@
 
 void printMenu(){
 	std::cout << "********** Main Menu **********" << std::endl;
-	std::cout << "(1): Create a new task" << std::endl;
-	std::cout << "(2): Create a new tasklist" << std::endl;
-	std::cout << "(3): Delete a task/tasklist" << std::endl;
-	std::cout << "(4): Display schedule of tasks" << std::endl;
-	std::cout << "(5): Delete a task/taskList" << std::endl;
-  	std::cout << "(6): Sort schedule by due date" << std::endl;
-	std::cout << "(7): Sort schedule by priority" << std::endl;
-	std::cout << "(8): Sort schedule by type of task" << std::endl;
+	std::cout << "(1): Add a task" << std::endl;
+	std::cout << "(2): Add a tasklist" << std::endl;
+	std::cout << "(3): Edit task" << std::endl;
+	std::cout << "(4): Delete task" << std::endl;
+	std::cout << "(4): Display all tasks" << std::endl;
+//  	std::cout << "(6): Sort schedule by due date" << std::endl;
+//	std::cout << "(7): Sort schedule by priority" << std::endl;
+//	std::cout << "(8): Sort schedule by type of task" << std::endl;
+	
+}
+
+Task* getTaskFromUser(){
+	std::string taskName,taskDescription,taskType;
+	int priority;
+        Date dueDate;
+        std::cout << "Task Name: " ;
+        std::cin >> taskName;
+        std::cout << std::endl;
+        std::cout << "Description: " ;
+        std::cin >> taskDescription;
+        std::cout << std::endl;
+        std::cout << "Type of task: " ;
+        std::cin >> taskType;
+        std::cout << std::endl;
+        std::cout << "Priority of Task (1-5): " ;
+        std::cin >> priority;
+        std::cout << std::endl;
+        std::cout << "Due Date (mm/dd/yy): " ;
+        std::cin >> dueDate;
+        std::cout << std::endl;
+	
+        return new Task(taskName,taskDescription,taskType,priority,dueDate);
+}
+
+TaskList* getTaskListFromUser(){
+        std::string taskName,taskDescription,taskType;
+        int priority;
+        Date dueDate;
+        std::cout << "Task Name: " ;
+        std::cin >> taskName;
+        std::cout << std::endl;
+        std::cout << "Description: " ;
+        std::cin >> taskDescription;
+        std::cout << std::endl;
+        std::cout << "Type of task: " ;
+        std::cin >> taskType;
+        std::cout << std::endl;
+        std::cout << "Priority of Task (1-5): " ;
+        std::cin >> priority;
+        std::cout << std::endl;
+        std::cout << "Due Date (mm/dd/yy): " ;
+        std::cin >> dueDate;
+        std::cout << std::endl;
+
+        return new TaskList(taskName,taskDescription,taskType,priority, dueDate);
 }
 
 

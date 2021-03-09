@@ -23,12 +23,12 @@ src/TaskBank.cpp
 )
 
 
-ADD_EXECUTABLE(TaskMementoTest
+ADD_EXECUTABLE(TaskManagerTest
 #/home/csmajs/mchu017/cs100-task-manager/tests/TaskListSortTest.cpp
 #/home/csmajs/mchu017/cs100-task-manager/tests/TaskListDeleteTaskTest.cpp
-#/home/csmajs/mchu017/cs100-task-manager/tests/taskManagerTest.cpp
+/home/csmajs/mchu017/cs100-task-manager/tests/taskManagerTest.cpp
 #tests/taskManagerTest.cpp
-src/main.cpp
+#src/main.cpp
 src/helperFunctions.cpp
 #src/TaskManager.cpp
 src/TaskList.cpp
@@ -38,12 +38,13 @@ src/TaskObject.cpp
 src/TaskBankCommand.cpp
 src/TaskBank.cpp
 src/TaskManager.cpp
+
 )
 
 #TARGET_LINK_LIBRARIES(test gtest)
 TARGET_LINK_LIBRARIES(TaskListSortTest gtest)
-TARGET_LINK_LIBRARIES(TaskMementoTest gtest)
+TARGET_LINK_LIBRARIES(TaskManagerTest gtest)
 
 TARGET_COMPILE_DEFINITIONS(TaskListSortTest PRIVATE gtest_disable_pthreads=ON)
 
-TARGET_COMPILE_DEFINITIONS(TaskMementoTest PRIVATE gtest_disable_pthreads=ON)
+TARGET_COMPILE_DEFINITIONS(TaskManagerTest PRIVATE gtest_disable_pthreads=ON)

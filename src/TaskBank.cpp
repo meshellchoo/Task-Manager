@@ -49,7 +49,6 @@ TaskBank::~TaskBank(){
                 schedule[i] = nullptr;
         }
         schedule.clear();
-
 }
 
 void TaskBank::clear(){
@@ -121,10 +120,26 @@ void TaskBank::sortByDueDate(){
 
 TaskBankMemento* TaskBank::createTaskBankMemento()
 {
-    return new TaskBankMemento(schedule);
+
+    std::vector<TaskObject*> _schedule;
+    TaskObject* t;
+    for(int i = 0; i < schedule.size(); i ++){
+	t = schedule[i];
+	if(t->isTaskList()){
+		_schedule.push_back(new TaskList(t->getTaskName(),t->getTaskDescription(),t->getTaskType(),t->getTaskPriority(),t->getTaskDueDate(),static_cast<TaskList*>(t)->getSubTasks()));
+	}else{
+		_schedule.push_back(new Task(t->getTaskName(),t->getTaskDescription(),t->getTaskType(),t->getTaskPriority(),t->getTaskDueDate()));
+	}
+    }
+    t = nullptr;
+    return new TaskBankMemento(_schedule);
+
 }
 void TaskBank::restore(TaskBankMemento* taskBankMemento)
 {
+    this->clear();
     schedule = taskBankMemento->getTaskBank();
+     
+    delete taskBankMemento;
 }
 #endif
