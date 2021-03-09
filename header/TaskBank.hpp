@@ -21,6 +21,7 @@ class TaskBank{
 		void display();
 		void addTask(TaskObject* task);
 		bool deleteTask(TaskObject* task);
+		bool deleteTask(std::string taskName);
 		void sortByPriority();
 		void sortByDueDate();
 		TaskBankMemento* createTaskBankMemento();

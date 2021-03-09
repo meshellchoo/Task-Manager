@@ -53,35 +53,45 @@ int main(int argv, char** argc) {
 	taskBank->addTask(t2);
 	taskBankCommand->Backup();
 
-
+	
 	std::cout << "=============================================================" << std::endl;
 	std::cout << "before undo" << std::endl;
 	std::cout << "=============================================================" << std::endl;
 	taskBank->display();
 	
 	taskBankCommand->Undo();
+	taskBankCommand->Undo();
+	taskBankCommand->Undo();
+	
 	std::cout << "=============================================================" << std::endl;
-	std::cout << "after undo" << std::endl;
+	std::cout << "after undo 3 times" << std::endl;
 	std::cout << "=============================================================" << std::endl;
 	taskBank->display();
 
 	taskBankCommand->Undo();
 	std::cout << "=============================================================" << std::endl;
-        std::cout << "after 2nd undo" << std::endl;
+        std::cout << "after 4th undo" << std::endl;
 	std::cout << "=============================================================" << std::endl;
         taskBank->display();	
 
 	taskBankCommand->Undo();
         std::cout << "=============================================================" << std::endl;
-        std::cout << "after 3rd undo" << std::endl;
+        std::cout << "after 5th undo" << std::endl;
         std::cout << "=============================================================" << std::endl;
         taskBank->display();		
 	
 	taskBankCommand->Undo();
         std::cout << "=============================================================" << std::endl;
-        std::cout << "after 4th undo" << std::endl;
+        std::cout << "after 6th undo" << std::endl;
         std::cout << "=============================================================" << std::endl;
         taskBank->display();
+
+	taskBank->addTask(new Task("CS100 Lab6", "Factory Design Pattern Lab", "School" ,3,Date("02/27/2021")));
+	taskBankCommand->Undo();
+        std::cout << "=============================================================" << std::endl;
+        std::cout << "after adding a task and 7th undo" << std::endl;
+        std::cout << "=============================================================" << std::endl;
+        taskBank->display();	
 	
 	delete taskBankCommand;
 

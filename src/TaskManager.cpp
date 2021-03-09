@@ -43,13 +43,21 @@ void TaskManager::run(){
 		break;
 	case '3':
 		std::cout << "which task do you want to edit?" << std::endl;
-		
 	//	taskBank.editTask();
 		break;
-	case '4':
+	case '4':{
+		std::string taskName;
 		std::cout << "which task do you want to delete?" << std::endl;
-	//	taskBank.deleteTask();
+		std::cout << "  :";
+		std::cin >> taskName;
+		if(taskBank->deleteTask(taskName)){
+			std::cout << "the task has been deleted" << std::endl;
+			taskBankCommand->Backup();
+		}else{
+			std::cout << "the task could not be found" << std::endl;
+		}
 		break;
+	}
 	case '5':
 		taskBank->display();
 		break;
@@ -60,10 +68,38 @@ void TaskManager::run(){
 		}else{
 			taskBankCommand->Undo();	
 		}
-//		taskBankCommand->Undo();
-//		taskBankCommand->Undo();
 		undoTimes++;
 		break;
+	case '7':{
+		std::string taskName;
+		std::cout << "Please enter a task to search for" << std::endl;
+		cin >> taskName;
+		std::vector<TaskObject*> found = taskBank->search(taskName);
+		if(found.size() == 0){
+			std::cout << "The task was not found" << std::endl;
+		}else{
+			std::cout << "The tasks that matched your search: " << std::endl;
+			for (int i = 0; i < found.size(); i++){
+                        	found[i]->viewTask();
+                	}
+		}
+	}
+	case '8':{
+		char choice;
+		printSortMenu();
+		std::cout << "  :";
+		cin >> choice;
+		if(choice == '1'){
+			taskBank->sortByDueDate();
+			taskBankCommand->Backup();		
+		}else if(choice == '2'){
+			taskBank->sortByPriority();
+			taskBankCommand->Backup();
+		}else{
+			std::cout << "not a valid input!" << std::endl;
+		}
+		break;
+	}
 	case 'X':
 		quit = true;
 		break;

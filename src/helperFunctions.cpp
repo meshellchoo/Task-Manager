@@ -15,10 +15,20 @@ void printMenu(){
 	std::cout << "(4): Delete task" << std::endl;
 	std::cout << "(5): Display all tasks" << std::endl;
 	std::cout << "(6): Undo last action" << std::endl;
+	std::cout << "(7): Search for a task" << std::endl;
+	std::cout << "(8): Sort list" << std::endl;
 //  	std::cout << "(6): Sort schedule by due date" << std::endl;
 //	std::cout << "(7): Sort schedule by priority" << std::endl;
 //	std::cout << "(8): Sort schedule by type of task" << std::endl;
 	
+}
+
+void printSortMenu(){
+	std::cout << "*******************************" << std::endl;
+        std::cout << "********** Sort Menu **********" << std::endl;
+        std::cout << "*******************************" << std::endl;	
+	std::cout << "(1): Sort by due date" << std::endl;
+        std::cout << "(2): Sort by priority" << std::endl;
 }
 
 Task* getTaskFromUser(){
