@@ -13,7 +13,7 @@ void printMenu(){
 	std::cout << "(2): Add a tasklist" << std::endl;
 	std::cout << "(3): Edit task" << std::endl;
 	std::cout << "(4): Delete task" << std::endl;
-	std::cout << "(5): Display all tasks" << std::endl;
+	std::cout << "(5): Display Current Schedule" << std::endl;
 	std::cout << "(6): Undo last action" << std::endl;
 	std::cout << "(7): Search for a task" << std::endl;
 	std::cout << "(8): Sort list" << std::endl;
@@ -38,15 +38,24 @@ Task* getTaskFromUser(){
         Date dueDate;
         std::cout << "Task Name: " ;
         std::cin >> taskName;
+
        // std::cout << std::endl;
         std::cout << "Description: " ;
         std::cin >> taskDescription;
-       // std::cout << std::endl;
+        
+	//std::cout << std::endl;
         std::cout << "Type of task: " ;
         std::cin >> taskType;
-//        std::cout << std::endl;
-        std::cout << "Priority of Task (1-5): " ;
+	// std::cout << std::endl;
+        
+        std::cout << "Priority of Task (1-10): " ;
         std::cin >> priority;
+	while (priority < 1 || priority > 10){
+		std::cout << "Invalid priority. Please re-enter the priority." << std::endl;
+		std::cout << "Priority of Task (1-10): " ;
+	        std::cin >> priority;
+	}
+
         //std::cout << std::endl;
         std::cout << "Due Date (mm/dd/yyyy): " ;
         std::cin >> dueDate;
@@ -68,8 +77,14 @@ TaskList* getTaskListFromUser(){
         std::cout << "Type of task: " ;
         std::cin >> taskType;
      //   std::cout << std::endl;
-        std::cout << "Priority of Task (1-5): " ;
+        std::cout << "Priority of Task (1-10): " ;
         std::cin >> priority;
+        while (priority < 1 || priority > 10){
+                std::cout << "Invalid priority. Please re-enter the priority." << std::endl;
+                std::cout << "Priority of Task (1-10): " ;
+                std::cin >> priority;
+        }
+
        // std::cout << std::endl;
         std::cout << "Due Date (mm/dd/yyyy): " ;
         std::cin >> dueDate;

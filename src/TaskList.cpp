@@ -48,8 +48,8 @@ void TaskList::addTask(Task task){
 
 void TaskList::viewTask(){
 	std::cout << "- " << taskName << std::endl;
-	std::cout << "    Type of Task: " << taskType << " tasklist" <<  std::endl;
-	std::cout << "    description: " <<  description << std::endl;
+	std::cout << "    Type of Task: " << taskType <<  std::endl;
+	std::cout << "    Description: " <<  description << std::endl;
 	std::cout << "    Due Date: " << dueDate << std::endl;
 	for(int i = 0 ; i < tasks.size(); i++){
 		std::cout << "      " ;

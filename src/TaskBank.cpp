@@ -60,8 +60,14 @@ void TaskBank::clear(){
 }
 
 void TaskBank::display(){
-	for(int i = 0; i < schedule.size(); i++){
-		schedule[i]->viewTask();
+	if (schedule.size() == 0){
+		std::cout << "There are currently no tasks or task lists." << std::endl;
+	}
+
+	else{
+		for(int i = 0; i < schedule.size(); i++){
+			schedule[i]->viewTask();
+		}
 	}
 }
 
