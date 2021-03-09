@@ -81,6 +81,18 @@ bool TaskBank::deleteTask(TaskObject* task){
 	}
 }
 
+bool TaskBank::deleteTask(std::string taskName){
+        for(int i = 0; i < schedule.size(); i++){
+                if (schedule[i]->getTaskName()  == taskName){
+			delete schedule[i];
+                        schedule.erase(schedule.begin()+i);
+                        return true;
+                }
+                else {
+                        return false;
+                }
+        }
+}
 
 bool dueDateComparator(TaskObject* i, TaskObject* j)
 {	
