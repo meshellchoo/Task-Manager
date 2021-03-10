@@ -25,6 +25,19 @@ void printMenu(){
 	
 }
 
+void printEditMenu(){
+	std::cout << "*******************************" << std::endl;
+        std::cout << "********** Edit Menu **********" << std::endl;
+        std::cout << "*******************************" << std::endl;
+	std::cout << "(1): Move a task into a tasklist" << std::endl;
+        std::cout << "(2): Change a task name" << std::endl;
+	std::cout << "(3): Change a task description" << std::endl;
+	std::cout << "(4): Change a task priority" << std::endl;
+	std::cout << "(5): Change a task due date" << std::endl;
+	std::cout << "(6): Change a task type" << std::endl;
+}
+
+
 void printSortMenu(){
 	std::cout << "*******************************" << std::endl;
         std::cout << "********** Sort Menu **********" << std::endl;

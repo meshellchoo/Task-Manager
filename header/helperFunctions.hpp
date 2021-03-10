@@ -8,6 +8,6 @@ void printMenu();
 void printSortMenu();
 Task* getTaskFromUser();
 TaskList* getTaskListFromUser();
-//bool validDateFormat();
+void printEditMenu();
 
 #endif
