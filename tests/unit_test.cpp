@@ -260,7 +260,7 @@ TEST(TaskListTest, getTaskListType)
 
 TEST(TaskListTest, getTaskListPriority)
 {
-        TaskList taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"))
+        TaskList taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"));
         taskList1.setTaskName("Updated CS100 Labs");
         taskList1.setTaskDescription("Updated Labs for CS100");
         taskList1.setTaskType("New School");
@@ -417,53 +417,146 @@ TEST(TaskListTest, viewTaskList)
 
 TEST(TaskBankTest, addTask_TaskBank)
 {
-
+	TaskBank taskBank1 = new TaskBank();
+	Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+	 Task t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
+        Task t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
+	taskBank1.addTask(t1);
+	taskBank1.addTask(t2);
+	taskBank1.addTask(t3);
+	EXPECT_EQ( , taskBank1.viewTask());
+	delete taskBank1;
+	delete t1;
+	delete t3;
+	
 }
 
 TEST(TaskBankTest, deleteTask_TaskBank)
 {
+	TaskBank taskBank1 = new TaskBank();
+	Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+        Task t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
+        Task t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
 
+	taskBank1.addTask(t1);
+	taskBank1.addTask(t2);
+	taskBank1.addTask(t3);
+	taskBank1.deleteTask(t3);
+	
+	EXPECT_EQ( , taskList.viewTask()); //task 3 should not be printed
+	delete taskBank1;
+	delete t1;
+	delete t2;		
 }
 
 TEST(TaskBankTest, clearTaskBank)
 {
+	TaskBank taskBank1 = new TaskBank();
+	Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+        Task t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
+        Task t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
+	
+	taskBank1.addTask(t1);
+	taskBank1.addTask(t2);
+	taskBank1.addTask(t3);
 
+	taskBank1.clear();
+	EXPECT_EQ( , taskBank1.viewTask());
+	delete taskBank1;
 }
 
 TEST(TaskBankTest, searchTaskBank)
 {
-
+	TaskBank* taskBank = new TaskBank(); 
+	Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+        Task t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
+        Task t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
+	TaskBankCommand* taskBankCommand = new TaskBankCommand(taskBank);
+		
 }
 
 TEST(TaskBankTest, display)
 {
-
+	TaskBank* taskBank = new TaskBank();
+	 Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+        Task t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
+        Task t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
+	TaskBankCommand* taskBankCommand = new TaskBankCommand(taskBank);
+	taskBank->addTask(t1);
+	taskBank->addTask(t2);
+	taskBank->addTask(t3);
+	EXPECT_EQ( , taskBank->display());
+	delete taskBank;
+	delete t1;
+	delete t2;
+	delete t3;
 }
 
 TEST(TaskBankTest, undoTaskEdit)
 {
-
+	TaskBank* taskBank = new TaskBank();
+	TaskBankCommand* taskBankCommand = new TaskBankCommand;
+	Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+	taskBank->addTask(t1);
+	taskBankCommand->Backup();
+	taskBank->setTaskDescription("Updated Task 1");
+	taskBankCommand->Undo();
+	EXPECT_EQ( , taskBank->viewTask());
+	delete taskBank;
+	delete t1;
+		
 }
 
 
 TEST(TaskBankTest, undoTaskListEdit)
 {
-
+	TaskBank* taskBank();
+	
 }
 
 TEST(TaskBankTest, undoTaskListAddTask)
 {
-
+		
 }
 
 TEST(TaskBankTest, undoTaskListDeleteTask)
 {
-
+	TaskBank* taskBank = new TaskBank();
+	TaskList* taskList = new TaskList();
+	TaskBankCommand = new taskBankCommand(taskBank);
+	Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+	taskList->addTask(t1);
+	taskBank->addTask(taskList);
+	taskBankCommand->Backup();
+	taskBank->deleteTask(t1);
+	taskBankCommand->Undo();
+		
 }
 
 
 
 TEST(TaskBankTest, undoTaskBankDelete)
 {
+	TaskBank* taskBank = new TaskBank();
+	 Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+        Task t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
+        Task t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
+	TaskBankCommand* taskBankCommand = new TaskBankCommand(taskBank);
 
+	taskBank->addTask(t1);
+	taskBankCommand->Backup();
+	taskBank->addTask(t2);
+	taskBankCommand->Backup();
+	taskBank->addTask(t3);
+	taskBankCommand->Backup();
+	tasBank->deleteTask(t1);
+	taskBankCommand->Undo();
+	
+	taskBank->deleteTask(t2);
+	taskBankCommand->Undo();
+	EXPECT_EQ( , taskBank.viewTask());
+	delete taskBank1;
+	delete t1;
+	delete t2;
+	delete t3;		
 }
