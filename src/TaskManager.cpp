@@ -1,8 +1,8 @@
 #ifndef __TASKMANAGER_CPP__
 #define __TASKMANAGER_CPP__
 
-#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskManager.hpp"
-//#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskManager.hpp"
+//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskManager.hpp"
+#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskManager.hpp"
 //#include "/home/csmajs/htran164/cs100-task-manager/header/TaskManager.hpp"
 
 TaskManager::TaskManager(){
@@ -117,7 +117,7 @@ void TaskManager::run(){
 		else{
                 	std::cout << "\n===============================" << std::endl;
 			std::cout << "Tasks/Task lists that matched your search: " << std::endl;
-                	std::cout << "===============================\n" << std::endl;
+                	std::cout << "===============================" << std::endl;
 			for (int i = 0; i < found.size(); i++){
                         	found[i]->viewTask();
                 	}
@@ -129,19 +129,25 @@ void TaskManager::run(){
 	}
 
 	case '8':{
-		char choice;
+		std::string choice;
 		printSortMenu();
 		std::cout << "  :";
 		std::cin >> choice;
-		if(choice == '1'){
-			taskBank->sortByDueDate();
-			taskBankCommand->Backup();		
-		}else if(choice == '2'){
-			taskBank->sortByPriority();
-			taskBankCommand->Backup();
-		}else{
-			std::cout << "not a valid input!" << std::endl;
+		while (stoi(choice) < 1 || stoi(choice) > 2){		
+                       	std::cout << "Invalid input. Please re-enter the sort method (1 or 2)." << std::endl;
+			std::cout << "  :";
+                        std::cin >> choice;
 		}
+                
+		if(choice == "1"){
+			taskBank->sortByDueDate();
+                        taskBankCommand->Backup();
+                }
+
+                else if(choice == "2"){
+                        taskBank->sortByPriority();
+                        taskBankCommand->Backup();
+                }
 		break;
 	}
 
