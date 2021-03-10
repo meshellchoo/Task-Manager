@@ -36,18 +36,18 @@ void printSortMenu(){
 Task* getTaskFromUser(){
 	std::string taskName,taskDescription,taskType,priority;
         Date dueDate;
-        std::cout << "Task Name: " ;
-        std::cin >> taskName;
+        std::cout << "Task Name: ";
+	std::getline(std::cin >> std::ws, taskName);
 
        // std::cout << std::endl;
-        std::cout << "Description: " ;
-        std::cin >> taskDescription;
+        std::cout << "Description: ";
+	std::getline(std::cin >> std::ws, taskDescription);
         
 	//std::cout << std::endl;
         std::cout << "Type of task: " ;
-        std::cin >> taskType;
+	std::getline(std::cin >> std::ws, taskType);
+
 	// std::cout << std::endl;
-        
         std::cout << "Priority of Task (1-10): " ;
         std::cin >> priority;
 	while (priority.length() > 2 ||(priority.length() > 0 && !std::isdigit(priority[0])) || (priority.length() == 2 && !std::isdigit(priority[1])) || stoi(priority) < 1 || stoi(priority) > 10){
@@ -69,13 +69,16 @@ TaskList* getTaskListFromUser(){
         int priority;
         Date dueDate;
         std::cout << "Task Name: " ;
-        std::cin >> taskName;
+        std::getline(std::cin >> std::ws, taskName);
+
  //       std::cout << std::endl;
         std::cout << "Description: " ;
-        std::cin >> taskDescription;
+        std::getline(std::cin >> std::ws, taskDescription);
+
    //     std::cout << std::endl;
         std::cout << "Type of task: " ;
-        std::cin >> taskType;
+        std::getline(std::cin >> std::ws, taskType);
+
      //   std::cout << std::endl;
         std::cout << "Priority of Task (1-10): " ;
         std::cin >> priority;

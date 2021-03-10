@@ -29,41 +29,68 @@ void TaskManager::run(){
 	case '1':
 		taskBank->addTask(getTaskFromUser());
 		taskBankCommand->Backup();
-		std::cout << "=========================" << std::endl;
-		std::cout << "Successfully added task!" << std::endl;
-		std::cout << "=========================" << std::endl;
+		std::cout << "\n===============================" << std::endl;
+		std::cout << "  Successfully added task!\nDisplaying Current Schedule" << std::endl;
+		std::cout << "===============================" << std::endl;
 		taskBank->display();
+
+                std::cout << "===============================" << std::endl;
+                std::cout << "===============================\n" << std::endl;
+
 		break;				
 	
 	case '2':
 		taskBank->addTask(getTaskListFromUser());
 		taskBankCommand->Backup();
+                std::cout << "\n===============================" << std::endl;
+                std::cout << "Successfully added task list!Displaying Current Schedule" << std::endl;
+                std::cout << "===============================" << std::endl;
+
+                taskBank->display();
+                std::cout << "===============================" << std::endl;
+                std::cout << "===============================\n" << std::endl;
 		break;
 	
 	case '3':
-		std::cout << "which task do you want to edit?" << std::endl;
+		std::cout << "Which task do you want to edit?" << std::endl;
 	//	taskBank.editTask();
 		break;
 	
 	case '4':{
 		std::string taskName;
-		std::cout << "which task do you want to delete?" << std::endl;
+		std::cout << "Which task do you want to delete?" << std::endl;
 		std::cout << "  :";
 		std::cin >> taskName;
 		if(taskBank->deleteTask(taskName)){
-			std::cout << "the task has been deleted" << std::endl;
+	                std::cout << "\n===============================" << std::endl;
+	                std::cout << "  Deleting " << taskName <<  std::endl;
+	                std::cout << "===============================" << std::endl;
+
+			std::cout << taskName << " has been deleted!\n" << std::endl;
 			taskBankCommand->Backup();
 		}else{
-			std::cout << "the task could not be found" << std::endl;
+			std::cout << "A task/task list with that name was not found.\n"  << std::endl;
 		}
 		break;
 	}
 
 	case '5':
+		std::cout << "\n===============================" << std::endl;
+                std::cout << "  Displaying Current Schedule" << std::endl;
+                std::cout << "===============================" << std::endl;
+
 		taskBank->display();
+
+		std::cout << "===============================" << std::endl;
+                std::cout << "===============================\n" << std::endl;
+		
 		break;
 
-	case '6': 
+	case '6':
+                std::cout << "\n===============================" << std::endl;
+                std::cout << "    Undoing Last Action" << std::endl;
+                std::cout << "===============================" << std::endl;
+
 		if(undoTimes == 0){
 			taskBankCommand->Undo();
 			taskBankCommand->Undo();
@@ -71,23 +98,34 @@ void TaskManager::run(){
 			taskBankCommand->Undo();	
 		}
 		undoTimes++;
+
+		std::cout << "===============================" << std::endl;
+                std::cout << "===============================\n" << std::endl;
+
 		break;
 
 	case '7':{
 		std::string taskName;
-		std::cout << "Please enter a task to search for" << std::endl;
-		std::cin >> taskName;
+		std::cout << "Please enter a task name to search for\n  :";
+	        std::getline(std::cin >> std::ws, taskName);		
+//		std::cin >> taskName;
 		std::vector<TaskObject*> found = taskBank->search(taskName);
 		if(found.size() == 0){
-			std::cout << "The task was not found" << std::endl;
+			std::cout << "A task/task list with that name was not found." << std::endl;
 		}
 		
 		else{
-			std::cout << "The tasks that matched your search: " << std::endl;
+                	std::cout << "\n===============================" << std::endl;
+			std::cout << "Tasks/Task lists that matched your search: " << std::endl;
+                	std::cout << "===============================\n" << std::endl;
 			for (int i = 0; i < found.size(); i++){
                         	found[i]->viewTask();
                 	}
+                std::cout << "===============================" << std::endl;
+                std::cout << "===============================\n" << std::endl;
+
 		}
+		break;
 	}
 
 	case '8':{
