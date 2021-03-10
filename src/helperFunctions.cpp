@@ -29,12 +29,11 @@ void printEditMenu(){
 	std::cout << "*******************************" << std::endl;
         std::cout << "********** Edit Menu **********" << std::endl;
         std::cout << "*******************************" << std::endl;
-	std::cout << "(1): Move a task into a tasklist" << std::endl;
-        std::cout << "(2): Change a task name" << std::endl;
-	std::cout << "(3): Change a task description" << std::endl;
-	std::cout << "(4): Change a task type" << std::endl;
-	std::cout << "(5): Change a task priority" << std::endl;
-	std::cout << "(6): Change a task due date" << std::endl;
+        std::cout << "(1): Change a task name" << std::endl;
+	std::cout << "(2): Change a task description" << std::endl;
+	std::cout << "(3): Change a task type" << std::endl;
+	std::cout << "(4): Change a task priority" << std::endl;
+	std::cout << "(5): Change a task due date" << std::endl;
 }
 
 void printSortMenu(){
@@ -76,10 +75,10 @@ Task* getTaskFromUser(){
 	
 }
 
-TaskList* getTaskListFromUser(){
+TaskList* getTaskListFromUser(TaskBank* taskBank){
         std::string taskName,taskDescription,taskType, priority;
         Date dueDate;
-        std::cout << "Task Name: " ;
+        std::cout << "Task List Name: " ;
         std::getline(std::cin >> std::ws, taskName);
 
  //       std::cout << std::endl;
@@ -103,31 +102,76 @@ TaskList* getTaskListFromUser(){
         std::cout << "Due Date (mm/dd/yyyy): " ;
         std::cin >> dueDate;
         //std::cout << std::endl;
+        //
+        TaskList* tempTaskList =  new TaskList(taskName,taskDescription,taskType, stoi(priority), dueDate);
         char answer;
-	std::cout << "Would you like to add any subtasks into your tasklist?(Y/N) " << std::endl;
-	std::cin >> answer;
-	while(toupper(answer) != 'Y' && toupper(answer) != 'N'){
-		std::cout << "Invalid answer. Please re-enter your answer. (Y/N)" << std::endl;
-		std::cin >> answer;
-	}
-	if(toupper(answer) == 'N')
-	        return new TaskList(taskName,taskDescription,taskType, stoi(priority), dueDate);
-	TaskList* tempTaskList =  new TaskList(taskName,taskDescription,taskType, stoi(priority), dueDate);
-	tempTaskList->addTask(getTaskFromUser());
-
+	char initialAnswer;
 	do{
-		std::cout << "Would you like to add any more subtasks into your tasklist?(Y/N) " << std::endl;
-	        std::cin >> answer;
-		while(toupper(answer) != 'Y' && toupper(answer) != 'N'){
+	std::cout << "Would you like to add any subtasks into your tasklist? (Y/N)" << std::endl;
+	std::cin >> initialAnswer;
+	while(toupper(initialAnswer) != 'Y' && toupper(initialAnswer) != 'N'){
+		std::cout << "Invalid answer. Please re-enter your answer. (Y/N)" << std::endl;
+		std::cin >> initialAnswer;
+	}
+	if(toupper(initialAnswer) == 'N'){
+	        //return new TaskList(taskName,taskDescription,taskType, stoi(priority), dueDate);
+		return tempTaskList;
+	}
+
+	else{
+		// use an existing task
+		std::cout << "Would you like to add an existing task? (Y/N)" << std::endl;
+		std::cin >> answer;
+	        while(toupper(answer) != 'Y' && toupper(answer) != 'N'){
         	        std::cout << "Invalid answer. Please re-enter your answer. (Y/N)" << std::endl;
-                	std::cin >> answer;
-	        }
-		if(toupper(answer) == 'N')
-	                return tempTaskList;
+               		std::cin >> answer;
+        	}
+		if(toupper(answer) == 'Y'){
+			std::string taskName;
+			std::cout << "Please type the name of the task you want to add." << std::endl;
+			std::getline(std::cin >> std::ws, taskName);				
+			std::vector<TaskObject*> found = taskBank->search(taskName);
+			if(found.size() == 0){
+				std::cout << "A task/task list with that name was not found." << std::endl;
+			}
+
+			else{
+				std::cout << "Added " << found[0]->getTaskName() << " to the task list." << std::endl;
+				tempTaskList->addTask(static_cast<Task*>(found[0]));
+			//	taskBank->deleteTask(static_cast<Task*>(found[0]));
+
+			}
+		}		
+
+		// create new task
+		else if(toupper(answer) == 'N'){
+			std::cout << "Creating new task to add to task list" << std::endl;
+			tempTaskList->addTask(getTaskFromUser());
+		}
+	}
+
+	}while(toupper(initialAnswer) != 'N');		
+/*		do{
+			std::cout << "Would you like to add any more subtasks into your tasklist? (Y/N) " << std::endl;
+	        	std::cin >> answer;
+			while(toupper(answer) != 'Y' && toupper(answer) != 'N'){
+        	        	std::cout << "Invalid answer. Please re-enter your answer. (Y/N)" << std::endl;
+                		std::cin >> answer;
+	        	}
+
+
+
+		if(toupper(answer) == 'Y'){
+			std::cout << "Creating new task to add to task list" << std::endl;
+			tempTaskList->addTask(getTaskFromUser());
+		}
+		else{
+			return tempTaskList;
+		}
 		
-		tempTaskList->addTask(getTaskFromUser());
 	}while(toupper(answer) != 'N');
-	
+*/	
+//	}	
 	return tempTaskList;
 }
 /*
