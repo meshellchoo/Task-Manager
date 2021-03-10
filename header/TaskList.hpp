@@ -1,9 +1,8 @@
 #ifndef __TASKLIST_HPP__
 #define __TASKLIST_HPP__
 #include <vector>
-//#include "TaskObject.hpp"
+
 #include "Task.hpp"
-#include "TaskMemento.hpp"
 
 class TaskList: public TaskObject{
     private:
