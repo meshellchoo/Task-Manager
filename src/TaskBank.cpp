@@ -170,5 +170,4 @@ std::vector<TaskObject*> TaskBank::search(std::string userSearch){
 	}
 	return foundTasks;
 }
-
 #endif

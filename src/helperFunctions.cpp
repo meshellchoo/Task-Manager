@@ -25,6 +25,18 @@ void printMenu(){
 	
 }
 
+void printEditMenu(){
+	std::cout << "*******************************" << std::endl;
+        std::cout << "********** Edit Menu **********" << std::endl;
+        std::cout << "*******************************" << std::endl;
+	std::cout << "(1): Move a task into a tasklist" << std::endl;
+        std::cout << "(2): Change a task name" << std::endl;
+	std::cout << "(3): Change a task description" << std::endl;
+	std::cout << "(4): Change a task type" << std::endl;
+	std::cout << "(5): Change a task priority" << std::endl;
+	std::cout << "(6): Change a task due date" << std::endl;
+}
+
 void printSortMenu(){
 	std::cout << "*******************************" << std::endl;
         std::cout << "********** Sort Menu **********" << std::endl;
@@ -65,8 +77,7 @@ Task* getTaskFromUser(){
 }
 
 TaskList* getTaskListFromUser(){
-        std::string taskName,taskDescription,taskType;
-        int priority;
+        std::string taskName,taskDescription,taskType, priority;
         Date dueDate;
         std::cout << "Task Name: " ;
         std::getline(std::cin >> std::ws, taskName);
@@ -82,11 +93,11 @@ TaskList* getTaskListFromUser(){
      //   std::cout << std::endl;
         std::cout << "Priority of Task (1-10): " ;
         std::cin >> priority;
-        while (priority < 1 || priority > 10){
-                std::cout << "Invalid priority. Please re-enter the priority." << std::endl;
-                std::cout << "Priority of Task (1-10): " ;
-                std::cin >> priority;
-        }
+	while (priority.length() > 2 ||(priority.length() > 0 && !std::isdigit(priority[0])) || (priority.length() == 2 && !std::isdigit(priority[1])) || stoi(priority) < 1 || stoi(priority) > 10){
+		std::cout << "Invalid priority. Please re-enter the priority." << std::endl;
+		std::cout << "Priority of Task (1-10): " ;
+	        std::cin >> priority;
+	}
 
        // std::cout << std::endl;
         std::cout << "Due Date (mm/dd/yyyy): " ;
@@ -100,8 +111,8 @@ TaskList* getTaskListFromUser(){
 		std::cin >> answer;
 	}
 	if(toupper(answer) == 'N')
-	        return new TaskList(taskName,taskDescription,taskType,priority, dueDate);
-	TaskList* tempTaskList =  new TaskList(taskName,taskDescription,taskType,priority, dueDate);
+	        return new TaskList(taskName,taskDescription,taskType, stoi(priority), dueDate);
+	TaskList* tempTaskList =  new TaskList(taskName,taskDescription,taskType, stoi(priority), dueDate);
 	tempTaskList->addTask(getTaskFromUser());
 
 	do{
