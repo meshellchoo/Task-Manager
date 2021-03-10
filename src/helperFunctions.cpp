@@ -36,18 +36,18 @@ Task* getTaskFromUser(){
 	std::string taskName,taskDescription,taskType;
 	int priority;
         Date dueDate;
-        std::cout << "Task Name: " ;
-        std::cin >> taskName;
+        std::cout << "Task Name: ";
+	std::getline(std::cin >> std::ws, taskName);
 
        // std::cout << std::endl;
-        std::cout << "Description: " ;
-        std::cin >> taskDescription;
+        std::cout << "Description: ";
+	std::getline(std::cin >> std::ws, taskDescription);
         
 	//std::cout << std::endl;
         std::cout << "Type of task: " ;
-        std::cin >> taskType;
+	std::getline(std::cin >> std::ws, taskType);
+
 	// std::cout << std::endl;
-        
         std::cout << "Priority of Task (1-10): " ;
         std::cin >> priority;
 	while (priority < 1 || priority > 10){
@@ -69,13 +69,16 @@ TaskList* getTaskListFromUser(){
         int priority;
         Date dueDate;
         std::cout << "Task Name: " ;
-        std::cin >> taskName;
+        std::getline(std::cin >> std::ws, taskName);
+
  //       std::cout << std::endl;
         std::cout << "Description: " ;
-        std::cin >> taskDescription;
+        std::getline(std::cin >> std::ws, taskDescription);
+
    //     std::cout << std::endl;
         std::cout << "Type of task: " ;
-        std::cin >> taskType;
+        std::getline(std::cin >> std::ws, taskType);
+
      //   std::cout << std::endl;
         std::cout << "Priority of Task (1-10): " ;
         std::cin >> priority;
