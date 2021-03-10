@@ -38,9 +38,9 @@ void TaskList::clear(){
     tasks.clear();
 }
 
-bool  TaskList::deleteTask(Task task){
+bool  TaskList::deleteTask(std::string task){
     for(int i = 0; i < tasks.size(); i++){
-            if(tasks[i]->getTaskName()== task.getTaskName()){
+            if(tasks[i]->getTaskName()== task){
 		delete tasks[i];
 		tasks.erase(tasks.begin() + i);
 	   	return true;
@@ -101,7 +101,6 @@ bool dueDateComparator(Task* i, Task* j)
 		return(i_temp.day < j_temp.day);
 	else
 		return (i->getTaskPriority()  >= j->getTaskPriority());
-
 	return true;
 }
 

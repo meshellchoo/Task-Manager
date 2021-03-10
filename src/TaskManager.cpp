@@ -126,19 +126,53 @@ void TaskManager::run(){
 	}
 	
 	case '4':{
+		int answer;
 		std::string taskName;
-		std::cout << "Which task do you want to delete?" << std::endl;
+		printDeleteMenu();
 		std::cout << "  :";
-		std::cin >> taskName;
-		if(taskBank->deleteTask(taskName)){
-	                std::cout << "\n===============================" << std::endl;
-	                std::cout << "  Deleting " << taskName <<  std::endl;
-	                std::cout << "===============================" << std::endl;
-
-			std::cout << taskName << " has been deleted!\n" << std::endl;
-			taskBankCommand->Backup();
+				
+		std::cin >> answer;		
+		while(answer != 1 && answer != 2){
+			std::cout << "Invalid choice. Please re-enter the choice." << std::endl;
+			printDeleteMenu();
+			std::cout << "  :";
+			std::cin >> answer;
+		}
+		
+		if(answer == 1){
+			std::cout << "Which task do you want to delete?" << std::endl;
+			std::cout << "  :";
+			std::cin >> taskName;
+			if(taskBank->deleteTask(taskName)){
+	        	        std::cout << "\n===============================" << std::endl;
+	               	 	std::cout << "  Deleting " << taskName <<  std::endl;
+		                std::cout << "===============================" << std::endl;
+				std::cout << taskName << " has been deleted!\n" << std::endl;
+				taskBankCommand->Backup();
+			}else{
+				std::cout << "A task/task list with that name was not found.\n"  << std::endl;
+			}
 		}else{
-			std::cout << "A task/task list with that name was not found.\n"  << std::endl;
+		std::cout << "Which tasklist did you want to delete a subtask from?" << std::endl;			
+			std::cout << "  :";
+			std::cin >> taskName;
+			std::vector<TaskObject*> found = taskBank->search(taskName);
+			if(found.size() == 0){
+				std::cout << "No such tasklist with that name exists" << std::endl;
+			}else{
+				std::cout << "Which subtask did you want to delete?" << std::endl;
+				found[0]->viewTask(); 
+				std::cout << std::endl;
+        	                std::cout << "  :";
+	                        std::cin >> taskName;
+				if(static_cast<TaskList*>(found[0])->deleteTask(taskName)){
+					std::cout << taskName <<" has been successfully deleted" << std::endl;
+					taskBank->display();
+				}else{
+					std::cout << "No subtask with that name exists" << std::endl;
+				}
+
+			}
 		}
 		break;
 	}
@@ -205,12 +239,15 @@ void TaskManager::run(){
 		if(choice == '1'){
 			taskBank->sortByDueDate();
 			taskBankCommand->Backup();		
+			std::cout << "The schedule has been sorted by due date" << std::endl;
 		}else if(choice == '2'){
+			std::cout << "The schedule has been sorted by priority" << std::endl;
 			taskBank->sortByPriority();
 			taskBankCommand->Backup();
 		}else{
 			std::cout << "not a valid input!" << std::endl;
 		}
+		taskBank->display();
 		break;
 	}
 

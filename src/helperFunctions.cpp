@@ -37,6 +37,15 @@ void printEditMenu(){
 	std::cout << "(6): Change a task due date" << std::endl;
 }
 
+void printDeleteMenu(){
+
+	std::cout << "Invalid choice. Please re-enter the choice." << std::endl;
+	std::cout << "*******************************" << std::endl;
+        std::cout << "********** Delete Menu **********" << std::endl;
+        std::cout << "*******************************" << std::endl;
+	std::cout << "(1): Delete a whole Task/Tasklist" << std::endl;
+  	std::cout << "(2): Delete a subtask from a Tasklist" << std::endl;
+}
 void printSortMenu(){
 	std::cout << "*******************************" << std::endl;
         std::cout << "********** Sort Menu **********" << std::endl;
