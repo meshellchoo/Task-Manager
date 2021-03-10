@@ -51,10 +51,79 @@ void TaskManager::run(){
                 std::cout << "===============================\n" << std::endl;
 		break;
 	
-	case '3':
+	case '3':{
+		int answer;	
+		std::string taskName;
 		std::cout << "Which task do you want to edit?" << std::endl;
-	//	taskBank.editTask();
+		std::getline(std::cin >> std::ws, taskName);
+		std::vector<TaskObject*> found = taskBank->search(taskName);
+                if(found.size() == 0){
+                	std::cout << "No such task with that name exists" << std::endl;
+                }
+
+		else{
+		//handle this however you think should it shud be handled
+
+			printEditMenu();
+			std::cout << "  :";
+			std::cin >> answer;
+			while(answer < 1 || answer > 6){
+				std::cout << "Invalid choice. Please re-enter the menu choice." << std::endl;
+				printEditMenu();
+				std::cout << "  :";
+			}
+
+			if(answer == 1){ // move task into task list
+		
+			}
+
+			else if(answer == 2){
+				std::string taskName;
+				std::cout << "Please enter a new name for the task: " << std::endl;
+				std::getline(std::cin >> std::ws, taskName); // get user input
+				found[0]->setTaskName(taskName);
+
+			}
+		
+			else if(answer == 3){
+				std::string taskDescription;
+				std::cout << "Please enter a new description for the task: " << std::endl;
+                        	std::getline(std::cin >> std::ws, taskDescription);
+                        	found[0]->setTaskDescription(taskDescription);
+			}
+
+                	else if(answer == 4){
+				std::string taskType;
+                        	std::cout << "Please enter a new type for the task: " << std::endl;
+                        	std::getline(std::cin >> std::ws, taskType);
+                        	found[0]->setTaskType(taskType);
+                	}
+
+			else if(answer == 5){
+				std::string priority;
+				std::cout << "Please enter a new priority (1-10): " << std::endl;
+				std::cin >> priority;
+                        	while (priority.length() > 2 ||(priority.length() > 0 && !std::isdigit(priority[0])) || (priority.length() == 2 && !std::isdigit(priority[1])) || stoi(priority) < 1 || stoi(priority) > 10){
+					std::cout << "Invalid priority. Please re-enter the priority." << std::endl;
+					std::cout << "New priority of task (1-10): " ;
+		        		std::cin >> priority;
+				}
+                        	found[0]->setTaskPriority(stoi(priority));
+			}
+
+			else if(answer == 6){
+				Date dueDate;
+				std::cout << "Please enter a new due date (mm/dd/yyyy): " << std::endl;
+                        	std::cin >> dueDate;
+                        	found[0]->setTaskDueDate(dueDate);
+		}	
+		
+		
+			taskBankCommand->Backup();
+		}
 		break;
+
+	}
 	
 	case '4':{
 		std::string taskName;

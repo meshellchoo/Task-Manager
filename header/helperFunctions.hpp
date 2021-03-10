@@ -5,6 +5,7 @@
 #include "Task.hpp"
 
 void printMenu();
+void printEditMenu();
 void printSortMenu();
 Task* getTaskFromUser();
 TaskList* getTaskListFromUser();
