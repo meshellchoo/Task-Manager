@@ -106,7 +106,7 @@ void TaskManager::run(){
 
 	case '7':{
 		std::string taskName;
-		std::cout << "Please enter a task to search for:" << std::endl;
+		std::cout << "Please enter a task name to search for\n  :";
 	        std::getline(std::cin >> std::ws, taskName);		
 //		std::cin >> taskName;
 		std::vector<TaskObject*> found = taskBank->search(taskName);
@@ -115,11 +115,17 @@ void TaskManager::run(){
 		}
 		
 		else{
-			std::cout << "Here are the tasks/task lists that matched your search: " << std::endl;
+                	std::cout << "\n===============================" << std::endl;
+			std::cout << "Tasks/Task lists that matched your search: " << std::endl;
+                	std::cout << "===============================\n" << std::endl;
 			for (int i = 0; i < found.size(); i++){
                         	found[i]->viewTask();
                 	}
+                std::cout << "===============================" << std::endl;
+                std::cout << "===============================\n" << std::endl;
+
 		}
+		break;
 	}
 
 	case '8':{

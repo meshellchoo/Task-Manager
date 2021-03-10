@@ -48,21 +48,21 @@ void TaskList::addTask(Task task){
 
 void TaskList::viewTask(){
 	std::cout << "- " << taskName << std::endl;
+        std::cout << "    Description: " <<  description << std::endl;
 	std::cout << "    Type of Task: " << taskType <<  std::endl;
-	std::cout << "    Description: " <<  description << std::endl;
+        std::cout << "    Priority: " << priority << std::endl;
 	std::cout << "    Due Date: " << dueDate << std::endl;
 	for(int i = 0 ; i < tasks.size(); i++){
 		std::cout << "      " ;
 		std::cout << "- " << tasks[i].getTaskName() << std::endl;
 		std::cout << "        " ;
+                std::cout << "  Description: " << tasks[i].getTaskDescription() << std::endl;
+                std::cout << "        " ;
       	 	std::cout << "  Type of Task: " << tasks[i].getTaskType() << std::endl;
 		std::cout << "        " ;
-	        std::cout << "  description: " << tasks[i].getTaskDescription() << std::endl;
-		std::cout << "        " ;
+                std::cout << "  Priority: " << tasks[i].getTaskPriority() << std::endl;
+                std::cout << "        " ;
 	        std::cout << "  Due Date: " << tasks[i].getTaskDueDate() << std::endl;
-		std::cout << "        " ;
-	        std::cout << "  Priority: " << tasks[i].getTaskPriority() << std::endl;
-
 	}
 
 }

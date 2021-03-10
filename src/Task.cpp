@@ -17,8 +17,9 @@ Task::Task(std::string taskName, std::string description, std::string taskType, 
 }
 void Task::viewTask(){
 	std::cout << "- " << taskName << std::endl;
+        std::cout << "    Description: " <<  description << std::endl;
 	std::cout << "    Type of Task: " << taskType << std::endl;
-	std::cout << "    Description: " <<  description << std::endl;
+        std::cout << "    Priority: " << priority << std::endl;
 	std::cout << "    Due Date: " << dueDate << std::endl;
 }
 

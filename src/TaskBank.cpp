@@ -164,7 +164,7 @@ void TaskBank::restore(TaskBankMemento* taskBankMemento)
 std::vector<TaskObject*> TaskBank::search(std::string userSearch){
 	std::vector<TaskObject*> foundTasks;
 	for (int i = 0; i < schedule.size(); i++){
-		if(schedule[i]->(getTaskName().find(userSearch) != std::string::npos){		
+		if(schedule[i]->getTaskName().find(userSearch) != std::string::npos){		
 			foundTasks.push_back(schedule[i]);
 		}
 	}
