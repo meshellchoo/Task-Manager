@@ -499,7 +499,7 @@ TEST(TaskBankTest, undoTaskEdit)
 	Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
 	taskBank->addTask(t1);
 	taskBankCommand->Backup();
-	taskBank->setTaskDescription("Updated Task 1");
+	t1->setTaskDescription("Updated Task 1");
 	taskBankCommand->Undo();
 	EXPECT_EQ( , taskBank->viewTask());
 	delete taskBank;
@@ -511,11 +511,37 @@ TEST(TaskBankTest, undoTaskEdit)
 TEST(TaskBankTest, undoTaskListEdit)
 {
 	TaskBank* taskBank();
+	TaskBankCommand* taskBankCommand = new TaskBankCommand;
+	TaskList* taskList = new TaskList();
+	Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+	tasklist->addTask(t1);	
+	taskBank->addTask(taskList);
+	taskBankCommand->Backup();
+	t1->setTaskDescription("Updated Task 1");
+	taskBankCommand->Undo();
+	EXPECT_EQ( , taskBank->viewTask();
+	delete taskBank;
+	delete t1;
+	
 	
 }
 
 TEST(TaskBankTest, undoTaskListAddTask)
 {
+	TaskBank* taskBank();
+	TaskBankCommand* taskBankCommand = new TaskBankCommand;
+	TaskList* taskList = new TaskList();
+        Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+	taskBank->addTask(taskList);
+	taskList->addTask(t1);
+	taskBankCommand->Backup();
+	taskBankCommand->Undo();
+	EXPECT_EQ( , taskBank->display());
+	delete taskBank;
+	delete taskList;
+	delete t1;
+	
+
 		
 }
 
