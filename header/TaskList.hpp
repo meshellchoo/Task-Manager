@@ -18,7 +18,7 @@ class TaskList: public TaskObject{
         std::string taskType, int priority,Date dueDate);
 	
         void clear();
-        bool deleteTask(Task task);
+        bool deleteTask(std::string task);
 	bool deleteTask(Task* task);
         void addTask(Task* task);
         void sortByPriority();
