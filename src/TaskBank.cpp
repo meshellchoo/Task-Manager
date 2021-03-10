@@ -160,11 +160,17 @@ void TaskBank::restore(TaskBankMemento* taskBankMemento)
      
     delete taskBankMemento;
 }
-
+std::string toUpperString(std::string temp){
+	for(int i = 0; i < temp.size(); i++) {
+    		temp[i] = toupper(temp[i]);
+	}
+	return temp;
+}
 std::vector<TaskObject*> TaskBank::search(std::string userSearch){
 	std::vector<TaskObject*> foundTasks;
 	for (int i = 0; i < schedule.size(); i++){
-		if(schedule[i]->getTaskName().find(userSearch) != std::string::npos){		
+		std::string temp = toUpperString(schedule[i]->getTaskName());
+		if(temp.find(toUpperString(userSearch)) != std::string::npos){		
 			foundTasks.push_back(schedule[i]);
 		}
 	}
