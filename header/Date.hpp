@@ -1,6 +1,9 @@
 #include <string>
 #include <iostream>
 
+//assuming a valid date format is in the format of 
+//mm/dd/yyyy
+
 class Date
 {
 	public:
@@ -31,10 +34,55 @@ class Date
                 this->day = "00";;
                 this->year = "0000";
 	  }
-	
+		
+	bool validDateFormat(std::string date){
+	        if(date.length() != 10)
+        	        return false;
+	        std::string month = date.substr(0,2);
+	        std::string day = date.substr(3,2);
+        	std::string year = date.substr(6);
+
+	        for(int i = 0; i < month.length();i++){
+               	 	if(!isdigit(month[i]))
+                	        return false;
+       		 }
+	        for(int i = 0; i < day.length();i++){
+               		 if(!isdigit(day[i]))
+                	        return false;
+       		 }
+	        for(int i = 0; i < year.length();i++){
+               	 	if(!isdigit(year[i]))
+        	                return false;
+	        }
+	        if(stoi(month) > 12 || stoi(month) < 1) //checking month
+        	        return false;
+	        if(stoi(month) == 2 && stoi(day) > 28)   //checking days greater than 2/28
+                	return false;
+       	 	if((stoi(month) ==  1 || stoi(month) ==  3 || stoi(month) ==  5 || stoi(month) ==  7 ||
+                                        stoi(month) ==  8 || stoi(month) ==  10 || stoi(month) ==  12)
+                                        && stoi(day) > 31){   //checking for months with 31 days
+               	 	return false;
+       	 	}
+	        if((stoi(month) ==  4 || stoi(month) ==  6 || stoi(month) ==  9 || stoi(month) ==  11)
+                                        && stoi(day) > 30){   //checking for months with 30 days
+                	return false;
+        	}
+
+	        if(stoi(day) < 1)       // false if day < 1
+                	return false;
+        	if(stoi(year) < 0)     //false if year < 0
+        	        return false;
+        	return true;
+
+	}
 	friend std::istream& operator >>(std::istream &in, Date &d){
 		std::string date;
 		in >> date;
+		while(!d.validDateFormat(date)){
+			std::cout << "Invalid date format. Please re-enter the date (mm/dd/yyyy)." << std::endl;
+			in >> date;
+		}
+
 		d.month = date.substr(0,2);
                 d.day = date.substr(3,2);
                 d.year = date.substr(6);

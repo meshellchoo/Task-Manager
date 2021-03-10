@@ -3,12 +3,12 @@
 #include <iostream>
 #include <algorithm>    // std::sort
 
-#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskList.hpp"
-//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
+//#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskList.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
 //#include "/home/csmajs/htran164/cs100-task-manager/header/TaskList.hpp"
 
 
-TaskList::TaskList(std::string taskName, std::string description, std::string taskType, int priority,Date dueDate,std::vector<Task> subTasks) :TaskObject(){
+TaskList::TaskList(std::string taskName, std::string description, std::string taskType, int priority,Date dueDate,std::vector<Task*> subTasks) :TaskObject(){
 	this->taskName = taskName;
 	this->description = description;
 	this->taskType = taskType;
@@ -27,14 +27,21 @@ TaskList::TaskList(std::string taskName, std::string description, std::string ta
 }
 
 
-
+TaskList::~TaskList(){
+	this->clear();
+}
 void TaskList::clear(){
+    for(int i = 0 ; i < tasks.size();i ++){
+	delete tasks[i];
+	tasks[i] = nullptr;	
+    }
     tasks.clear();
 }
 
 bool  TaskList::deleteTask(Task task){
     for(int i = 0; i < tasks.size(); i++){
-            if(tasks[i].getTaskName()== task.getTaskName()){
+            if(tasks[i]->getTaskName()== task.getTaskName()){
+		delete tasks[i];
 		tasks.erase(tasks.begin() + i);
 	   	return true;
 	    }
@@ -42,38 +49,49 @@ bool  TaskList::deleteTask(Task task){
     return false;
 }
 
-void TaskList::addTask(Task task){
+bool  TaskList::deleteTask(Task* task){
+    for(int i = 0; i < tasks.size(); i++){
+            if(tasks[i] ==  task){
+                delete tasks[i];
+                tasks.erase(tasks.begin() + i);
+                return true;
+            }
+    }
+    return false;
+}
+
+void TaskList::addTask(Task* task){
     tasks.push_back(task);
 }
 
 void TaskList::viewTask(){
-	std::cout << "- " << taskName << std::endl;
-        std::cout << "    Description: " <<  description << std::endl;
-	std::cout << "    Type of Task: " << taskType <<  std::endl;
-        std::cout << "    Priority: " << priority << std::endl;
-	std::cout << "    Due Date: " << dueDate << std::endl;
-	for(int i = 0 ; i < tasks.size(); i++){
-		std::cout << "      " ;
-		std::cout << "- " << tasks[i].getTaskName() << std::endl;
-		std::cout << "        " ;
-                std::cout << "  Description: " << tasks[i].getTaskDescription() << std::endl;
-                std::cout << "        " ;
-      	 	std::cout << "  Type of Task: " << tasks[i].getTaskType() << std::endl;
-		std::cout << "        " ;
-                std::cout << "  Priority: " << tasks[i].getTaskPriority() << std::endl;
-                std::cout << "        " ;
-	        std::cout << "  Due Date: " << tasks[i].getTaskDueDate() << std::endl;
-	}
+    std::cout << "- " << taskName << std::endl;
+    std::cout << "    Description: " <<  description << std::endl;
+    std::cout << "    Type of Task: " << taskType <<  std::endl;
+    std::cout << "    Priority: " << priority << std::endl;
+    std::cout << "    Due Date: " << dueDate << std::endl;
+    for(int i = 0 ; i < tasks.size(); i++){
+        std::cout << "      " ;
+        std::cout << "- " << tasks[i]->getTaskName() << std::endl;
+        std::cout << "        " ;
+    std::cout << "  Description: " << tasks[i]->getTaskDescription() << std::endl;
+    std::cout << "        " ;
+    std::cout << "  Type of Task: " << tasks[i]->getTaskType() << std::endl;
+        std::cout << "        " ;
+    std::cout << "  Priority: " << tasks[i]->getTaskPriority() << std::endl;
+    std::cout << "        " ;
+    std::cout << "  Due Date: " << tasks[i]->getTaskDueDate() << std::endl;
+    }
 
 }
 
 
-bool priorityComparator(Task i, Task j);
+bool priorityComparator(Task* i, Task* j);
 
-bool dueDateComparator(Task i, Task j)
+bool dueDateComparator(Task* i, Task* j)
 {	
-	Date i_temp = i.getTaskDueDate();
-	Date j_temp = j.getTaskDueDate();
+	Date i_temp = i->getTaskDueDate();
+	Date j_temp = j->getTaskDueDate();
 
 	if (i_temp.year != j_temp.year)
 		return (i_temp.year < j_temp.year);
@@ -82,16 +100,16 @@ bool dueDateComparator(Task i, Task j)
 	else if (i_temp.day != j_temp.day)
 		return(i_temp.day < j_temp.day);
 	else
-		return i.getTaskPriority()  >= j.getTaskPriority();
+		return (i->getTaskPriority()  >= j->getTaskPriority());
 
 	return true;
 }
 
 
 
-bool priorityComparator(Task i, Task j){ 
-	if(i.getTaskPriority() != j.getTaskPriority())
-		return (i.getTaskPriority()  >= j.getTaskPriority());
+bool priorityComparator(Task* i, Task* j){ 
+	if(i->getTaskPriority() != j->getTaskPriority())
+		return (i->getTaskPriority()  >= j->getTaskPriority());
 	return dueDateComparator(i,j);
 		
 }
@@ -108,8 +126,13 @@ bool TaskList::isTaskList(){
 	return true;
 }
 
-std::vector<Task> TaskList::getSubTasks(){
-	return tasks;
+std::vector<Task*> TaskList::getSubTasks(){
+	std::vector<Task*> tempTasks;
+	for(int i = 0; i< tasks.size();i++){
+		Task* t = tasks[i];
+		tempTasks.push_back(new Task(t->getTaskName(),t->getTaskDescription(),t->getTaskType(),t->getTaskPriority(),t->getTaskDueDate()));
+	}
+	return tempTasks;
 }
 
 
