@@ -117,7 +117,7 @@ void TaskManager::run(){
 		else{
                 	std::cout << "\n===============================" << std::endl;
 			std::cout << "Tasks/Task lists that matched your search: " << std::endl;
-                	std::cout << "===============================\n" << std::endl;
+                	std::cout << "===============================" << std::endl;
 			for (int i = 0; i < found.size(); i++){
                         	found[i]->viewTask();
                 	}
