@@ -101,7 +101,6 @@ bool dueDateComparator(Task* i, Task* j)
 		return(i_temp.day < j_temp.day);
 	else
 		return (i->getTaskPriority()  >= j->getTaskPriority());
-
 	return true;
 }
 

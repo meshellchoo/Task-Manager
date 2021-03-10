@@ -205,12 +205,15 @@ void TaskManager::run(){
 		if(choice == '1'){
 			taskBank->sortByDueDate();
 			taskBankCommand->Backup();		
+			std::cout << "The schedule has been sorted by due date" << std::endl;
 		}else if(choice == '2'){
+			std::cout << "The schedule has been sorted by priority" << std::endl;
 			taskBank->sortByPriority();
 			taskBankCommand->Backup();
 		}else{
 			std::cout << "not a valid input!" << std::endl;
 		}
+		taskBank->display();
 		break;
 	}
 
