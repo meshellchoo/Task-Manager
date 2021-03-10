@@ -5,7 +5,6 @@
 #include "Date.hpp"
 
 
-
 class TaskObject {
 
     protected:

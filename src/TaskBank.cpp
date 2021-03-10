@@ -130,10 +130,19 @@ bool priorityComparator(TaskObject* i, TaskObject* j){
 
 void TaskBank::sortByPriority(){
 	std::sort(schedule.begin(), schedule.end(), priorityComparator);
+	for(int i = 0; i < schedule.size();i++){
+		if(schedule[i]->isTaskList())
+			static_cast<TaskList*>(schedule[i])->sortByPriority();
+	}
 }
 
 void TaskBank::sortByDueDate(){
 	std::sort(schedule.begin(), schedule.end(), dueDateComparator);
+	for(int i = 0; i < schedule.size();i++){
+                if(schedule[i]->isTaskList())
+                        static_cast<TaskList*>(schedule[i])->sortByDueDate();
+        }
+
 }
 
 TaskBankMemento* TaskBank::createTaskBankMemento()
@@ -160,15 +169,20 @@ void TaskBank::restore(TaskBankMemento* taskBankMemento)
      
     delete taskBankMemento;
 }
-
+std::string toUpperString(std::string temp){
+	for(int i = 0; i < temp.size(); i++) {
+    		temp[i] = toupper(temp[i]);
+	}
+	return temp;
+}
 std::vector<TaskObject*> TaskBank::search(std::string userSearch){
 	std::vector<TaskObject*> foundTasks;
 	for (int i = 0; i < schedule.size(); i++){
-		if(schedule[i]->getTaskName().find(userSearch) != std::string::npos){		
+		std::string temp = toUpperString(schedule[i]->getTaskName());
+		if(temp.find(toUpperString(userSearch)) != std::string::npos){		
 			foundTasks.push_back(schedule[i]);
 		}
 	}
 	return foundTasks;
 }
-
 #endif

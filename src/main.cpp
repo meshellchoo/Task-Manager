@@ -3,8 +3,8 @@
 #include "/home/csmajs/jooi001/cs100-task-manager/header/Task.hpp"
 #include "/home/csmajs/jooi001/cs100-task-manager/header/TaskManager.hpp"
 #include "/home/csmajs/jooi001/cs100-task-manager/header/helperFunctions.hpp"
-
 /*
+
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp" // change to your branch directory
 #include "/home/csmajs/mchu017/cs100-task-manager/header/Task.hpp"
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskManager.hpp"
@@ -30,9 +30,9 @@ int main(int argv, char** argc) {
 
 
 
-    	Task t5 = Task("CS100 Lab4", "___  Lab", "School" ,5,Date("03/10/2021"));
-    	Task t6 = Task("CS100 Lab3", "___  Lab", "School" ,2,Date("03/10/2021"));
-	Task t7 = Task("CS100 Lab2", "___s  Lab", "School" ,2,Date("03/11/2021"));
+    	Task* t5 = new Task("CS100 Lab4", "___  Lab", "School" ,5,Date("03/10/2021"));
+    	Task* t6 = new Task("CS100 Lab3", "___  Lab", "School" ,2,Date("03/10/2021"));
+	Task* t7 = new Task("CS100 Lab2", "___s  Lab", "School" ,2,Date("03/11/2021"));
 
 	TaskList* taskList = new TaskList("CS100 Labs","Labs for CS100", "School" ,2, Date( "02/27/2021" ));
     	taskList->addTask(t7);

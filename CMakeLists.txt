@@ -41,7 +41,7 @@ src/TaskManager.cpp
 )
 
 ADD_EXECUTABLE(TaskBankSearchTest
-/home/csmajs/jooi001/cs100-task-manager/tests/TaskBankSortTest.cpp
+/home/csmajs/jooi001/cs100-task-manager/tests/taskManagerTest.cpp
 #/home/csmajs/mchu017/cs100-task-manager/tests/taskManagerTest.cpp
 #/home/csmajs/mchu017/cs100-task-manager/tests/taskManagerTest.cpp
 #tests/taskManagerTest.cpp
