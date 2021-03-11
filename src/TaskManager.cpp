@@ -126,7 +126,7 @@ void TaskManager::run(){
 		printDeleteMenu();
 		std::cout << "   :";			
 		std::cin >> answer;		
-		while(!stringIsInt(answer) &&(stringIsInt(answer) && std::stoi(answer) != 1) && (stringIsInt(answer) && std::stoi(answer) != 2)){ //validate input 
+		while(!stringIsInt(answer) ||((stringIsInt(answer) && std::stoi(answer) != 1) && (stringIsInt(answer) && std::stoi(answer) != 2))){ //validate input 
 			std::cout << "Invalid choice. Please re-enter the choice." << std::endl;
 			printDeleteMenu();
 			std::cout << "  :";
@@ -229,9 +229,10 @@ void TaskManager::run(){
 		std::cout << "   :";
 		std::cin >> choice;
 		
-		while(!stringIsInt(choice) ||( (stringIsInt(choice) && stoi(choice) != 1) && (stringIsInt(choice) && stoi(choice) != 2))){
+		while(!stringIsInt(choice) ||((stringIsInt(choice) && stoi(choice) != 1) && (stringIsInt(choice) && stoi(choice) != 2))){	
 			std::cout << "Invalid choice. Please re-enter the menu choice (1 or 2)." << std::endl;
 			std::cout << "   :";
+			std::cin >> choice;
 		}
 		if(choice == "1"){
 			taskBank->sortByDueDate();
