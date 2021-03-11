@@ -3,8 +3,8 @@
 #include <iostream>
 #include <locale>
 #include <string>
-//#include "/home/csmajs/mchu017/cs100-task-manager/header/helperFunctions.hpp"
-#include "/home/csmajs/jooi001/cs100-task-manager/header/helperFunctions.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/helperFunctions.hpp"
+//#include "/home/csmajs/jooi001/cs100-task-manager/header/helperFunctions.hpp"
 
 void printMenu(){
 	std::cout << "*******************************" << std::endl;
@@ -34,7 +34,7 @@ void printEditMenu(){
 
 void printDeleteMenu(){
 
-	std::cout << "Invalid choice. Please re-enter the choice." << std::endl;
+	
 	std::cout << "*******************************" << std::endl;
         std::cout << "********* Delete Menu *********" << std::endl;
         std::cout << "*******************************" << std::endl;

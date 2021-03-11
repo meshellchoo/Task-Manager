@@ -1,8 +1,8 @@
 #ifndef __TASKMANAGER_CPP__
 #define __TASKMANAGER_CPP__
 
-//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskManager.hpp"
-#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskManager.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskManager.hpp"
+//#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskManager.hpp"
 //#include "/home/csmajs/htran164/cs100-task-manager/header/TaskManager.hpp"
 
 TaskManager::TaskManager(){
@@ -121,11 +121,12 @@ void TaskManager::run(){
 	}
 	
 	case '4':{
+	
 		std::string answer;
 		std::string taskName;
 		printDeleteMenu();
 		std::cout << "   :";			
-		std::cin >> answer;		
+		std::cin >> answer;
 		while(!stringIsInt(answer) ||((stringIsInt(answer) && std::stoi(answer) != 1) && (stringIsInt(answer) && std::stoi(answer) != 2))){ //validate input 
 			std::cout << "Invalid choice. Please re-enter the choice." << std::endl;
 			printDeleteMenu();
@@ -203,7 +204,7 @@ void TaskManager::run(){
 
 	case '7':{
 		std::string taskName;
-		std::cout << "Please enter a task name to search for.";
+		std::cout << "Please enter a task name to search for." << std::endl;
 		std::cout << "   :";
 	        std::getline(std::cin >> std::ws, taskName);		
 		std::vector<TaskObject*> found = taskBank->search(taskName);
