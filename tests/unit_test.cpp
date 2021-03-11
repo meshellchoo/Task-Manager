@@ -1,12 +1,22 @@
-k-manager/ifndef _UNIT_TEST_
+#ifndef _UNIT_TEST_
 #define _UNIT_TEST_
 
 #include "gtest/gtest.h"
 
-//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBank.hpp"
-//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBankCommand.hpp"
-#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskManager.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBank.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBankCommand.hpp"
+
+/*
+#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/Task.hpp"
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBankMemento.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskObject.hpp"
+*/
+
+
+
+//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskManager.hpp"
+//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBankMemento.hpp"
 
 /*
 #include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBank.hpp"
@@ -25,7 +35,7 @@ int main (int argc, char** argv){
         return RUN_ALL_TESTS();
 }
 
-
+/*
 TEST(TaskTest, setTaskName)
 {
         Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
@@ -535,7 +545,7 @@ TEST(TaskBankTest, undoTaskListDeleteTask)
 	TaskBank* taskBank = new TaskBank();
 	TaskList* taskList = new TaskList();
 	TaskBankCommand = new taskBankCommand(taskBank);
-	Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+	Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
 	taskList->addTask(t1);
 	taskBank->addTask(taskList);
 	taskBankCommand->Backup();
@@ -544,14 +554,14 @@ TEST(TaskBankTest, undoTaskListDeleteTask)
 		
 }
 
-
+*/
 
 TEST(TaskBankTest, undoTaskBankDelete)
 {
 	TaskBank* taskBank = new TaskBank();
-	Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
-        Task t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
-        Task t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
+	Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+        Task* t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
+        Task* t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
 	TaskBankCommand* taskBankCommand = new TaskBankCommand(taskBank);
 
 	taskBank->addTask(t1);
@@ -560,15 +570,15 @@ TEST(TaskBankTest, undoTaskBankDelete)
 	taskBankCommand->Backup();
 	taskBank->addTask(t3);
 	taskBankCommand->Backup();
-	tasBank->deleteTask(t1);
+	taskBank->deleteTask(t1);
 	taskBankCommand->Undo();
 	
 	taskBank->deleteTask(t2);
 	taskBankCommand->Undo();
-	EXPECT_EQ( , taskBank.viewTask());
-	delete taskBank1;
+	EXPECT_EQ();
+	delete taskBank;
 	delete t1;
 	delete t2;
 	delete t3;		
 }
-
+#endif
