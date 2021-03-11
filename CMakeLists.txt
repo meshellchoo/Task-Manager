@@ -4,8 +4,6 @@ SET(CMAKE_CXX_STANDARD 11)
 
 ADD_SUBDIRECTORY(googletest)
 
-
-
 ADD_EXECUTABLE(TaskListSortTest 
 #/home/csmajs/mchu017/cs100-task-manager/tests/TaskListSortTest.cpp 
 #/home/csmajs/mchu017/cs100-task-manager/tests/TaskListDeleteTaskTest.cpp
