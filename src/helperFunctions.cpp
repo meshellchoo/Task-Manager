@@ -3,8 +3,8 @@
 #include <iostream>
 #include <locale>
 #include <string>
-//#include "/home/csmajs/mchu017/cs100-task-manager/header/helperFunctions.hpp"
-#include "/home/csmajs/jooi001/cs100-task-manager/header/helperFunctions.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/helperFunctions.hpp"
+//#include "/home/csmajs/jooi001/cs100-task-manager/header/helperFunctions.hpp"
 
 void printMenu(){
 	std::cout << "*******************************" << std::endl;
@@ -19,10 +19,6 @@ void printMenu(){
 	std::cout << "(7): Search for a task" << std::endl;
 	std::cout << "(8): Sort list" << std::endl;
 	std::cout << "(x): Exit:" << std::endl;
-//  	std::cout << "(6): Sort schedule by due date" << std::endl;
-//	std::cout << "(7): Sort schedule by priority" << std::endl;
-//	std::cout << "(8): Sort schedule by type of task" << std::endl;
-	
 }
 
 void printEditMenu(){
@@ -40,7 +36,7 @@ void printDeleteMenu(){
 
 	std::cout << "Invalid choice. Please re-enter the choice." << std::endl;
 	std::cout << "*******************************" << std::endl;
-        std::cout << "********** Delete Menu **********" << std::endl;
+        std::cout << "********* Delete Menu *********" << std::endl;
         std::cout << "*******************************" << std::endl;
 	std::cout << "(1): Delete a whole Task/Tasklist" << std::endl;
   	std::cout << "(2): Delete a subtask from a Tasklist" << std::endl;
@@ -59,15 +55,15 @@ Task* getTaskFromUser(){
         std::cout << "Task Name: ";
 	std::getline(std::cin >> std::ws, taskName);
 
-       // std::cout << std::endl;
+       
         std::cout << "Description: ";
 	std::getline(std::cin >> std::ws, taskDescription);
         
-	//std::cout << std::endl;
+	
         std::cout << "Type of task: " ;
 	std::getline(std::cin >> std::ws, taskType);
 
-	// std::cout << std::endl;
+	
         std::cout << "Priority of Task (1-10): " ;
         std::cin >> priority;
 	while (priority.length() > 2 ||(priority.length() > 0 && !std::isdigit(priority[0])) || (priority.length() == 2 && !std::isdigit(priority[1])) || stoi(priority) < 1 || stoi(priority) > 10){
@@ -76,10 +72,10 @@ Task* getTaskFromUser(){
 	        std::cin >> priority;
 	}
 
-        //std::cout << std::endl;
+        
         std::cout << "Due Date (mm/dd/yyyy): " ;
         std::cin >> dueDate;
-       // std::cout << std::endl;
+       
 	return new Task(taskName,taskDescription,taskType,stoi(priority),dueDate);	
 	
 }
@@ -90,15 +86,15 @@ TaskList* getTaskListFromUser(TaskBank* taskBank){
         std::cout << "Task List Name: " ;
         std::getline(std::cin >> std::ws, taskName);
 
- //       std::cout << std::endl;
+ 
         std::cout << "Description: " ;
         std::getline(std::cin >> std::ws, taskDescription);
 
-   //     std::cout << std::endl;
+   
         std::cout << "Type of task: " ;
         std::getline(std::cin >> std::ws, taskType);
 
-     //   std::cout << std::endl;
+     
         std::cout << "Priority of Task (1-10): " ;
         std::cin >> priority;
 	while (priority.length() > 2 ||(priority.length() > 0 && !std::isdigit(priority[0])) || (priority.length() == 2 && !std::isdigit(priority[1])) || stoi(priority) < 1 || stoi(priority) > 10){
@@ -107,11 +103,9 @@ TaskList* getTaskListFromUser(TaskBank* taskBank){
 	        std::cin >> priority;
 	}
 
-       // std::cout << std::endl;
+       
         std::cout << "Due Date (mm/dd/yyyy): " ;
         std::cin >> dueDate;
-        //std::cout << std::endl;
-        //
         TaskList* tempTaskList =  new TaskList(taskName,taskDescription,taskType, stoi(priority), dueDate);
         char answer;
 	char initialAnswer;
@@ -123,7 +117,6 @@ TaskList* getTaskListFromUser(TaskBank* taskBank){
 		std::cin >> initialAnswer;
 	}
 	if(toupper(initialAnswer) == 'N'){
-	        //return new TaskList(taskName,taskDescription,taskType, stoi(priority), dueDate);
 		return tempTaskList;
 	}
 
@@ -147,7 +140,6 @@ TaskList* getTaskListFromUser(TaskBank* taskBank){
 			else{
 				std::cout << "Added " << found[0]->getTaskName() << " to the task list." << std::endl;
 				tempTaskList->addTask(static_cast<Task*>(found[0]));
-			//	taskBank->deleteTask(static_cast<Task*>(found[0]));
 
 			}
 		}		
@@ -159,28 +151,7 @@ TaskList* getTaskListFromUser(TaskBank* taskBank){
 		}
 	}
 
-	}while(toupper(initialAnswer) != 'N');		
-/*		do{
-			std::cout << "Would you like to add any more subtasks into your tasklist? (Y/N) " << std::endl;
-	        	std::cin >> answer;
-			while(toupper(answer) != 'Y' && toupper(answer) != 'N'){
-        	        	std::cout << "Invalid answer. Please re-enter your answer. (Y/N)" << std::endl;
-                		std::cin >> answer;
-	        	}
-
-
-
-		if(toupper(answer) == 'Y'){
-			std::cout << "Creating new task to add to task list" << std::endl;
-			tempTaskList->addTask(getTaskFromUser());
-		}
-		else{
-			return tempTaskList;
-		}
-		
-	}while(toupper(answer) != 'N');
-*/	
-//	}	
+	}while(toupper(initialAnswer) != 'N');
 	return tempTaskList;
 }
 /*
