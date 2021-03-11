@@ -24,8 +24,8 @@ src/TaskBank.cpp
 
 
 ADD_EXECUTABLE(TaskManagerTest
-/home/csmajs/jooi001/cs100-task-manager/tests/taskManagerTest.cpp
-#/home/csmajs/mchu017/cs100-task-manager/tests/taskManagerTest.cpp
+#/home/csmajs/jooi001/cs100-task-manager/tests/taskManagerTest.cpp
+/home/csmajs/mchu017/cs100-task-manager/tests/taskManagerTest.cpp
 #/home/csmajs/mchu017/cs100-task-manager/tests/taskManagerTest.cpp
 #tests/taskManagerTest.cpp
 #src/main.cpp
@@ -40,10 +40,12 @@ src/TaskBank.cpp
 src/TaskManager.cpp
 )
 
-ADD_EXECUTABLE(TaskBankSearchTest
-/home/csmajs/jooi001/cs100-task-manager/tests/taskManagerTest.cpp
-#/home/csmajs/mchu017/cs100-task-manager/tests/taskManagerTest.cpp
-#/home/csmajs/mchu017/cs100-task-manager/tests/taskManagerTest.cpp
+ADD_EXECUTABLE(unitTest
+#/home/csmajs/jooi001/cs100-task-manager/tests/unit_test.cpp
+#home/csmajs/mchu017/cs100-task-manager/tests/unit_test.cpp
+tests/unit_test.cpp
+
+#/home/csmajs/mchu017/cs100-task-manager/tests/unit_test.cpp
 #tests/taskManagerTest.cpp
 #src/main.cpp
 src/helperFunctions.cpp
@@ -61,12 +63,12 @@ src/TaskManager.cpp
 #TARGET_LINK_LIBRARIES(test gtest)
 TARGET_LINK_LIBRARIES(TaskListSortTest gtest)
 TARGET_LINK_LIBRARIES(TaskManagerTest gtest)
-TARGET_LINK_LIBRARIES(TaskBankSearchTest gtest)
+TARGET_LINK_LIBRARIES(unitTest gtest)
 
 
 TARGET_COMPILE_DEFINITIONS(TaskListSortTest PRIVATE gtest_disable_pthreads=ON)
 
 TARGET_COMPILE_DEFINITIONS(TaskManagerTest PRIVATE gtest_disable_pthreads=ON)
 
-TARGET_COMPILE_DEFINITIONS(TaskBankSearchTest PRIVATE gtest_disable_pthreads=ON)
+TARGET_COMPILE_DEFINITIONS(unitTest PRIVATE gtest_disable_pthreads=ON)
 

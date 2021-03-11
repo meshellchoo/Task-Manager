@@ -1,17 +1,24 @@
-#ifndef _UNIT_TEST_
+k-manager/ifndef _UNIT_TEST_
 #define _UNIT_TEST_
 
 #include "gtest/gtest.h"
-#include "Date.hpp"
-#include "Task.hpp"
-#include "TaskBank.hpp"
-#include "TaskBankCommand.hpp"
-#include "TaskList.hpp"
-#include "TaskManager.hpp"
-#include "TaskBankMemento.hpp"
-#include "TaskObject.hpp"
-#include "helperFunctions.hpp"
 
+#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBank.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBankCommand.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskManager.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBankMemento.hpp"
+/*
+#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBank.hpp"
+#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBankCommand.hpp"
+#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskManager.hpp"
+#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBankMemento.hpp"
+*/
+/*
+#include "/home/csmajs/cs100/htran164/cs100-task-manager/header/TaskBank.hpp"
+#include "/home/csmajs/cs100/htran164/cs100-task-manager/header/TaskBankCommand.hpp"
+#include "/home/csmajs/cs100/htran164/cs100-task-manager/header/TaskManager.hpp"
+#include "/home/csmajs/cs100/htran164/cs100-task-manager/header/TaskBankMemento.hpp"
+*/
 int main (int argc, char** argv){
         ::testing::InitGoogleTest(&argc, argv);
         return RUN_ALL_TESTS();
@@ -28,27 +35,27 @@ TEST(TaskTest, createTaskDefaultConstructor)
 TEST(TaskTest, setTaskName)
 {
         Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
-	t1.setTaskName("Updated Task 1");
+	t1->setTaskName("Updated Task 1");
         EXPECT_EQ("Updated Task 1", t1->getTaskName());
         delete t1;
 }
 
 TEST(TaskTest, setTaskDescription)
 {
-        Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
-        t1.setTaskName("Updated Task 1");
-	t1.setTaskDescription("This is my updated first task");
-        EXPECT_EQ("This is my updated first task", t1.getTaskDescription());
+        Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+        t1->setTaskName("Updated Task 1");
+	t1->setTaskDescription("This is my updated first task");
+        EXPECT_EQ("This is my updated first task", t1->getTaskDescription());
         delete t1;
 }
 
 TEST(TaskTest, setTaskType)
 {
-        Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
-        t1.setTaskName("Updated Task 1");
-        t1.setTaskDescription("This is my updated first task");
-        t1.setTaskType("New Test");
-        EXPECT_EQ("New Test", t1.getTaskType());
+        Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+        t1->setTaskName("Updated Task 1");
+        t1->setTaskDescription("This is my updated first task");
+        t1->setTaskType("New Test");
+        EXPECT_EQ("New Test", t1->getTaskType());
         delete t1;
 }
 
@@ -150,24 +157,6 @@ TEST(TaskTest, viewTask)
         EXPECT_EQ(    , t1->viewTask());
         delete t1;
 }
-
-TEST(TaskListTest, createTaskListDefaultConstructor)
-{
-	TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"))
-	EXPECT_EQ();
-	delete taskList1;
-
-}
-
-/*
-TEST(TaskListTest, createTaskListVectorConstructor)
-{
-        TaskList taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"), std::vector<Task> )
-        EXPECT_EQ()
-        delete taskList1;
-
-}
-*/
 
 TEST(TaskListTest, setTaskListName)
 {
@@ -310,6 +299,8 @@ TEST(TaskListTest, deleteTask)
         taskList1->addTask(t3);
 
 	taskList1.deleteTask(t2);
+
+		
 
         EXPECT_EQ( , taskList1.viewTask()); // should not print taske 2
         delete taskList1;
@@ -586,3 +577,4 @@ TEST(TaskBankTest, undoTaskBankDelete)
 	delete t2;
 	delete t3;		
 }
+

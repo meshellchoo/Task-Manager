@@ -36,14 +36,16 @@ class Date
 	  }
 		
 	bool validDateFormat(std::string date){
-	        if(date.length() != 10)
+	        if(date.length() != 10)  //valid date format has 10 chars
         	        return false;
 	        std::string month = date.substr(0,2);
 	        std::string day = date.substr(3,2);
         	std::string year = date.substr(6);
 
+		//these 3 for-loops check if the month, day, or year
+		//entered are digits
 	        for(int i = 0; i < month.length();i++){
-               	 	if(!isdigit(month[i]))
+               	 	if(!isdigit(month[i]))		
                 	        return false;
        		 }
 	        for(int i = 0; i < day.length();i++){
@@ -75,10 +77,11 @@ class Date
         	return true;
 
 	}
+
 	friend std::istream& operator >>(std::istream &in, Date &d){
 		std::string date;
 		in >> date;
-		while(!d.validDateFormat(date)){
+		while(!d.validDateFormat(date)){ //uses helperfunction to validate date
 			std::cout << "Invalid date format. Please re-enter the date (mm/dd/yyyy)." << std::endl;
 			in >> date;
 		}

@@ -1,8 +1,8 @@
 #ifndef __TASKMANAGER_CPP__
 #define __TASKMANAGER_CPP__
 
-//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskManager.hpp"
-#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskManager.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskManager.hpp"
+//#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskManager.hpp"
 //#include "/home/csmajs/htran164/cs100-task-manager/header/TaskManager.hpp"
 
 TaskManager::TaskManager(){
@@ -22,7 +22,7 @@ void TaskManager::run(){
 //	printMenu();
 	do{
 	printMenu();
-	std::cout << "  :";
+	std::cout << "   :";
 	std::cin >> answer;
 	switch(toupper(answer)){
 
@@ -45,7 +45,6 @@ void TaskManager::run(){
                 std::cout << "\n===============================" << std::endl;
                 std::cout << "Successfully added task list!\nDisplaying Current Schedule" << std::endl;
                 std::cout << "===============================" << std::endl;
-
                 taskBank->display();
                 std::cout << "===============================" << std::endl;
                 std::cout << "===============================\n" << std::endl;
@@ -55,50 +54,25 @@ void TaskManager::run(){
 		int answer;	
 		std::string taskName;
 		std::cout << "Which task do you want to edit?" << std::endl;
+		std::cout << "   :";
 		std::getline(std::cin >> std::ws, taskName);
 		std::vector<TaskObject*> found = taskBank->search(taskName);
                 if(found.size() == 0){
                 	std::cout << "No such task with that name exists." << std::endl;
-                }
-
-		else{
-		//handle this however you think should it shud be handle
-                std::cout << "\n===============================" << std::endl;
-                std::cout << "Editing " << found[0]->getTaskName() << std::endl;
-                std::cout << "===============================" << std::endl;
+		}else{
+	                std::cout << "\n===============================" << std::endl;
+        	        std::cout << "Editing " << found[0]->getTaskName() << std::endl;
+        	        std::cout << "===============================" << std::endl;
 
 			printEditMenu();
-			std::cout << "  :";
+			std::cout << "   :";
 			std::cin >> answer;
 			while(answer < 1 || answer > 5){
 				std::cout << "Invalid choice. Please re-enter the menu choice." << std::endl;
 				printEditMenu();
 				std::cout << "  :";
 			}
-/*
-			if(answer == 1){ // move task into task list
-				std::string taskListName;
-				std::cout << "Please enter a task list name you want to add it to: " << std::endl;
-				std::getline(std::cin >> std::ws, taskListName);					
-				std::vector<TaskObject*> found2 = taskBank->search(taskListName);
-				
 
-				if(found2.size() == 0){
-					std::cout << "A task list with that name was not found." << std::endl;
-				}
-		
-				else{
-                		std::cout << "\n===============================" << std::endl;
-				std::cout << "Task was added to " << found2[0]->getTaskName() << std::endl;
-                		std::cout << "===============================\n" << std::endl;
-				found2[0]->addTask(taskName);
-                		std::cout << "===============================" << std::endl;
-                		std::cout << "===============================\n" << std::endl;
-
-		}		}		
-		
-			}
-*/
 			if(answer == 1){
 				std::string taskName;
 				std::cout << "Please enter a new name for the task: " << std::endl;
@@ -150,19 +124,19 @@ void TaskManager::run(){
 		int answer;
 		std::string taskName;
 		printDeleteMenu();
-		std::cout << "  :";
+		std::cout << "   :";
 				
 		std::cin >> answer;		
-		while(answer != 1 && answer != 2){
+		while(answer != 1 && answer != 2){ //validate input 
 			std::cout << "Invalid choice. Please re-enter the choice." << std::endl;
 			printDeleteMenu();
 			std::cout << "  :";
 			std::cin >> answer;
 		}
 		
-		if(answer == 1){
+		if(answer == 1){// 1 means user wants to delete a whole task/tasklist
 			std::cout << "Which task do you want to delete?" << std::endl;
-			std::cout << "  :";
+			std::cout << "   :";
 			std::cin >> taskName;
 			if(taskBank->deleteTask(taskName)){
 	        	        std::cout << "\n===============================" << std::endl;
@@ -173,24 +147,24 @@ void TaskManager::run(){
 			}else{
 				std::cout << "A task/task list with that name was not found.\n"  << std::endl;
 			}
-		}else{
-		std::cout << "Which tasklist did you want to delete a subtask from?" << std::endl;			
-			std::cout << "  :";
+		}else{ //else input is 2 which means user wants to delete a subtask from tasklist
+			std::cout << "Which tasklist did you want to delete a subtask from?" << std::endl;			
+			std::cout << "   :";
 			std::cin >> taskName;
 			std::vector<TaskObject*> found = taskBank->search(taskName);
-			if(found.size() == 0){
+			if(found.size() == 0){ // if no such tasklist is found, we exit back to main menu
 				std::cout << "No such tasklist with that name exists" << std::endl;
 			}else{
 				std::cout << "Which subtask did you want to delete?" << std::endl;
 				found[0]->viewTask(); 
 				std::cout << std::endl;
-        	                std::cout << "  :";
+        	                std::cout << "   :";
 	                        std::cin >> taskName;
 				if(static_cast<TaskList*>(found[0])->deleteTask(taskName)){
 					std::cout << taskName <<" has been successfully deleted" << std::endl;
 					taskBank->display();
 				}else{
-					std::cout << "No subtask with that name exists" << std::endl;
+					std::cout << "No subtask with that name exists" << std::endl; // if no such task is found, we exit back to main menu
 				}
 
 			}
@@ -222,7 +196,7 @@ void TaskManager::run(){
 			taskBankCommand->Undo();	
 		}
 		undoTimes++;
-
+		taskBank->display();
 		std::cout << "===============================" << std::endl;
                 std::cout << "===============================\n" << std::endl;
 
@@ -231,22 +205,20 @@ void TaskManager::run(){
 	case '7':{
 		std::string taskName;
 		std::cout << "Please enter a task name to search for\n  :";
+		std::cout << "   :";
 	        std::getline(std::cin >> std::ws, taskName);		
-//		std::cin >> taskName;
 		std::vector<TaskObject*> found = taskBank->search(taskName);
 		if(found.size() == 0){
 			std::cout << "A task/task list with that name was not found." << std::endl;
-		}
-		
-		else{
+		}else{
                 	std::cout << "\n===============================" << std::endl;
 			std::cout << "Tasks/Task lists that matched your search: " << std::endl;
                 	std::cout << "===============================\n" << std::endl;
 			for (int i = 0; i < found.size(); i++){
                         	found[i]->viewTask();
                 	}
-                std::cout << "===============================" << std::endl;
-                std::cout << "===============================\n" << std::endl;
+                	std::cout << "===============================" << std::endl;
+	                std::cout << "===============================\n" << std::endl;
 
 		}
 		break;
@@ -255,20 +227,32 @@ void TaskManager::run(){
 	case '8':{
 		char choice;
 		printSortMenu();
-		std::cout << "  :";
+		std::cout << "   :";
 		std::cin >> choice;
+		
+		while(choice != '1' && choice != '2'){
+			std::cout << "Invalid choice. Please re-enter the menu choice (1 or 2)." << std::endl;
+			std::cout << "   :";
+		}
 		if(choice == '1'){
 			taskBank->sortByDueDate();
 			taskBankCommand->Backup();		
+			std::cout << "\n===============================" << std::endl;
+        	        std::cout << "  Displaying Current Schedule" << std::endl;
+	                std::cout << "===============================" << std::endl;
 			std::cout << "The schedule has been sorted by due date" << std::endl;
 		}else if(choice == '2'){
 			std::cout << "The schedule has been sorted by priority" << std::endl;
+			std::cout << "\n===============================" << std::endl;
+        	        std::cout << "  Displaying Current Schedule" << std::endl;
+	                std::cout << "===============================" << std::endl;
 			taskBank->sortByPriority();
 			taskBankCommand->Backup();
-		}else{
-			std::cout << "Invalid choice. Please re-enter the menu choice (1 or 2)." << std::endl;
 		}
+		
 		taskBank->display();
+		std::cout << "===============================" << std::endl;
+                std::cout << "===============================\n" << std::endl;
 		break;
 	}
 

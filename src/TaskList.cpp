@@ -3,8 +3,8 @@
 #include <iostream>
 #include <algorithm>    // std::sort
 
-#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskList.hpp"
-//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
+//#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskList.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
 //#include "/home/csmajs/htran164/cs100-task-manager/header/TaskList.hpp"
 
 
@@ -74,13 +74,13 @@ void TaskList::viewTask(){
         std::cout << "      " ;
         std::cout << "- " << tasks[i]->getTaskName() << std::endl;
         std::cout << "        " ;
-    std::cout << "  Description: " << tasks[i]->getTaskDescription() << std::endl;
-    std::cout << "        " ;
-    std::cout << "  Type of Task: " << tasks[i]->getTaskType() << std::endl;
+   	std::cout << "  Description: " << tasks[i]->getTaskDescription() << std::endl;
+	std::cout << "        " ;
+        std::cout << "  Type of Task: " << tasks[i]->getTaskType() << std::endl;
         std::cout << "        " ;
-    std::cout << "  Priority: " << tasks[i]->getTaskPriority() << std::endl;
-    std::cout << "        " ;
-    std::cout << "  Due Date: " << tasks[i]->getTaskDueDate() << std::endl;
+        std::cout << "  Priority: " << tasks[i]->getTaskPriority() << std::endl;
+        std::cout << "        " ;
+        std::cout << "  Due Date: " << tasks[i]->getTaskDueDate() << std::endl;
     }
 
 }
