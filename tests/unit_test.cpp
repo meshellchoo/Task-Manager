@@ -3,10 +3,11 @@ k-manager/ifndef _UNIT_TEST_
 
 #include "gtest/gtest.h"
 
-#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBank.hpp"
-#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBankCommand.hpp"
+//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBank.hpp"
+//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBankCommand.hpp"
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskManager.hpp"
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBankMemento.hpp"
+
 /*
 #include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBank.hpp"
 #include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBankCommand.hpp"
@@ -24,13 +25,6 @@ int main (int argc, char** argv){
         return RUN_ALL_TESTS();
 }
 
-
-TEST(TaskTest, createTaskDefaultConstructor)
-{
-	Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
-	EXPECT_EQ("", t1->view());
-	delete t1;
-}
 
 TEST(TaskTest, setTaskName)
 {
@@ -555,7 +549,7 @@ TEST(TaskBankTest, undoTaskListDeleteTask)
 TEST(TaskBankTest, undoTaskBankDelete)
 {
 	TaskBank* taskBank = new TaskBank();
-	 Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+	Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
         Task t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
         Task t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
 	TaskBankCommand* taskBankCommand = new TaskBankCommand(taskBank);

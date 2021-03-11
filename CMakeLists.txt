@@ -41,14 +41,10 @@ src/TaskManager.cpp
 )
 
 ADD_EXECUTABLE(unitTest
-#/home/csmajs/jooi001/cs100-task-manager/tests/unit_test.cpp
-#home/csmajs/mchu017/cs100-task-manager/tests/unit_test.cpp
 tests/unit_test.cpp
-
-#/home/csmajs/mchu017/cs100-task-manager/tests/unit_test.cpp
-#tests/taskManagerTest.cpp
 #src/main.cpp
-src/helperFunctions.cpp
+
+#src/helperFunctions.cpp
 #src/TaskManager.cpp
 src/TaskList.cpp
 src/Task.cpp
