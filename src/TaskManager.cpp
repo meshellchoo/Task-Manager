@@ -137,7 +137,7 @@ void TaskManager::run(){
 		if(std::stoi(answer) == 1){// 1 means user wants to delete a whole task/tasklist
 			std::cout << "Which task do you want to delete?" << std::endl;
 			std::cout << "   :";
-			std::cin >> taskName;
+			std::getline(std::cin >> std::ws, taskName);
 			if(taskBank->deleteTask(taskName)){
 	        	        std::cout << "\n===============================" << std::endl;
 	               	 	std::cout << "  Deleting " << taskName <<  std::endl;
@@ -150,7 +150,7 @@ void TaskManager::run(){
 		}else{ //else input is 2 which means user wants to delete a subtask from tasklist
 			std::cout << "Which tasklist did you want to delete a subtask from?" << std::endl;			
 			std::cout << "   :";
-			std::cin >> taskName;
+			std::getline(std::cin >> std::ws, taskName);
 			std::vector<TaskObject*> found = taskBank->search(taskName);
 			if(found.size() == 0){ // if no such tasklist is found, we exit back to main menu
 				std::cout << "No such tasklist with that name exists" << std::endl;
@@ -159,7 +159,7 @@ void TaskManager::run(){
 				found[0]->viewTask(); 
 				std::cout << std::endl;
         	                std::cout << "   :";
-	                        std::cin >> taskName;
+	                        std::getline(std::cin >> std::ws, taskName);
 				if(static_cast<TaskList*>(found[0])->deleteTask(taskName)){
 					std::cout << "\"" <<  taskName <<"\" has been successfully deleted" << std::endl;
 					taskBank->display();
@@ -207,6 +207,7 @@ void TaskManager::run(){
 		std::cout << "Please enter a task name to search for." << std::endl;
 		std::cout << "   :";
 	        std::getline(std::cin >> std::ws, taskName);		
+		std::cout << "comparing taskName:  " <<taskName << std::endl;
 		std::vector<TaskObject*> found = taskBank->search(taskName);
 		if(found.size() == 0){
 			std::cout << "A task/task list with that name was not found." << std::endl;
