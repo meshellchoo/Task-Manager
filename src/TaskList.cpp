@@ -85,7 +85,26 @@ void TaskList::viewTask(){
 
 }
 
+void TaskList::viewTask(std::ostream& out)const{
+    out << "- " << taskName << std::endl;
+    out << "    Description: " <<  description << std::endl;
+    out << "    Type of Task: " << taskType <<  std::endl;
+    out << "    Priority: " << priority << std::endl;
+    out << "    Due Date: " << dueDate << std::endl;
+    for(int i = 0 ; i < tasks.size(); i++){
+        out << "      " ;
+        out << "- " << tasks[i]->getTaskName() << std::endl;
+        out << "        " ;
+        out << "  Description: " << tasks[i]->getTaskDescription() << std::endl;
+        out << "        " ;
+        out << "  Type of Task: " << tasks[i]->getTaskType() << std::endl;
+        out << "        " ;
+        out << "  Priority: " << tasks[i]->getTaskPriority() << std::endl;
+        out << "        " ;
+        out << "  Due Date: " << tasks[i]->getTaskDueDate() << std::endl;
+    }
 
+}
 bool priorityComparator(Task* i, Task* j);
 
 bool dueDateComparator(Task* i, Task* j)

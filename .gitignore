@@ -35,7 +35,7 @@ rshell
 test
 TaskBankSearchTest
 TaskManagerTest
-TaskListSortTest
+unitTest
 # CMake Temp Files
 CMakeCache.txt
 CMakeFiles

@@ -19,6 +19,7 @@ class TaskBank{
 				
 		void clear();
 		void display();
+		void display(std::ostream& out) const;
 		void addTask(TaskObject* task);
 		bool deleteTask(TaskObject* task);
 		bool deleteTask(std::string taskName);

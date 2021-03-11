@@ -10,9 +10,8 @@ class Task: public TaskObject{
 	Task(std::string taskName, std::string description, std::string taskType,
 		 int priority, Date dueDate);
 	void viewTask();
-
+	void viewTask(std::ostream& out)const;
 	void setTaskState(TaskObject* newTask);
-
         bool isTaskList();
 };
 
