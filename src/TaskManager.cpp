@@ -51,7 +51,7 @@ void TaskManager::run(){
 		break;
 	
 	case '3':{
-		int answer;	
+		std::string answer;	
 		std::string taskName;
 		std::cout << "Which task do you want to edit?" << std::endl;
 		std::cout << "   :";
@@ -67,34 +67,35 @@ void TaskManager::run(){
 			printEditMenu();
 			std::cout << "   :";
 			std::cin >> answer;
-			while(answer < 1 || answer > 5){
+			while(!stringIsInt(answer) || ((stringIsInt(answer) && std::stoi(answer) < 1) || (stringIsInt(answer) && std::stoi(answer) > 5))){
 				std::cout << "Invalid choice. Please re-enter the menu choice." << std::endl;
 				printEditMenu();
 				std::cout << "  :";
+				std::cin >> answer;
 			}
 
-			if(answer == 1){
+			if(answer == "1"){
 				std::string taskName;
 				std::cout << "Please enter a new name for the task: " << std::endl;
 				std::getline(std::cin >> std::ws, taskName); // get user input
 				found[0]->setTaskName(taskName);
 			}
 		
-			else if(answer == 2){
+			else if(answer == "2"){
 				std::string taskDescription;
 				std::cout << "Please enter a new description for the task: " << std::endl;
                         	std::getline(std::cin >> std::ws, taskDescription);
                         	found[0]->setTaskDescription(taskDescription);
 			}
 
-                	else if(answer == 3){
+                	else if(answer == "3"){
 				std::string taskType;
                         	std::cout << "Please enter a new type for the task: " << std::endl;
                         	std::getline(std::cin >> std::ws, taskType);
                         	found[0]->setTaskType(taskType);
                 	}
 
-			else if(answer == 4){
+			else if(answer == "4"){
 				std::string priority;
 				std::cout << "Please enter a new priority (1-10): " << std::endl;
 				std::cin >> priority;
@@ -106,7 +107,7 @@ void TaskManager::run(){
                         	found[0]->setTaskPriority(stoi(priority));
 			}
 
-			else if(answer == 5){
+			else if(answer == "5"){
 				Date dueDate;
 				std::cout << "Please enter a new due date (mm/dd/yyyy): " << std::endl;
                         	std::cin >> dueDate;
@@ -121,7 +122,6 @@ void TaskManager::run(){
 	}
 	
 	case '4':{
-	
 		std::string answer;
 		std::string taskName;
 		printDeleteMenu();

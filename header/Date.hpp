@@ -83,6 +83,7 @@ class Date
 		in >> date;
 		while(!d.validDateFormat(date)){ //uses helperfunction to validate date
 			std::cout << "Invalid date format. Please re-enter the date (mm/dd/yyyy)." << std::endl;
+			std::cout << "   :";
 			in >> date;
 		}
 

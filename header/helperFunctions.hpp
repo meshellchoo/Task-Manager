@@ -11,6 +11,7 @@ void printDeleteMenu();
 bool stringIsInt(std::string checkThis);
 Task* getTaskFromUser();
 TaskList* getTaskListFromUser(TaskBank* taskBank);
+bool stringIsInt(std::string checkThis);
 //bool validDateFormat();
 
 #endif

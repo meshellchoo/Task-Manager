@@ -17,8 +17,8 @@ void printMenu(){
 	std::cout << "(5): Display Current Schedule" << std::endl;
 	std::cout << "(6): Undo last action" << std::endl;
 	std::cout << "(7): Search for a task" << std::endl;
-	std::cout << "(8): Sort list" << std::endl;
-	std::cout << "(x): Exit:" << std::endl;
+	std::cout << "(8): Sort schedule" << std::endl;
+	std::cout << "(x): Exit" << std::endl;
 }
 
 void printEditMenu(){
@@ -33,8 +33,6 @@ void printEditMenu(){
 }
 
 void printDeleteMenu(){
-
-	
 	std::cout << "*******************************" << std::endl;
         std::cout << "********* Delete Menu *********" << std::endl;
         std::cout << "*******************************" << std::endl;
@@ -47,6 +45,14 @@ void printSortMenu(){
         std::cout << "*******************************" << std::endl;	
 	std::cout << "(1): Sort by due date" << std::endl;
         std::cout << "(2): Sort by priority" << std::endl;
+}
+bool stringIsInt(std::string checkThis){
+	for(int i = 0 ; i<checkThis.length(); i++){
+		if(!isdigit(checkThis[i]))
+			return false;
+	}
+
+	return true;
 }
 
 bool stringIsInt(std::string checkThis){
@@ -167,4 +173,5 @@ TaskList* getTaskListFromUser(TaskBank* taskBank){
 	}while(toupper(initialAnswer) != 'N');
 	return tempTaskList;
 }
+
 #endif

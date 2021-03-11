@@ -3,25 +3,12 @@
 
 #include "gtest/gtest.h"
 
-
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBank.hpp"
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBankCommand.hpp" 
 
 //#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBank.hpp"
 //#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBankCommand.hpp"
 
-/*
-#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBank.hpp"
-#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBankCommand.hpp"
-#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskManager.hpp"
-#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBankMemento.hpp"
-*/
-/*
-#include "/home/csmajs/cs100/htran164/cs100-task-manager/header/TaskBank.hpp"
-#include "/home/csmajs/cs100/htran164/cs100-task-manager/header/TaskBankCommand.hpp"
-#include "/home/csmajs/cs100/htran164/cs100-task-manager/header/TaskManager.hpp"
-#include "/home/csmajs/cs100/htran164/cs100-task-manager/header/TaskBankMemento.hpp"
-*/
 int main (int argc, char** argv){
         ::testing::InitGoogleTest(&argc, argv);
         return RUN_ALL_TESTS();
