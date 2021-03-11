@@ -10,6 +10,7 @@ void printSortMenu();
 void printDeleteMenu();
 Task* getTaskFromUser();
 TaskList* getTaskListFromUser(TaskBank* taskBank);
+bool stringIsInt(std::string checkThis);
 //bool validDateFormat();
 
 #endif

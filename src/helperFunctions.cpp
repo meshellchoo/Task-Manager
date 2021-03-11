@@ -3,8 +3,8 @@
 #include <iostream>
 #include <locale>
 #include <string>
-//#include "/home/csmajs/mchu017/cs100-task-manager/header/helperFunctions.hpp"
-#include "/home/csmajs/jooi001/cs100-task-manager/header/helperFunctions.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/helperFunctions.hpp"
+//#include "/home/csmajs/jooi001/cs100-task-manager/header/helperFunctions.hpp"
 
 void printMenu(){
 	std::cout << "*******************************" << std::endl;
@@ -17,8 +17,8 @@ void printMenu(){
 	std::cout << "(5): Display Current Schedule" << std::endl;
 	std::cout << "(6): Undo last action" << std::endl;
 	std::cout << "(7): Search for a task" << std::endl;
-	std::cout << "(8): Sort list" << std::endl;
-	std::cout << "(x): Exit:" << std::endl;
+	std::cout << "(8): Sort schedule" << std::endl;
+	std::cout << "(x): Exit" << std::endl;
 }
 
 void printEditMenu(){
@@ -33,8 +33,6 @@ void printEditMenu(){
 }
 
 void printDeleteMenu(){
-
-	std::cout << "Invalid choice. Please re-enter the choice." << std::endl;
 	std::cout << "*******************************" << std::endl;
         std::cout << "********* Delete Menu *********" << std::endl;
         std::cout << "*******************************" << std::endl;
@@ -47,6 +45,14 @@ void printSortMenu(){
         std::cout << "*******************************" << std::endl;	
 	std::cout << "(1): Sort by due date" << std::endl;
         std::cout << "(2): Sort by priority" << std::endl;
+}
+bool stringIsInt(std::string checkThis){
+	for(int i = 0 ; i<checkThis.length(); i++){
+		if(!isdigit(checkThis[i]))
+			return false;
+	}
+
+	return true;
 }
 
 Task* getTaskFromUser(){
@@ -154,47 +160,6 @@ TaskList* getTaskListFromUser(TaskBank* taskBank){
 	}while(toupper(initialAnswer) != 'N');
 	return tempTaskList;
 }
-/*
-bool validDateFormat(std::string date){
-        if(date.length() != 10)
-                return false;
-        std::string month = date.substr(0,2);
-        std::string day = date.substr(3,2);
-        std::string year = date.substr(6);
 
-        for(int i = 0; i < month.length();i++){
-                if(!isdigit(month[i]))
-                        return false;
-        }
-        for(int i = 0; i < day.length();i++){
-                if(!isdigit(day[i]))
-                        return false;
-        }
-        for(int i = 0; i < year.length();i++){
-                if(!isdigit(year[i]))
-                        return false;
-        }
-        if(stoi(month) > 12 && stoi(month) < 1) //checking month
-                return false;
-        if(stoi(month) == 2 && stoi(day) > 28)   //checking days greater than 2/28
-                return false;
-        if((stoi(month) ==  1 || stoi(month) ==  3 || stoi(month) ==  5 || stoi(month) ==  7 ||
-                                        stoi(month) ==  8 || stoi(month) ==  10 || stoi(month) ==  12)
-                                        && stoi(day) > 31){   //checking for months with 31 days
-                return false;
-        }
-        if((stoi(month) ==  4 || stoi(month) ==  6 || stoi(month) ==  9 || stoi(month) ==  11)
-                                        && stoi(day) > 30){   //checking for months with 30 days
-                return false;
-        }
-
-        if(stoi(day) < 1)       // false if day < 1
-                return false;
-        if(stoi(year) < 0)     //false if year < 0
-                return false;
-        return true;
-
-}
-*/
 
 #endif

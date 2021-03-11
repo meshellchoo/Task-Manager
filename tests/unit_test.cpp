@@ -3,10 +3,10 @@
 
 #include "gtest/gtest.h"
 
-/*
+
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBank.hpp"
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBankCommand.hpp"
-*/
+
 
 /*
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
@@ -14,10 +14,10 @@
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBankMemento.hpp"
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskObject.hpp"
 */
-
+/*
 #include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBank.hpp"
 #include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBankCommand.hpp"
-
+*/
 /*
 #include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBank.hpp"
 #include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBankCommand.hpp"
