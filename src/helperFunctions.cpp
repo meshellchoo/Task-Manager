@@ -47,15 +47,6 @@ void printSortMenu(){
         std::cout << "(2): Sort by priority" << std::endl;
 }
 bool stringIsInt(std::string checkThis){
-	for(int i = 0 ; i<checkThis.length(); i++){
-		if(!isdigit(checkThis[i]))
-			return false;
-	}
-
-	return true;
-}
-
-bool stringIsInt(std::string checkThis){
 	for(int i = 0; i < checkThis.length();i++){
          	if(!isdigit(checkThis[i]))		
                 	return false;
