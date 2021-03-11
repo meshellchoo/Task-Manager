@@ -26,7 +26,7 @@
 
 #### Screenshots of the Input/Output of Our Application
 #### Main Menu:
-![](ss1.png)
+![](ss1.PNG)
 #### Creating a New Task (Error Handling Shown):
 ![](ss2.png)
 #### Creating a New Task List (Error Handling Shown):
