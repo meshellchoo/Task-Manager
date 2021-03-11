@@ -23,3 +23,40 @@
 
   - The OMT Diagram depicts a Composite Design Pattern and the Memento Design Pattern. The Composite Pattern is implemented in the Task and TaskList classes as both classes redefine functions the TaskObject class has and are treated under the same level in the class hierachy. The TaskObject class uses protected member variables for taskName, description, taskType, priority, and dueDate so that the derived classes can use these member variables. Moreover, the TaskObject class has public functions for the setters and getters so the user can edit their tasks and task lists, and it has a bool function, "isTaskList()" so that the TaskBank knows if a task or task list is being inserted. Furthermore, we have created a class for Date so that the dueDate can be entered in DD/MM/YYYY format, and we have created a function "validDateFormat(std::string date)" to check if the user inputted date is valid. The TaskList Class has an additional private member variable, "std::vector<Task*> Tasks", and additional functions, "addTask(Task* task)", "deleteTask(Task* task)", "deleteTask(std::string task)", "sortByPriority()", "sortByDueDate()", "std::vector<Task*> getSubTasks()", and "clear()", which allows TaskList to represent a large task with subtasks.
   - The Memento Pattern is implemented using originator, memento, and command classes for the TaskBank. Going more in depth, the TaskBankMemento Class initializes a TaskBank object to make a copy of a previous state of a task bank. The TaskBankCommand class allows us to backup the previous states (TaskBankMementos) and revert back to that previous state. Ultimately, the TaskBankMemento class has a private member variable, "std::vector<TaskObject*> taskBank", which is takes in a vector of TaskObjects*. Any edits to a task, task list, or task bank such as deletion, insertion, or sorting can all be undone due to the implementation of the Memento Pattern. The relationship of the TaskBank taking in TaskObjects* a prime example of the Composite Pattern and Memento Pattern working together. Aside from the previously mentioned classes, we have created a TaskManager class that is basically a simple user interface. The TaskManager class uses additional helper functions, which are defined in the helperFunctions class, to carry out the addition, deletion, and sorting of tasks, etc. The user should only be able to access the run() function and be able to add tasks, delete tasks, sort tasks etc.
+
+Screenshots of the Input/Output of Our Application
+Main Menu:
+![](CS100%20Final%20Project%20ss1.jpg)
+Creating a New Task (Error Handling Shown):
+![](CS100%20Final%20Project%20ss2.jpg)
+Creating a New Task List (Error Handling Shown):
+![](CS100%20Final%20Project%20ss3.jpg)
+Sorting by Due Date
+![](CS100%20Final%20Project%20ss4.jpg)
+Sorting by Priority
+![](CS100%20Final%20Project%20ss5.jpg)
+Editing an Existing Task
+![](CS100%20Final%20Project%20ss6.jpg)
+Deleting a Task
+![](CS100%20Final%20Project%20ss7.jpg)
+Undo-ing Last Action 
+![](CS100%20Final%20Project%20ss8.jpg)
+Searching For A Task
+![](CS100%20Final%20Project%20ss9.jpg)
+
+####  Installation Guide:
+1. Clone this GitHub Repository on your local terminal (preferably PuTTy). You can get the link by pressing the green button named "Code".
+2. Edit the #includes in the files in src/ and tests/ folders. 
+3. Run "cmake3 ." then "make" on the command line.
+4. Run "./TaskManager" on the command line.
+5. Enjoy your new task manager!
+
+#### How This Project Was Tested:
+1. Unit Tests were created to test the functions in the TaskObject class.
+2. Unit Tests were created to test the functions in the Task class.
+3. Unit Tests were created to test the functions in the TaskList class.
+4. Unit Tests were created to test the functions in the TaskBank class.
+5. Unit Tests were created to test possible invalid inputs for each class' functions.
+6. A main.cpp was created to test the interface and the helper functions.
+7. Valgrind was used to check for memory leaks in the unit test, main.cpp, and the program itself.
+
