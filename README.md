@@ -46,7 +46,7 @@
 
 ####  Installation Guide:
 1. Clone this GitHub Repository on your local terminal (preferably PuTTy). You can get the link by pressing the green button named "Code".
-2. Edit the #includes in the files in src/ and tests/ folders. 
+2. Edit the #includes in the files in src/ and tests/ folders to match your directory. 
 3. Run "cmake3 ." then "make" on the command line.
 4. Run "./TaskManager" on the command line.
 5. Enjoy your new task manager!
