@@ -55,6 +55,14 @@ bool stringIsInt(std::string checkThis){
 	return true;
 }
 
+bool stringIsInt(std::string checkThis){
+	for(int i = 0; i < checkThis.length();i++){
+         	if(!isdigit(checkThis[i]))		
+                	return false;
+       	}
+	return true;
+}
+
 Task* getTaskFromUser(){
 	std::string taskName,taskDescription,taskType,priority;
         Date dueDate;
@@ -74,8 +82,8 @@ Task* getTaskFromUser(){
         std::cin >> priority;
 	while (priority.length() > 2 ||(priority.length() > 0 && !std::isdigit(priority[0])) || (priority.length() == 2 && !std::isdigit(priority[1])) || stoi(priority) < 1 || stoi(priority) > 10){
 		std::cout << "Invalid priority. Please re-enter the priority." << std::endl;
-		std::cout << "Priority of Task (1-10): " ;
-	        std::cin >> priority;
+		std::cout << "Priority of Task (1-10): " ;	        
+		std::cin >> priority;
 	}
 
         
@@ -117,9 +125,11 @@ TaskList* getTaskListFromUser(TaskBank* taskBank){
 	char initialAnswer;
 	do{
 	std::cout << "Would you like to add any subtasks into your tasklist? (Y/N)" << std::endl;
+	std::cout << "   :";
 	std::cin >> initialAnswer;
 	while(toupper(initialAnswer) != 'Y' && toupper(initialAnswer) != 'N'){
-		std::cout << "Invalid answer. Please re-enter your answer. (Y/N)" << std::endl;
+		std::cout << "Invalid answer. Please re-enter your answer. (Y/N)" << std::endl;	
+		std::cout << "   :";
 		std::cin >> initialAnswer;
 	}
 	if(toupper(initialAnswer) == 'N'){
@@ -129,23 +139,26 @@ TaskList* getTaskListFromUser(TaskBank* taskBank){
 	else{
 		// use an existing task
 		std::cout << "Would you like to add an existing task? (Y/N)" << std::endl;
+		std::cout << "   :";
 		std::cin >> answer;
 	        while(toupper(answer) != 'Y' && toupper(answer) != 'N'){
         	        std::cout << "Invalid answer. Please re-enter your answer. (Y/N)" << std::endl;
+			std::cout << "   :";
                		std::cin >> answer;
         	}
 		if(toupper(answer) == 'Y'){
 			std::string taskName;
 			std::cout << "Please type the name of the task you want to add." << std::endl;
+			std::cout << "   :";
 			std::getline(std::cin >> std::ws, taskName);				
 			std::vector<TaskObject*> found = taskBank->search(taskName);
 			if(found.size() == 0){
 				std::cout << "A task/task list with that name was not found." << std::endl;
-			}
-
-			else{
-				std::cout << "Added " << found[0]->getTaskName() << " to the task list." << std::endl;
-				tempTaskList->addTask(static_cast<Task*>(found[0]));
+			}else{
+				std::cout << "Added \"" << found[0]->getTaskName() << "\" to the task list." << std::endl;
+				TaskObject* t = found[0];
+				tempTaskList->addTask(new Task(t->getTaskName(),t->getTaskDescription(),t->getTaskType(),t->getTaskPriority(),t->getTaskDueDate()));
+				taskBank->deleteTask(found[0]);
 
 			}
 		}		
@@ -160,6 +173,5 @@ TaskList* getTaskListFromUser(TaskBank* taskBank){
 	}while(toupper(initialAnswer) != 'N');
 	return tempTaskList;
 }
-
 
 #endif

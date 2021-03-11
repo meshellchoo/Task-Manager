@@ -11,7 +11,6 @@ class Task: public TaskObject{
 		 int priority, Date dueDate);
 	void viewTask();
 	void viewTask(std::ostream& out)const;
-	void setTaskState(TaskObject* newTask);
         bool isTaskList();
 };
 

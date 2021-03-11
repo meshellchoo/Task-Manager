@@ -65,7 +65,7 @@ void TaskList::addTask(Task* task){
 }
 
 void TaskList::viewTask(){
-    std::cout << "- " << taskName << std::endl;
+    std::cout << "-  {" << taskName << "}" << std::endl;
     std::cout << "    Description: " <<  description << std::endl;
     std::cout << "    Type of Task: " << taskType <<  std::endl;
     std::cout << "    Priority: " << priority << std::endl;
