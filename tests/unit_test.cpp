@@ -425,39 +425,52 @@ TEST(TaskBankTest, addTask_TaskBank)
 	delete t3;
 	
 }
-
+*/
 TEST(TaskBankTest, deleteTask_TaskBank)
 {
-	TaskBank* taskBank1 = new TaskBank();
-	Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
-        Task* t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
-        Task* t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
+	TaskBank* taskBank = new TaskBank();
+	TaskList* taskList = new TaskList("TaskList 1", "This is my first tasklist", "Test", 5, Date("03/08/2021"));
+        
+        taskBank->addTask(taskList);
+	taskBank->deleteTask(taskList);
 
-	taskBank1->addTask(t1);
-	taskBank1->addTask(t2);
-	taskBank1->addTask(t3);
-	taskBank1->deleteTask(t3);
-	
-	EXPECT_EQ( , taskList->viewTask()); //task 3 should not be printed
-	delete taskBank1;
-	delete t1;
-	delete t2;		
+	TaskBank* _taskBank = new TaskBank();
+
+        std::stringstream s;
+        std::stringstream output;
+
+        taskBank->display(s);
+        _taskBank->display(output);
+
+        EXPECT_EQ(s.str(), output.str());
+        
+	delete taskBank;
+        delete _taskBank;		
 }
+
 
 TEST(TaskBankTest, clearTaskBank)
 {
-	TaskBank taskBank1 = new TaskBank();
+	TaskBank* taskBank = new TaskBank();
 	Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
         Task* t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
         Task* t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
 	
-	taskBank1->addTask(t1);
-	taskBank1->addTask(t2);
-	taskBank1->addTask(t3);
+	taskBank->addTask(t1);
+	taskBank->addTask(t2);
+	taskBank->addTask(t3);
+	taskBank->clear();
 
-	taskBank1.clear();
-	EXPECT_EQ( , taskBank1->viewTask());
+	TaskBank* taskBank1 = new TaskBank();
+	
+	std::stringstream s;
+	std::stringstream output;
+
+	taskBank->display(s);
+	taskBank1->display(output);
+	EXPECT_EQ(s.str(),output.str());
 	delete taskBank1;
+	delete taskBank;
 }
 
 TEST(TaskBankTest, searchTaskBank)
@@ -466,61 +479,95 @@ TEST(TaskBankTest, searchTaskBank)
 	Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
         Task* t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
         Task* t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
-	TaskBankCommand* taskBankCommand = new TaskBankCommand(taskBank);
-		
-}
-
-TEST(TaskBankTest, display)
-{
-	TaskBank* taskBank = new TaskBank();
-	Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
-        Task* t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
-        Task* t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
-	TaskBankCommand* taskBankCommand = new TaskBankCommand(taskBank);
 	taskBank->addTask(t1);
 	taskBank->addTask(t2);
 	taskBank->addTask(t3);
-	EXPECT_EQ( , taskBank->display());
-	delete taskBank;
-	delete t1;
-	delete t2;
-	delete t3;
+
+	std::vector<TaskObject*>  found;
+	found = taskBank->search(t2->getTaskName());
+	EXPECT_EQ(t2, found[0]);
+	
+	
 }
 
-TEST(TaskBankTest, undoTaskEdit)
-{
-	TaskBank* taskBank = new TaskBank();
-	TaskBankCommand* taskBankCommand = new TaskBankCommand;
-	Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
-	taskBank->addTask(t1);
-	taskBankCommand->Backup();
-	t1->setTaskDescription("Updated Task 1");
-	taskBankCommand->Undo();
-	EXPECT_EQ( , taskBank->viewTask());
-	delete taskBank;
-	delete t1;
-		
-}
+
 
 
 TEST(TaskBankTest, undoTaskListEdit)
 {
-	TaskBank* taskBank();
-	TaskBankCommand* taskBankCommand = new TaskBankCommand;
-	TaskList* taskList = new TaskList();
-	Task t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
-	tasklist->addTask(t1);	
-	taskBank->addTask(taskList);
-	taskBankCommand->Backup();
-	t1->setTaskDescription("Updated Task 1");
-	taskBankCommand->Undo();
-	EXPECT_EQ( , taskBank->viewTask();
-	delete taskBank;
-	delete t1;
-	
-	
+
+	TaskBank* taskBank = new TaskBank();
+        TaskBankCommand* taskBankCommand = new TaskBankCommand(taskBank);
+        taskBankCommand->Backup();
+        TaskList* taskList = new TaskList("TaskList 1", "This is my first tasklist", "Test", 5, Date("03/08/2021"));
+        Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+
+        taskBank->addTask(t1);
+        taskBankCommand->Backup();
+        taskBank->addTask(taskList);
+        taskBankCommand->Backup();
+        taskList->setTaskName("TaskList!!!");
+        taskBankCommand->Backup();
+
+        taskBankCommand->Undo();
+        taskBankCommand->Undo();
+
+        TaskBank* _taskBank = new TaskBank();
+        TaskList* _taskList = new TaskList("TaskList!!!", "This is my first tasklist", "Test", 5, Date("03/08/2021"));
+        Task* _t1 = new Task("Task1", "This is my first task", "Test", 5, Date("03/08/2021"));
+        _taskBank->addTask(_t1);
+        _taskBank->addTask(_taskList);
+
+        std::stringstream s;
+        std::stringstream output;
+
+        taskBank->display(s);
+        _taskBank->display(output);
+        EXPECT_EQ(s.str(), output.str());
+
+ 	
+        delete _taskBank;
+        delete taskBankCommand;
 }
-*/
+
+
+TEST(TaskBankTest, undoTaskEdit)
+{
+	TaskBank* taskBank = new TaskBank();
+        TaskBankCommand* taskBankCommand = new TaskBankCommand(taskBank);
+        taskBankCommand->Backup();
+        TaskList* taskList = new TaskList("TaskList 1", "This is my first tasklist", "Test", 5, Date("03/08/2021"));
+        Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+
+        taskBank->addTask(t1);
+        taskBankCommand->Backup();
+        taskBank->addTask(taskList);
+        taskBankCommand->Backup();
+	t1->setTaskName("newname");
+	taskBankCommand->Backup();	
+
+        taskBankCommand->Undo();
+        taskBankCommand->Undo();
+
+        TaskBank* _taskBank = new TaskBank();
+	TaskList* _taskList = new TaskList("TaskList 1", "This is my first tasklist", "Test", 5, Date("03/08/2021"));
+        Task* _t1 = new Task("newname", "This is my first task", "Test", 5, Date("03/08/2021"));
+        _taskBank->addTask(_t1);
+	_taskBank->addTask(_taskList);
+
+        std::stringstream s;
+        std::stringstream output;
+
+        taskBank->display(s);
+        _taskBank->display(output);
+        EXPECT_EQ(s.str(), output.str());
+
+ 	
+        delete _taskBank;
+        delete taskBankCommand;        
+}
+
+
 
 
 
@@ -553,9 +600,10 @@ TEST(TaskBankTest, undoTaskListAddTaskList)
         std::stringstream output;
 
         taskBank->display(s);
-        taskBank->display(output);
+        _taskBank->display(output);
         EXPECT_EQ(s.str(), output.str());
-
+	
+	
         delete _taskBank;
         delete taskBankCommand;
 }
@@ -590,6 +638,7 @@ TEST(TaskBankTest, undoTaskListAddTask)
 	taskBank->display(output);
 	EXPECT_EQ(s.str(), output.str());
 	
+
 	delete _taskBank;		
 	delete taskBankCommand;
 }
@@ -618,6 +667,7 @@ TEST(TaskBankTest, undoTaskListDeleteTaskList)
         taskBank->display(output);
         EXPECT_EQ(s.str(), output.str());
         
+ 	
         delete _taskBank;		
 	delete taskBankCommand;
 	
@@ -647,6 +697,7 @@ TEST(TaskBankTest, undoTaskListDeleteTask)
         taskBank->display(output);
         EXPECT_EQ(s.str(), output.str());
 
+	
         delete _taskBank;
         delete taskBankCommand;
 
