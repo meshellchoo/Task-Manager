@@ -3,8 +3,10 @@
 
 #include "gtest/gtest.h"
 
+/*
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBank.hpp"
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBankCommand.hpp"
+*/
 
 /*
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
@@ -13,10 +15,8 @@
 #include "/home/csmajs/mchu017/cs100-task-manager/header/TaskObject.hpp"
 */
 
-
-
-//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskManager.hpp"
-//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskBankMemento.hpp"
+#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBank.hpp"
+#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBankCommand.hpp"
 
 /*
 #include "/home/csmajs/jooi001/cs100-task-manager/header/TaskBank.hpp"
@@ -35,8 +35,8 @@ int main (int argc, char** argv){
         return RUN_ALL_TESTS();
 }
 
-/*
-TEST(TaskTest, setTaskName)
+
+TEST(TaskTest, setNewTaskName)
 {
         Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
 	t1->setTaskName("Updated Task 1");
@@ -44,7 +44,8 @@ TEST(TaskTest, setTaskName)
         delete t1;
 }
 
-TEST(TaskTest, setTaskDescription)
+
+TEST(TaskTest, setNewTaskDescription)
 {
         Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
         t1->setTaskName("Updated Task 1");
@@ -53,7 +54,7 @@ TEST(TaskTest, setTaskDescription)
         delete t1;
 }
 
-TEST(TaskTest, setTaskType)
+TEST(TaskTest, setNewTaskType)
 {
         Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
         t1->setTaskName("Updated Task 1");
@@ -63,7 +64,7 @@ TEST(TaskTest, setTaskType)
         delete t1;
 }
 
-TEST(TaskTest, setTaskPriority)
+TEST(TaskTest, setNewTaskPriority)
 {
         Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
         t1->setTaskName("Updated Task 1");
@@ -72,10 +73,9 @@ TEST(TaskTest, setTaskPriority)
 	t1->setTaskPriority(3);
         EXPECT_EQ(3, t1->getTaskPriority());
         delete t1;
-
 }
 
-TEST(TaskTest, setTaskDueDate)
+TEST(TaskTest, setTaskDueDate)  // make test to handle due date
 {
         Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
         t1->setTaskName("Updated Task 1");
@@ -88,7 +88,7 @@ TEST(TaskTest, setTaskDueDate)
 
 }
 
-TEST(TaskTest, getTaskName)
+TEST(TaskTest, getUpdatedTaskName)
 {
         Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
         t1->setTaskName("Updated Task 1");
@@ -98,10 +98,9 @@ TEST(TaskTest, getTaskName)
         t1->setTaskDueDate(Date("03/11/2021"));
         EXPECT_EQ("Updated Task 1" , t1->getTaskName());
         delete t1;
-
 }
 
-TEST(TaskTest, getTaskDescription)
+TEST(TaskTest, getUpdatedTaskDescription)
 {
         Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
         t1->setTaskName("Updated Task 1");
@@ -113,7 +112,7 @@ TEST(TaskTest, getTaskDescription)
         delete t1;
 }
 
-TEST(TaskTest, getTaskType)
+TEST(TaskTest, getUpdatedTaskType)
 {
         Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
         t1->setTaskName("Updated Task 1");
@@ -123,10 +122,9 @@ TEST(TaskTest, getTaskType)
         t1->setTaskDueDate(Date("03/11/2021"));
         EXPECT_EQ("New Test" , t1->getTaskType());
         delete t1;
-
 }
 
-TEST(TaskTest, getTaskPriority)
+TEST(TaskTest, getUpdatedTaskPriority)
 {
         Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
         t1->setTaskName("Updated Task 1");
@@ -138,7 +136,7 @@ TEST(TaskTest, getTaskPriority)
         delete t1;
 }
 
-TEST(TaskTest, getTaskDueDate)
+TEST(TaskTest, getUpdatedTaskDueDate)
 {
         Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
         t1->setTaskName("Updated Task 1");
@@ -150,6 +148,7 @@ TEST(TaskTest, getTaskDueDate)
         delete t1;
 }
 
+/*
 TEST(TaskTest, viewTask)
 {
         Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
@@ -161,28 +160,28 @@ TEST(TaskTest, viewTask)
         EXPECT_EQ(    , t1->viewTask());
         delete t1;
 }
+*/
 
-TEST(TaskListTest, setTaskListName)
+TEST(TaskListTest, setNewTaskListName)
 {
-        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"))
+        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"));
         taskList1->setTaskName("Updated CS100 Labs");
 	EXPECT_EQ("Updated CS100 Labs" , taskList1->getTaskName());
         delete taskList1;
 }
 
-TEST(TaskListTest, setTaskListDescription)
+TEST(TaskListTest, setNewTaskListDescription)
 {
-        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"))
+        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"));
         taskList1->setTaskName("Updated CS100 Labs");
         taskList1->setTaskDescription("Updated Labs for CS100");
 	EXPECT_EQ("Updated Labs for CS100", taskList1->getTaskDescription());
         delete taskList1;
-
 }
 
-TEST(TaskListTest, setTaskListType)
+TEST(TaskListTest, setNewTaskListType)
 {
-        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"))
+        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"));
         taskList1->setTaskName("Updated CS100 Labs");
         taskList1->setTaskDescription("Updated Labs for CS100");
 	taskList1->setTaskType("New School");
@@ -190,9 +189,9 @@ TEST(TaskListTest, setTaskListType)
         delete taskList1;
 }
 
-TEST(TaskListTest, setTaskListPriority)
+TEST(TaskListTest, setNewTaskListPriority)
 {
-        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" , 2, Date("02/27/2021"))
+        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" , 2, Date("02/27/2021"));
         taskList1->setTaskName("Updated CS100 Labs");
         taskList1->setTaskDescription("Updated Labs for CS100");
         taskList1->setTaskType("New School");
@@ -201,10 +200,10 @@ TEST(TaskListTest, setTaskListPriority)
         delete taskList1;
 }
 
-TEST(TaskListTest, setTaskListDueDate)
+TEST(TaskListTest, setNewTaskListDueDate)
 {
-        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"))
-        taskList1->->setTaskName("Updated CS100 Labs");
+        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"));
+        taskList1->setTaskName("Updated CS100 Labs");
         taskList1->setTaskDescription("Updated Labs for CS100");
 	taskList1->setTaskType("New School");
 	taskList1->setTaskPriority(5);
@@ -213,10 +212,9 @@ TEST(TaskListTest, setTaskListDueDate)
         delete taskList1;
 }
 
-
-TEST(TaskListTest, getTaskListName)
+TEST(TaskListTest, getUpdatedTaskListName)
 {
-        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"))
+        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"));
         taskList1->setTaskName("Updated CS100 Labs");
         taskList1->setTaskDescription("Updated Labs for CS100");
 	taskList1->setTaskType("New School");
@@ -226,10 +224,9 @@ TEST(TaskListTest, getTaskListName)
         delete taskList1;
 }
 
-
-TEST(TaskListTest, getTaskListDescription)
+TEST(TaskListTest, getUpdatedTaskListDescription)
 {
-        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"))
+        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"));
         taskList1->setTaskName("Updated CS100 Labs");
         taskList1->setTaskDescription("Updated Labs for CS100");
         taskList1->setTaskType("New School");
@@ -239,9 +236,9 @@ TEST(TaskListTest, getTaskListDescription)
         delete taskList1;
 }
 
-TEST(TaskListTest, getTaskListType)
+TEST(TaskListTest, getUpdatedTaskListType)
 {
-        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"))
+        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"));
         taskList1->setTaskName("Updated CS100 Labs");
         taskList1->setTaskDescription("Updated Labs for CS100");
         taskList1->setTaskType("New School");
@@ -251,7 +248,7 @@ TEST(TaskListTest, getTaskListType)
         delete taskList1;
 }
 
-TEST(TaskListTest, getTaskListPriority)
+TEST(TaskListTest, getUpdatedTaskListPriority)
 {
         TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"));
         taskList1->setTaskName("Updated CS100 Labs");
@@ -263,9 +260,11 @@ TEST(TaskListTest, getTaskListPriority)
         delete taskList1;
 }
 
+
+/*
 TEST(TaskListTest, addTask)
 {
-        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"))
+        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"));
         taskList1->setTaskName("Updated CS100 Labs");
         taskList1->setTaskDescription("Updated Labs for CS100");
         taskList1->setTaskType("New School");
@@ -276,8 +275,6 @@ TEST(TaskListTest, addTask)
         Task* t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
 
 	taskList1->addTask(t1);
-	taskList1->addTask(t2);
-	taskList1->addTask(t3);
 
         EXPECT_EQ( , taskList1->viewTask());
         delete taskList1;
@@ -286,9 +283,9 @@ TEST(TaskListTest, addTask)
 	delete t3;
 }
 
-TEST(TaskListTest, deleteTask)
+TEST(TaskListTest, addMultipleTasks)
 {
-        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"))
+        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"));
         taskList1->setTaskName("Updated CS100 Labs");
         taskList1->setTaskDescription("Updated Labs for CS100");
         taskList1->setTaskType("New School");
@@ -302,17 +299,83 @@ TEST(TaskListTest, deleteTask)
         taskList1->addTask(t2);
         taskList1->addTask(t3);
 
-	taskList1.deleteTask(t2);
+        EXPECT_EQ( , taskList1->viewTask());
+        delete taskList1;
+        delete t1;
+        delete t2;
+        delete t3;
+}
+
+TEST(TaskListTest, addMultipleTasksThenDeleteOne)
+{
+        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"));
+        taskList1->setTaskName("Updated CS100 Labs");
+        taskList1->setTaskDescription("Updated Labs for CS100");
+        taskList1->setTaskType("New School");
+        taskList1->setTaskPriority(5);
+        taskList1->setTaskDueDate(Date("03/11/2021"));
+        Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+        Task* t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
+        Task* t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
+
+        taskList1->addTask(t1);
+        taskList1->addTask(t2);
+        taskList1->addTask(t3);
+	taskList1->deleteTask(t2);	
+
+
+        EXPECT_EQ( , taskList1->viewTask());
+        delete taskList1;
+        delete t1;
+        delete t2;
+        delete t3;
+}
+
+TEST(TaskListTest, deleteTask)
+{
+        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"));
+        taskList1->setTaskName("Updated CS100 Labs");
+        taskList1->setTaskDescription("Updated Labs for CS100");
+        taskList1->setTaskType("New School");
+        taskList1->setTaskPriority(5);
+        taskList1->setTaskDueDate(Date("03/11/2021"));
+        Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+        Task* t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
+        Task* t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
+
+        taskList1->addTask(t1);
+	taskList1->deleteTask(t1); //should deallocate task 1
 
 		
+        EXPECT_EQ( , taskList1.viewTask()); // should not print taske 2
+        delete taskList1;
+}
+
+TEST(TaskListTest, deleteAlreadyDeletedTask)
+{
+        TaskList* taskList1 = new TaskList("CS100 Labs","Labs for CS100", "School" ,2,Date("02/27/2021"));
+        taskList1->setTaskName("Updated CS100 Labs");
+        taskList1->setTaskDescription("Updated Labs for CS100");
+        taskList1->setTaskType("New School");
+        taskList1->setTaskPriority(5);
+        taskList1->setTaskDueDate(Date("03/11/2021"));
+        Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
+        Task* t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
+        Task* t3 = new Task("Task 3", "This is my third task", "Test", 4, Date("03/09/2021"));
+
+        taskList1->addTask(t1);
+        taskList1->addTask(t2);
+        taskList1->addTask(t3);
+
+        taskList1.deleteTask(t2);
 
         EXPECT_EQ( , taskList1.viewTask()); // should not print taske 2
         delete taskList1;
         delete t1;
-	// task 2 should be deleted
+        // task 2 should be deleted
         delete t3;
+   
 }
-
 
 TEST(TaskListTest, clearTaskList)
 {
@@ -522,12 +585,6 @@ TEST(TaskBankTest, undoTaskListEdit)
 }
 */
 
-
-
-
-
-
-
 TEST(TaskBankTest, undoTaskListAddTaskList)
 {
         TaskBank* taskBank = new TaskBank();
@@ -651,8 +708,6 @@ TEST(TaskBankTest, undoTaskListDeleteTask)
         delete taskBankCommand;
 
 }
-
-
 
 TEST(TaskBankTest, TaskBankDeleteTaskByString)
 {
