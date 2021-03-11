@@ -71,6 +71,19 @@ void TaskBank::display(){
 	}
 }
 
+void TaskBank::display(std::ostream& out) const{
+        if (schedule.size() == 0){
+                std::cout << "There are currently no tasks or task lists." << std::endl;
+        }
+
+        else{
+                for(int i = 0; i < schedule.size(); i++){
+                        schedule[i]->viewTask(out);
+                }
+
+        }
+}
+
 void TaskBank::addTask(TaskObject* task){
 	schedule.push_back(task);
 }
@@ -78,13 +91,12 @@ void TaskBank::addTask(TaskObject* task){
 bool TaskBank::deleteTask(TaskObject* task){
 	for(int i = 0; i < schedule.size(); i++){
 		if (schedule[i] == task){
+			delete schedule[i];
 			schedule.erase(schedule.begin()+i);
 			return true;
 		}
-		else {
-			return false;
-		}
 	}
+	return false;
 }
 
 bool TaskBank::deleteTask(std::string taskName){
@@ -94,10 +106,8 @@ bool TaskBank::deleteTask(std::string taskName){
                         schedule.erase(schedule.begin()+i);
                         return true;
                 }
-                else {
-                        return false;
-                }
         }
+	return false;
 }
 
 bool dueDateComparator(TaskObject* i, TaskObject* j)

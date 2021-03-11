@@ -23,6 +23,7 @@ class TaskList: public TaskObject{
         void sortByPriority();
 	void sortByDueDate();
         void viewTask();
+	void viewTask(std::ostream& out)const;
 	std::vector<Task*> getSubTasks();
 
         bool isTaskList();

@@ -23,7 +23,13 @@ void Task::viewTask(){
 	std::cout << "    Due Date: " << dueDate << std::endl;
 }
 
-
+void Task::viewTask(std::ostream& out)const{
+        out << "- " << taskName << std::endl;
+        out << "    Description: " <<  description << std::endl;
+        out << "    Type of Task: " << taskType << std::endl;
+        out << "    Priority: " << priority << std::endl;
+        out << "    Due Date: " << dueDate << std::endl;
+}
 bool Task::isTaskList(){
 	return false;
 }

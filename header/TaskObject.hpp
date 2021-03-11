@@ -20,6 +20,7 @@ class TaskObject {
         /* Constructors */
 
         virtual void viewTask() = 0;
+	virtual void viewTask(std::ostream& out)const = 0;
         void setTaskName(std::string taskName);
         void setTaskType(std::string taskType);
         void setTaskDescription(std::string description);
@@ -30,7 +31,7 @@ class TaskObject {
         std::string getTaskDescription()const;
         int getTaskPriority()const;
         Date getTaskDueDate()const;
-        
+	        
 	virtual bool isTaskList()=0;
 	virtual ~TaskObject(){};
 };
