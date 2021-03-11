@@ -97,4 +97,18 @@ class Date
 		out << d.month << "/" << d.day << "/" << d.year ;
 		return out;
 	}
+
+        friend bool operator== (const Date& lhs, const Date& rhs){
+		
+		if (lhs.day != rhs.day)
+			return false;
+		else if (lhs.month != rhs.month)
+			return false;
+		else if (lhs.year != rhs.year)
+			return false;
+		else{
+			return true;
+		}
+        }
+
 };
