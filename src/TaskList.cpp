@@ -3,8 +3,8 @@
 #include <iostream>
 #include <algorithm>    // std::sort
 
-#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskList.hpp"
-//#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
+//#include "/home/csmajs/jooi001/cs100-task-manager/header/TaskList.hpp"
+#include "/home/csmajs/mchu017/cs100-task-manager/header/TaskList.hpp"
 //#include "/home/csmajs/htran164/cs100-task-manager/header/TaskList.hpp"
 
 
@@ -65,7 +65,7 @@ void TaskList::addTask(Task* task){
 }
 
 void TaskList::viewTask(){
-    std::cout << "- " << taskName << std::endl;
+    std::cout << "-  {" << taskName << "}" << std::endl;
     std::cout << "    Description: " <<  description << std::endl;
     std::cout << "    Type of Task: " << taskType <<  std::endl;
     std::cout << "    Priority: " << priority << std::endl;
