@@ -26,23 +26,23 @@
 
 #### Screenshots of the Input/Output of Our Application
 #### Main Menu:
-![](CS100%20Final%20Project%20ss1.jpg)
+![](ss1.jpg)
 #### Creating a New Task (Error Handling Shown):
-![](CS100%20Final%20Project%20ss2.jpg)
+![](ss2.jpg)
 #### Creating a New Task List (Error Handling Shown):
-![](CS100%20Final%20Project%20ss3.jpg)
+![](ss3.jpg)
 #### Sorting by Due Date
-![](CS100%20Final%20Project%20ss4.jpg)
+![](ss4.jpg)
 #### Sorting by Priority
-![](CS100%20Final%20Project%20ss5.jpg)
+![](ss5.jpg)
 #### Editing an Existing Task
-![](CS100%20Final%20Project%20ss6.jpg)
+![](ss6.jpg)
 #### Deleting a Task
-![](CS100%20Final%20Project%20ss7.jpg)
+![](ss7.jpg)
 #### Undo-ing Last Action 
-![](CS100%20Final%20Project%20ss8.jpg)
+![](ss8.jpg)
 #### Searching For A Task
-![](CS100%20Final%20Project%20ss9.jpg)
+![](ss9.jpg)
 
 ####  Installation Guide:
 1. Clone this GitHub Repository on your local terminal (preferably PuTTy). You can get the link by pressing the green button named "Code".
