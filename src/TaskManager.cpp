@@ -17,7 +17,7 @@ TaskManager::~TaskManager(){
 
 void TaskManager::run(){
 	int undoTimes = 0;
-	char answer;
+ 	char answer;
 	bool quit = false;
 //	printMenu();
 	do{
@@ -30,7 +30,7 @@ void TaskManager::run(){
 		taskBank->addTask(getTaskFromUser());
 		taskBankCommand->Backup();
 		std::cout << "\n===============================" << std::endl;
-		std::cout << "  Successfully added task!\nDisplaying Current Schedule" << std::endl;
+		std::cout << "  Successfully added task!\n  Displaying Current Schedule" << std::endl;
 		std::cout << "===============================" << std::endl;
 		taskBank->display();
 
@@ -43,7 +43,7 @@ void TaskManager::run(){
 		taskBank->addTask(getTaskListFromUser(taskBank ));
 		taskBankCommand->Backup();
                 std::cout << "\n===============================" << std::endl;
-                std::cout << "Successfully added task list!\nDisplaying Current Schedule" << std::endl;
+                std::cout << "  Successfully added task list!\n  Displaying Current Schedule" << std::endl;
                 std::cout << "===============================" << std::endl;
                 taskBank->display();
                 std::cout << "===============================" << std::endl;
@@ -61,7 +61,7 @@ void TaskManager::run(){
                 	std::cout << "No such task with that name exists." << std::endl;
 		}else{
 	                std::cout << "\n===============================" << std::endl;
-        	        std::cout << "Editing " << found[0]->getTaskName() << std::endl;
+        	        std::cout << "Editing \"" << found[0]->getTaskName() << "\""<< std::endl;
         	        std::cout << "===============================" << std::endl;
 
 			printEditMenu();
@@ -121,20 +121,19 @@ void TaskManager::run(){
 	}
 	
 	case '4':{
-		int answer;
+		std::string answer;
 		std::string taskName;
 		printDeleteMenu();
-		std::cout << "   :";
-				
+		std::cout << "   :";			
 		std::cin >> answer;		
-		while(answer != 1 && answer != 2){ //validate input 
+		while(!stringIsInt(answer) &&(stringIsInt(answer) && std::stoi(answer) != 1) && (stringIsInt(answer) && std::stoi(answer) != 2)){ //validate input 
 			std::cout << "Invalid choice. Please re-enter the choice." << std::endl;
 			printDeleteMenu();
 			std::cout << "  :";
 			std::cin >> answer;
 		}
 		
-		if(answer == 1){// 1 means user wants to delete a whole task/tasklist
+		if(std::stoi(answer) == 1){// 1 means user wants to delete a whole task/tasklist
 			std::cout << "Which task do you want to delete?" << std::endl;
 			std::cout << "   :";
 			std::cin >> taskName;
@@ -142,7 +141,7 @@ void TaskManager::run(){
 	        	        std::cout << "\n===============================" << std::endl;
 	               	 	std::cout << "  Deleting " << taskName <<  std::endl;
 		                std::cout << "===============================" << std::endl;
-				std::cout << taskName << " has been deleted!\n" << std::endl;
+				std::cout << "\"" <<  taskName << "\" has been deleted!\n" << std::endl;
 				taskBankCommand->Backup();
 			}else{
 				std::cout << "A task/task list with that name was not found.\n"  << std::endl;
@@ -161,7 +160,7 @@ void TaskManager::run(){
         	                std::cout << "   :";
 	                        std::cin >> taskName;
 				if(static_cast<TaskList*>(found[0])->deleteTask(taskName)){
-					std::cout << taskName <<" has been successfully deleted" << std::endl;
+					std::cout << "\"" <<  taskName <<"\" has been successfully deleted" << std::endl;
 					taskBank->display();
 				}else{
 					std::cout << "No subtask with that name exists" << std::endl; // if no such task is found, we exit back to main menu
@@ -204,7 +203,7 @@ void TaskManager::run(){
 
 	case '7':{
 		std::string taskName;
-		std::cout << "Please enter a task name to search for\n  :";
+		std::cout << "Please enter a task name to search for.";
 		std::cout << "   :";
 	        std::getline(std::cin >> std::ws, taskName);		
 		std::vector<TaskObject*> found = taskBank->search(taskName);
@@ -225,27 +224,31 @@ void TaskManager::run(){
 	}
 
 	case '8':{
-		char choice;
+		std::string choice;
 		printSortMenu();
 		std::cout << "   :";
 		std::cin >> choice;
 		
-		while(choice != '1' && choice != '2'){
+		while(!stringIsInt(choice) ||( (stringIsInt(choice) && stoi(choice) != 1) && (stringIsInt(choice) && stoi(choice) != 2))){
 			std::cout << "Invalid choice. Please re-enter the menu choice (1 or 2)." << std::endl;
 			std::cout << "   :";
 		}
-		if(choice == '1'){
+		if(choice == "1"){
 			taskBank->sortByDueDate();
 			taskBankCommand->Backup();		
 			std::cout << "\n===============================" << std::endl;
         	        std::cout << "  Displaying Current Schedule" << std::endl;
 	                std::cout << "===============================" << std::endl;
+			std::cout << "===============================" << std::endl;
 			std::cout << "The schedule has been sorted by due date" << std::endl;
-		}else if(choice == '2'){
-			std::cout << "The schedule has been sorted by priority" << std::endl;
+			std::cout << "===============================" << std::endl;
+		}else{
 			std::cout << "\n===============================" << std::endl;
         	        std::cout << "  Displaying Current Schedule" << std::endl;
 	                std::cout << "===============================" << std::endl;
+			std::cout << "===============================" << std::endl;
+                        std::cout << "The schedule has been sorted by priority" << std::endl;
+                        std::cout << "\n===============================" << std::endl;
 			taskBank->sortByPriority();
 			taskBankCommand->Backup();
 		}

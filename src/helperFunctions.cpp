@@ -49,6 +49,14 @@ void printSortMenu(){
         std::cout << "(2): Sort by priority" << std::endl;
 }
 
+bool stringIsInt(std::string checkThis){
+	for(int i = 0; i < checkThis.length();i++){
+         	if(!isdigit(checkThis[i]))		
+                	return false;
+       	}
+	return true;
+}
+
 Task* getTaskFromUser(){
 	std::string taskName,taskDescription,taskType,priority;
         Date dueDate;
@@ -68,8 +76,8 @@ Task* getTaskFromUser(){
         std::cin >> priority;
 	while (priority.length() > 2 ||(priority.length() > 0 && !std::isdigit(priority[0])) || (priority.length() == 2 && !std::isdigit(priority[1])) || stoi(priority) < 1 || stoi(priority) > 10){
 		std::cout << "Invalid priority. Please re-enter the priority." << std::endl;
-		std::cout << "Priority of Task (1-10): " ;
-	        std::cin >> priority;
+		std::cout << "Priority of Task (1-10): " ;	        
+		std::cin >> priority;
 	}
 
         
@@ -111,9 +119,11 @@ TaskList* getTaskListFromUser(TaskBank* taskBank){
 	char initialAnswer;
 	do{
 	std::cout << "Would you like to add any subtasks into your tasklist? (Y/N)" << std::endl;
+	std::cout << "   :";
 	std::cin >> initialAnswer;
 	while(toupper(initialAnswer) != 'Y' && toupper(initialAnswer) != 'N'){
-		std::cout << "Invalid answer. Please re-enter your answer. (Y/N)" << std::endl;
+		std::cout << "Invalid answer. Please re-enter your answer. (Y/N)" << std::endl;	
+		std::cout << "   :";
 		std::cin >> initialAnswer;
 	}
 	if(toupper(initialAnswer) == 'N'){
@@ -123,23 +133,26 @@ TaskList* getTaskListFromUser(TaskBank* taskBank){
 	else{
 		// use an existing task
 		std::cout << "Would you like to add an existing task? (Y/N)" << std::endl;
+		std::cout << "   :";
 		std::cin >> answer;
 	        while(toupper(answer) != 'Y' && toupper(answer) != 'N'){
         	        std::cout << "Invalid answer. Please re-enter your answer. (Y/N)" << std::endl;
+			std::cout << "   :";
                		std::cin >> answer;
         	}
 		if(toupper(answer) == 'Y'){
 			std::string taskName;
 			std::cout << "Please type the name of the task you want to add." << std::endl;
+			std::cout << "   :";
 			std::getline(std::cin >> std::ws, taskName);				
 			std::vector<TaskObject*> found = taskBank->search(taskName);
 			if(found.size() == 0){
 				std::cout << "A task/task list with that name was not found." << std::endl;
-			}
-
-			else{
-				std::cout << "Added " << found[0]->getTaskName() << " to the task list." << std::endl;
-				tempTaskList->addTask(static_cast<Task*>(found[0]));
+			}else{
+				std::cout << "Added \"" << found[0]->getTaskName() << "\" to the task list." << std::endl;
+				TaskObject* t = found[0];
+				tempTaskList->addTask(new Task(t->getTaskName(),t->getTaskDescription(),t->getTaskType(),t->getTaskPriority(),t->getTaskDueDate()));
+				taskBank->deleteTask(found[0]);
 
 			}
 		}		
@@ -154,47 +167,4 @@ TaskList* getTaskListFromUser(TaskBank* taskBank){
 	}while(toupper(initialAnswer) != 'N');
 	return tempTaskList;
 }
-/*
-bool validDateFormat(std::string date){
-        if(date.length() != 10)
-                return false;
-        std::string month = date.substr(0,2);
-        std::string day = date.substr(3,2);
-        std::string year = date.substr(6);
-
-        for(int i = 0; i < month.length();i++){
-                if(!isdigit(month[i]))
-                        return false;
-        }
-        for(int i = 0; i < day.length();i++){
-                if(!isdigit(day[i]))
-                        return false;
-        }
-        for(int i = 0; i < year.length();i++){
-                if(!isdigit(year[i]))
-                        return false;
-        }
-        if(stoi(month) > 12 && stoi(month) < 1) //checking month
-                return false;
-        if(stoi(month) == 2 && stoi(day) > 28)   //checking days greater than 2/28
-                return false;
-        if((stoi(month) ==  1 || stoi(month) ==  3 || stoi(month) ==  5 || stoi(month) ==  7 ||
-                                        stoi(month) ==  8 || stoi(month) ==  10 || stoi(month) ==  12)
-                                        && stoi(day) > 31){   //checking for months with 31 days
-                return false;
-        }
-        if((stoi(month) ==  4 || stoi(month) ==  6 || stoi(month) ==  9 || stoi(month) ==  11)
-                                        && stoi(day) > 30){   //checking for months with 30 days
-                return false;
-        }
-
-        if(stoi(day) < 1)       // false if day < 1
-                return false;
-        if(stoi(year) < 0)     //false if year < 0
-                return false;
-        return true;
-
-}
-*/
-
 #endif
