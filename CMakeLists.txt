@@ -4,7 +4,7 @@ SET(CMAKE_CXX_STANDARD 11)
 
 ADD_SUBDIRECTORY(googletest)
 
-#ADD_EXECUTABLE(test src/main.cpp)
+
 
 ADD_EXECUTABLE(TaskListSortTest 
 #/home/csmajs/mchu017/cs100-task-manager/tests/TaskListSortTest.cpp 
@@ -23,7 +23,7 @@ src/TaskBank.cpp
 )
 
 
-ADD_EXECUTABLE(TaskManagerTest
+ADD_EXECUTABLE(TaskManager
 #/home/csmajs/jooi001/cs100-task-manager/tests/taskManagerTest.cpp
 /home/csmajs/mchu017/cs100-task-manager/tests/taskManagerTest.cpp
 #/home/csmajs/mchu017/cs100-task-manager/tests/taskManagerTest.cpp
@@ -52,19 +52,19 @@ src/TaskBankMemento.cpp
 src/TaskObject.cpp
 src/TaskBankCommand.cpp
 src/TaskBank.cpp
-src/TaskManager.cpp
+#src/TaskManager.cpp
 )
 
 
 #TARGET_LINK_LIBRARIES(test gtest)
 TARGET_LINK_LIBRARIES(TaskListSortTest gtest)
-TARGET_LINK_LIBRARIES(TaskManagerTest gtest)
+TARGET_LINK_LIBRARIES(TaskManager gtest)
 TARGET_LINK_LIBRARIES(unitTest gtest)
 
 
 TARGET_COMPILE_DEFINITIONS(TaskListSortTest PRIVATE gtest_disable_pthreads=ON)
 
-TARGET_COMPILE_DEFINITIONS(TaskManagerTest PRIVATE gtest_disable_pthreads=ON)
+TARGET_COMPILE_DEFINITIONS(TaskManager PRIVATE gtest_disable_pthreads=ON)
 
 TARGET_COMPILE_DEFINITIONS(unitTest PRIVATE gtest_disable_pthreads=ON)
 
