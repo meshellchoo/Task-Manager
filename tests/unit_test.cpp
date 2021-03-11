@@ -426,6 +426,7 @@ TEST(TaskBankTest, addTask_TaskBank)
 	
 }
 */
+
 TEST(TaskBankTest, deleteTask_TaskBank)
 {
 	TaskBank* taskBank = new TaskBank();
@@ -475,6 +476,7 @@ TEST(TaskBankTest, clearTaskBank)
 
 TEST(TaskBankTest, searchTaskBank)
 {
+/*
 	TaskBank* taskBank = new TaskBank(); 
 	Task* t1 = new Task("Task 1", "This is my first task", "Test", 5, Date("03/08/2021"));
         Task* t2 = new Task("Task 2", "This is my second task", "Test", 3, Date("03/11/2021"));
@@ -487,7 +489,11 @@ TEST(TaskBankTest, searchTaskBank)
 	found = taskBank->search(t2->getTaskName());
 	EXPECT_EQ(t2, found[0]);
 	
-	
+	for(int i = 1; i < found.size(); i++){
+		delete found[i];
+	}	
+	delete taskBank;
+*/	
 }
 
 
@@ -565,6 +571,7 @@ TEST(TaskBankTest, undoTaskEdit)
  	
         delete _taskBank;
         delete taskBankCommand;        
+	
 }
 
 
@@ -621,7 +628,7 @@ TEST(TaskBankTest, undoTaskListAddTask)
 	taskBank->addTask(taskList);
 	taskBankCommand->Backup();
 	taskBank->addTask(t1);
-	taskBankCommand->Backup();
+	taskBank->addTask(t1);
 
 	taskBankCommand->Undo();
 	taskBankCommand->Undo();
@@ -635,7 +642,7 @@ TEST(TaskBankTest, undoTaskListAddTask)
 	std::stringstream output;
 	
 	taskBank->display(s);
-	taskBank->display(output);
+	_taskBank->display(output);
 	EXPECT_EQ(s.str(), output.str());
 	
 
@@ -664,7 +671,7 @@ TEST(TaskBankTest, undoTaskListDeleteTaskList)
         std::stringstream output;
 
         taskBank->display(s);
-        taskBank->display(output);
+        _taskBank->display(output);
         EXPECT_EQ(s.str(), output.str());
         
  	
@@ -694,7 +701,7 @@ TEST(TaskBankTest, undoTaskListDeleteTask)
         std::stringstream output;
 
         taskBank->display(s);
-        taskBank->display(output);
+        _taskBank->display(output);
         EXPECT_EQ(s.str(), output.str());
 
 	
