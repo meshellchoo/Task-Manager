@@ -26,23 +26,23 @@
 
 #### Screenshots of the Input/Output of Our Application
 #### Main Menu:
-![](ss1.jpg)
+![](ss1.png)
 #### Creating a New Task (Error Handling Shown):
-![](ss2.jpg)
+![](ss2.png)
 #### Creating a New Task List (Error Handling Shown):
-![](ss3.jpg)
+![](ss3.png)
 #### Sorting by Due Date
-![](ss4.jpg)
+![](ss4.png)
 #### Sorting by Priority
-![](ss5.jpg)
+![](ss5.png)
 #### Editing an Existing Task
-![](ss6.jpg)
+![](ss6.png)
 #### Deleting a Task
-![](ss7.jpg)
+![](ss7.png)
 #### Undo-ing Last Action 
-![](ss8.jpg)
+![](ss8.png)
 #### Searching For A Task
-![](ss9.jpg)
+![](ss9.png)
 
 ####  Installation Guide:
 1. Clone this GitHub Repository on your local terminal (preferably PuTTy). You can get the link by pressing the green button named "Code".
